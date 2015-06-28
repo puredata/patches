@@ -1,0 +1,19 @@
+#N canvas 185 70 1036 519 12;
+#X obj 149 180 inlet~;
+#X obj 149 264 outlet~;
+#X obj 197 83 list split \$1;
+#X text 298 83 Filter out element \$1;
+#X obj 149 230 *~;
+#X obj 241 211 line~;
+#X msg 241 110 \$1 10;
+#X obj 142 103 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 197 58 r CONSOLE-APPLY-ROUTER;
+#X connect 0 0 4 0;
+#X connect 2 1 6 0;
+#X connect 2 1 7 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 1;
+#X connect 6 0 5 0;
+#X connect 8 0 2 0;
+#X coords 0 -1 1 1 60 20 1 100 100;

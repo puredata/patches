@@ -1,0 +1,1342 @@
+#N canvas 254 22 600 624 10;
+#X text -296 165 DMX Channel ->;
+#X obj -300 7 cnv 15 15 15 empty empty ExMM180d-DMX.pd 0 8 1 14 -262144
+-66577 0;
+#X text -285 178 1..512;
+#X text -270 454 0..255;
+#X obj 240 587 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text -278 440 DMX Data ->;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 244 591 pd ???;
+#X text -291 100 4 Choisir DMX Channel;
+#X text -291 39 0 Installer FTDIUSBSerialDriver_10_4_10_5_10_6.mpkg
+;
+#X text -291 24 Sous MacOSX.6;
+#X text -291 54 1 Connecter;
+#X text -291 70 2 Clic List-ports ->;
+#X text -291 85 3 ... choisir port 2;
+#X text -291 114 5 On DMX;
+#X text -291 128 6 La LED de l'interface ENTTEC clignote;
+#X text -219 54 Mac -> USB -> ENTECC DMX USB PRO -> DMX -> Projecteurs
+;
+#X text -168 69 Si 2 /dev/tty.usbserial-EN082523 s'affiche...;
+#N canvas 468 143 456 422 Color 0;
+#X obj 144 189 +;
+#X obj 133 242 +;
+#X obj 74 134 * -65536;
+#X obj 144 133 * -256;
+#X obj 222 130 * -1;
+#X obj 133 273 - 1;
+#X obj 75 29 inlet;
+#X obj 133 328 outlet;
+#X msg 133 301 color \$1 \$1 -1;
+#X obj 75 70 clip 0 255;
+#X obj 143 28 inlet;
+#X obj 143 69 clip 0 255;
+#X obj 222 27 inlet;
+#X obj 222 68 clip 0 255;
+#X obj 174 160 t b a;
+#X obj 144 211 t b a;
+#X obj 103 114 cnv 1 1 1 empty empty R -1 0 1 14 -233017 -66577 0;
+#X obj 127 114 cnv 1 1 1 empty empty G -1 0 1 14 -233017 -66577 0;
+#X obj 151 114 cnv 1 1 1 empty empty B -1 0 1 14 -233017 -66577 0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 125 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 149 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 120 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 335 327 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 339 331 pd ???;
+#X text 72 9 0..255;
+#X text 140 9 0..255;
+#X text 220 9 0..255;
+#X text 164 101 10 4 2012;
+#X text 33 -13 R G B = Red Green Blue = Rouge Vert Bleu;
+#X obj -52 378 pddp/pddplink http://en.wikipedia.org/wiki/Subtractive_primaries#Subtractive_primaries
+;
+#X obj -52 362 pddp/pddplink http://fr.wikipedia.org/wiki/Couleur_primaire
+;
+#X text -30 302 cf ExMM181-Color;
+#X connect 0 0 15 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 14 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 3 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
+#X connect 15 0 1 0;
+#X connect 15 1 1 1;
+#X coords 0 -1 1 1 60 25 2 100 100;
+#X restore -181 498 pd Color;
+#X obj -200 530 bng 80 250 50 0 empty empty empty 17 7 0 10 -225074
+-225074 -1;
+#N canvas 519 76 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 219 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 1 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -258049
+-1 -1 21900 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 148 146 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -207 162 pd T;
+#N canvas 170 59 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 243 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 2 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -4033
+-1 -1 24300 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 149 143 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -174 162 pd T;
+#N canvas 389 50 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 198 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 3 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -64
+-262144 -1 19800 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 150 141 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -141 162 pd T;
+#X obj -207 472 + 1;
+#X obj -174 472 + 1;
+#X obj -141 473 + 1;
+#N canvas 468 143 456 422 Color 0;
+#X obj 144 189 +;
+#X obj 133 242 +;
+#X obj 74 134 * -65536;
+#X obj 144 133 * -256;
+#X obj 222 130 * -1;
+#X obj 133 273 - 1;
+#X obj 75 29 inlet;
+#X obj 133 328 outlet;
+#X msg 133 301 color \$1 \$1 -1;
+#X obj 75 70 clip 0 255;
+#X obj 143 28 inlet;
+#X obj 143 69 clip 0 255;
+#X obj 222 27 inlet;
+#X obj 222 68 clip 0 255;
+#X obj 174 160 t b a;
+#X obj 144 211 t b a;
+#X obj 103 114 cnv 1 1 1 empty empty R -1 0 1 14 -233017 -66577 0;
+#X obj 127 114 cnv 1 1 1 empty empty G -1 0 1 14 -233017 -66577 0;
+#X obj 151 114 cnv 1 1 1 empty empty B -1 0 1 14 -233017 -66577 0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 125 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 149 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 120 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 335 327 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 339 331 pd ???;
+#X text 72 9 0..255;
+#X text 140 9 0..255;
+#X text 220 9 0..255;
+#X text 164 101 10 4 2012;
+#X text 33 -13 R G B = Red Green Blue = Rouge Vert Bleu;
+#X obj -52 378 pddp/pddplink http://en.wikipedia.org/wiki/Subtractive_primaries#Subtractive_primaries
+;
+#X obj -52 362 pddp/pddplink http://fr.wikipedia.org/wiki/Couleur_primaire
+;
+#X text -30 302 cf ExMM181-Color;
+#X connect 0 0 15 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 14 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 3 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
+#X connect 15 0 1 0;
+#X connect 15 1 1 1;
+#X coords 0 -1 1 1 60 25 2 100 100;
+#X restore -71 499 pd Color;
+#X obj -90 531 bng 80 250 50 0 empty empty empty 17 7 0 10 -1473 -1473
+-1;
+#N canvas 519 76 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 11 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -258049
+-1 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 148 146 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -97 163 pd T;
+#N canvas 170 59 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 95 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 12 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -4033
+-1 -1 9500 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 149 143 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -64 163 pd T;
+#N canvas 389 50 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 13 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -64
+-262144 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 150 141 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore -31 163 pd T;
+#X obj -97 473 + 1;
+#X obj -64 473 + 1;
+#X obj -31 474 + 1;
+#N canvas 468 143 456 422 Color 0;
+#X obj 144 189 +;
+#X obj 133 242 +;
+#X obj 74 134 * -65536;
+#X obj 144 133 * -256;
+#X obj 222 130 * -1;
+#X obj 133 273 - 1;
+#X obj 75 29 inlet;
+#X obj 133 328 outlet;
+#X msg 133 301 color \$1 \$1 -1;
+#X obj 75 70 clip 0 255;
+#X obj 143 28 inlet;
+#X obj 143 69 clip 0 255;
+#X obj 222 27 inlet;
+#X obj 222 68 clip 0 255;
+#X obj 174 160 t b a;
+#X obj 144 211 t b a;
+#X obj 103 114 cnv 1 1 1 empty empty R -1 0 1 14 -233017 -66577 0;
+#X obj 127 114 cnv 1 1 1 empty empty G -1 0 1 14 -233017 -66577 0;
+#X obj 151 114 cnv 1 1 1 empty empty B -1 0 1 14 -233017 -66577 0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 125 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 149 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 120 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 335 327 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 339 331 pd ???;
+#X text 72 9 0..255;
+#X text 140 9 0..255;
+#X text 220 9 0..255;
+#X text 164 101 10 4 2012;
+#X text 33 -13 R G B = Red Green Blue = Rouge Vert Bleu;
+#X obj -52 378 pddp/pddplink http://en.wikipedia.org/wiki/Subtractive_primaries#Subtractive_primaries
+;
+#X obj -52 362 pddp/pddplink http://fr.wikipedia.org/wiki/Couleur_primaire
+;
+#X text -30 302 cf ExMM181-Color;
+#X connect 0 0 15 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 14 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 3 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
+#X connect 15 0 1 0;
+#X connect 15 1 1 1;
+#X coords 0 -1 1 1 60 25 2 100 100;
+#X restore 38 499 pd Color;
+#X obj 19 531 bng 80 250 50 0 empty empty empty 17 7 0 10 -81921 -81921
+-1;
+#N canvas 519 76 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 81 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 21 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -258049
+-1 -1 8100 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 148 146 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 12 163 pd T;
+#N canvas 170 59 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 22 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -4033
+-1 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 149 143 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 45 163 pd T;
+#N canvas 389 50 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 23 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -64
+-262144 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 150 141 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 78 163 pd T;
+#X obj 12 473 + 1;
+#X obj 45 473 + 1;
+#X obj 78 474 + 1;
+#N canvas 468 143 456 422 Color 0;
+#X obj 144 189 +;
+#X obj 133 242 +;
+#X obj 74 134 * -65536;
+#X obj 144 133 * -256;
+#X obj 222 130 * -1;
+#X obj 133 273 - 1;
+#X obj 75 29 inlet;
+#X obj 133 328 outlet;
+#X msg 133 301 color \$1 \$1 -1;
+#X obj 75 70 clip 0 255;
+#X obj 143 28 inlet;
+#X obj 143 69 clip 0 255;
+#X obj 222 27 inlet;
+#X obj 222 68 clip 0 255;
+#X obj 174 160 t b a;
+#X obj 144 211 t b a;
+#X obj 103 114 cnv 1 1 1 empty empty R -1 0 1 14 -233017 -66577 0;
+#X obj 127 114 cnv 1 1 1 empty empty G -1 0 1 14 -233017 -66577 0;
+#X obj 151 114 cnv 1 1 1 empty empty B -1 0 1 14 -233017 -66577 0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 125 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 149 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 120 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 335 327 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 339 331 pd ???;
+#X text 72 9 0..255;
+#X text 140 9 0..255;
+#X text 220 9 0..255;
+#X text 164 101 10 4 2012;
+#X text 33 -13 R G B = Red Green Blue = Rouge Vert Bleu;
+#X obj -52 378 pddp/pddplink http://en.wikipedia.org/wiki/Subtractive_primaries#Subtractive_primaries
+;
+#X obj -52 362 pddp/pddplink http://fr.wikipedia.org/wiki/Couleur_primaire
+;
+#X text -30 302 cf ExMM181-Color;
+#X connect 0 0 15 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 14 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 2 0;
+#X connect 10 0 11 0;
+#X connect 11 0 3 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
+#X connect 15 0 1 0;
+#X connect 15 1 1 1;
+#X coords 0 -1 1 1 60 25 2 100 100;
+#X restore 148 499 pd Color;
+#X obj 129 531 bng 80 250 50 0 empty empty empty 17 7 0 10 -1 -1 -1
+;
+#N canvas 519 76 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 31 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -258049
+-1 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 148 146 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 122 163 pd T;
+#N canvas 170 59 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 32 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -4033
+-1 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 149 143 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 155 163 pd T;
+#N canvas 389 50 274 571 T 0;
+#X obj 99 432 t f b;
+#X obj 100 381 nbx 3 14 0 255 0 0 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 0 256;
+#X obj 100 106 nbx 3 14 1 512 0 1 \$0-A \$0-B empty 0 -8 1 10 -262144
+-1 -1 33 256;
+#X obj 126 459 int;
+#X obj 100 122 vsl 33 256 0 255 0 1 \$0-A \$0-B empty 0 -9 0 10 -64
+-262144 -1 0 0;
+#X obj 100 38 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 101 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 122 396 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 143 38 inlet;
+#X obj 49 537 outlet;
+#X obj 178 536 outlet;
+#X msg 18 237 set \$1;
+#X obj 100 409 int;
+#X obj 100 72 int;
+#X obj 41 353 int;
+#X text 9 389 DMX Channel <-;
+#X text 135 390 -> DMX Data;
+#X text 21 400 1..512;
+#X text 158 401 0..255;
+#X text 8 95 DMX Channel ->;
+#X text 136 95 <- DMX Data;
+#X text 19 108 1..512;
+#X text 156 109 0..255;
+#X obj 99 509 pack 1 2;
+#X obj 99 537 s \$0-DMX1;
+#X obj 11 37 r \$0-DMX1Trig;
+#X obj 139 171 cnv 15 120 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X text 147 170 A utiliser avec;
+#X text 149 183 MM Control-DMX;
+#X text 10 9 MM-Tranche-DMX;
+#X text 150 141 9 4 2012;
+#X connect 0 0 12 0;
+#X connect 0 0 25 0;
+#X connect 0 1 3 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 1;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 3 0 25 1;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 10 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 16 0 1 0;
+#X connect 25 0 26 0;
+#X connect 27 0 4 0;
+#X coords 0 -1 1 1 33 301 1 100 100;
+#X restore 188 163 pd T;
+#X obj 122 473 + 1;
+#X obj 155 473 + 1;
+#X obj 188 474 + 1;
+#N canvas 260 38 409 561 Control-DMX 0;
+#X obj 42 78 list-replace;
+#N canvas 0 25 369 312 list-creation 0;
+#X obj 137 198 list append;
+#X msg 236 81 231;
+#X obj 137 85 until;
+#X msg 137 119 0;
+#X msg 38 82 126 6 1 2;
+#X obj 137 235 outlet;
+#X obj 118 -42 inlet;
+#X msg 176 53 513;
+#X obj 234 215 l;
+#X obj 272 81 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 294 80 Clear List;
+#X msg 137 53 513;
+#X obj 118 -15 t b b b b;
+#X connect 0 0 5 0;
+#X connect 0 0 8 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 6 0 12 0;
+#X connect 8 0 0 1;
+#X connect 9 0 0 1;
+#X connect 11 0 2 0;
+#X connect 12 0 4 0;
+#X connect 12 1 11 0;
+#X connect 12 2 1 0;
+#X connect 12 3 9 0;
+#X restore 203 47 pd list-creation;
+#X obj 111 54 l;
+#X obj 176 -29 loadbang;
+#X obj 156 -30 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 172 110 cnv 1 1 1 empty ColorForm Control-DMX -1 3 1 14 -262144
+-1 1.04858e+06;
+#X obj 123 412 comport;
+#X obj 100 100 bng 12 50 50 0 \$0-A \$0-B List-ports 15 7 1 9 -262144
+-1 -1;
+#X msg 126 305 devices;
+#X msg 329 305 help;
+#X msg 290 305 info;
+#X msg 244 304 close;
+#X obj -36 363 spigot 0;
+#X obj 100 158 bng 12 50 50 0 \$0-A \$0-B Display-Trame 15 7 1 9 -262144
+-1 -1;
+#X msg -24 337 1;
+#X msg 9 336 0;
+#X obj -20 413 print Trame;
+#X obj -38 388 t b a b;
+#X obj 259 -5 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 329 49 459 595 Help 0;
+#X obj 29 -4 cnv 15 400 180 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 31 -2 Citation;
+#X text 10 -23 MM Control-DMX;
+#X text 14 266 ATTENTION: il faut ouvrir un et un seul MiniModule "Control-DMX".
+;
+#X text 13 296 CAUTION: it is necessary to open one and only one MiniModule
+"Control-DMX".;
+#X text 12 195 Inspiration:;
+#X text 12 213 Mis au point sous MacOS avec interface ENTTEC DMX USB
+Pro:;
+#X obj 89 195 pddp/pddplink http://wiki.labomedia.org/index.php/Pure_Data_vs_Enttec_Pro
+;
+#X obj 59 228 pddp/pddplink http://www.enttec.com/?main_menu=Products&pn=70304
+;
+#X obj 122 140 pddp/pddplink http://en.wikipedia.org/wiki/DMX512;
+#X obj 120 81 pddp/pddplink http://fr.wikipedia.org/wiki/DMX_(éclairage)
+;
+#X text 44 15 "Le DMX512 (digital multiplexing) est un protocole de
+multiplexage de données. Il est essentiellement utilisé pour le contrôle
+de l'éclairage dynamique d'évènements en complément de la sonorisation
+(concerts \, plateaux télé \, spectacle son & lumière).";
+#X text 42 101 "DMX512 is a standard for digital communication networks
+that are commonly used to control stage lighting and effects.";
+#X text 16 353 0 Installer FTDIUSBSerialDriver_10_4_10_5_10_6.mpkg
+;
+#X text 16 338 Sous MacOSX.6;
+#X text 16 368 1 Connecter;
+#X text 88 369 Mac -> USB -> ENTECC DMX USB PRO -> DMX -> Projecteurs
+;
+#X text 16 414 4 On DMX;
+#X text 16 384 2 Clic List-ports ->;
+#X text 16 428 5 La LED de l'interface ENTTEC clignote;
+#X text 139 384 Si 2 /dev/tty.usbserial-EN082523 s'affiche...;
+#X text 16 399 3 ... choisir port 2;
+#X text 16 486 1 Connecter;
+#X text 16 532 4 On DMX;
+#X text 16 546 5 La LED de l'interface ENTTEC clignote;
+#X text 16 456 Sous Linux Ubuntu 11.1;
+#X text 16 471 0 Aucun driver à installer;
+#X text 88 487 PC -> USB -> ENTECC DMX USB PRO -> DMX -> Projecteurs
+;
+#X text 16 517 3 ... choisir port 32;
+#X text 16 502 2 Clic List-ports -> Si ...32 s'affiche;
+#X restore 266 1 pd Help;
+#X obj 307 403 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 311 407 pd ???;
+#X obj -16 -109 cnv 15 360 70 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X obj -8 -26 r \$0-DMX1;
+#X obj 19 20 unpack 1 2;
+#X obj 76 54 + 4;
+#X text -8 -106 ATTENTION: il faut ouvrir un et un seul MiniModule
+"Control-DMX".;
+#X text -9 -76 CAUTION: it is necessary to open one and only one MiniModule
+"Control-DMX".;
+#X obj 21 306 spigot 0;
+#X obj 212 414 s \$0-DMX1Trig;
+#X obj 176 23 delay 500;
+#X msg 89 339 0;
+#X obj 100 141 bng 12 50 50 0 \$0-A \$0-B Send-0->Tranche-Open 15 7
+1 9 -262144 -1 -1;
+#X obj 100 129 bng 12 50 50 0 \$0-A \$0-B Send-0->512Tranches 15 7
+1 9 -262144 -1 -1;
+#X obj 176 -5 t b b;
+#X obj -31 305 t b b;
+#X obj 81 305 t b b;
+#X obj -5 170 list 0;
+#X obj -8 -2 t b a;
+#X obj -15 78 delay 10;
+#X obj 0 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 100 112 nbx 2 12 0 99 0 1 \$0-A \$0-B port 26 7 1 9 -262144
+-1 -1 2 256;
+#X obj 100 174 tgl 18 0 \$0-A \$0-B On/Off-DMX 20 11 1 14 -4033 -1
+-1 1 1;
+#X obj 244 273 delay 300;
+#X obj 104 203 select 0 1;
+#X msg 26 275 0;
+#X msg 127 280 1;
+#X msg 175 204 set open \$1;
+#X msg 182 306 open 2;
+#X obj 101 234 delay 200;
+#X obj 101 258 t b b;
+#X text 261 100 15 4 2012;
+#X connect 0 0 2 0;
+#X connect 0 0 37 1;
+#X connect 1 0 0 2;
+#X connect 2 0 0 2;
+#X connect 3 0 34 0;
+#X connect 4 0 34 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 0;
+#X connect 10 0 6 0;
+#X connect 11 0 6 0;
+#X connect 12 0 17 0;
+#X connect 13 0 35 0;
+#X connect 14 0 12 1;
+#X connect 15 0 12 1;
+#X connect 17 0 15 0;
+#X connect 17 1 16 0;
+#X connect 23 0 38 0;
+#X connect 24 0 0 0;
+#X connect 24 1 25 0;
+#X connect 25 0 0 1;
+#X connect 28 0 6 0;
+#X connect 30 0 29 0;
+#X connect 31 0 29 0;
+#X connect 32 0 36 0;
+#X connect 33 0 34 0;
+#X connect 33 0 31 0;
+#X connect 34 0 30 0;
+#X connect 34 1 1 0;
+#X connect 35 0 39 0;
+#X connect 35 1 14 0;
+#X connect 36 0 39 0;
+#X connect 36 1 31 0;
+#X connect 37 0 28 0;
+#X connect 37 0 12 0;
+#X connect 38 0 39 0;
+#X connect 38 1 24 0;
+#X connect 39 0 37 0;
+#X connect 40 0 39 0;
+#X connect 41 0 47 0;
+#X connect 42 0 44 0;
+#X connect 43 0 11 0;
+#X connect 44 0 43 0;
+#X connect 44 0 45 0;
+#X connect 44 1 48 0;
+#X connect 44 1 49 0;
+#X connect 45 0 28 1;
+#X connect 46 0 28 1;
+#X connect 47 0 48 0;
+#X connect 48 0 6 0;
+#X connect 49 0 50 0;
+#X connect 50 0 39 0;
+#X connect 50 1 46 0;
+#X coords 0 -1 1 1 160 92 2 100 100;
+#X restore 120 28 pd Control-DMX;
+#X connect 17 0 18 0;
+#X connect 19 0 22 0;
+#X connect 19 1 17 0;
+#X connect 20 0 23 0;
+#X connect 20 1 17 1;
+#X connect 21 0 24 0;
+#X connect 21 1 17 2;
+#X connect 22 0 20 0;
+#X connect 23 0 21 0;
+#X connect 25 0 26 0;
+#X connect 27 0 30 0;
+#X connect 27 1 25 0;
+#X connect 28 0 31 0;
+#X connect 28 1 25 1;
+#X connect 29 0 32 0;
+#X connect 29 1 25 2;
+#X connect 30 0 28 0;
+#X connect 31 0 29 0;
+#X connect 33 0 34 0;
+#X connect 35 0 38 0;
+#X connect 35 1 33 0;
+#X connect 36 0 39 0;
+#X connect 36 1 33 1;
+#X connect 37 0 40 0;
+#X connect 37 1 33 2;
+#X connect 38 0 36 0;
+#X connect 39 0 37 0;
+#X connect 41 0 42 0;
+#X connect 43 0 46 0;
+#X connect 43 1 41 0;
+#X connect 44 0 47 0;
+#X connect 44 1 41 1;
+#X connect 45 0 48 0;
+#X connect 45 1 41 2;
+#X connect 46 0 44 0;
+#X connect 47 0 45 0;

@@ -1,0 +1,10 @@
+#N canvas 401 22 423 166 10;
+#X obj 11 -38 cnv 15 15 15 empty empty ExMM56b-PDP-Image.pd 0 8 1 14
+-262144 -1 0;
+#X text 36 -10 Astuce pour afficher un fichier image (.jpeg par exemple)
+avec PDP:;
+#X text 50 17 - Transformer le fichier en .mov (séquence QuickTime)
+avec QuickTime Player pro.;
+#X text 53 44 - Ouvrir ce fichier .mov avec le MM PDP-Film;
+#X text 53 58 - Clic Play;
+#X text 40 81 Voir -> ExMM50a-PDP-Film.pd;

@@ -1,0 +1,376 @@
+#N canvas 399 22 320 281 10;
+#X obj -213 7 cnv 15 15 15 empty empty ExMM1h-Sinus-Simple.pd 0 8 1
+14 -262144 -66577 0;
+#N canvas 312 168 336 264 ARGO 0;
+#X obj 101 101 cnv 10 139 15 empty ColorForm empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 nbx 6 12 0 999999 0 1 \$0-A ColorTime ms 53 7 1 9 -208064
+-1 -1 3 256;
+#X obj 85 231 outlet~;
+#X obj 115 125 t b f;
+#X obj 128 175 /;
+#X obj 167 105 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 203 105 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 259 140 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 265 147 pd ?;
+#X obj 257 97 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 161 113 425 238 Help 0;
+#X obj 8 85 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 87 Citation;
+#X text 10 6 Oscillateur sinusoïdal;
+#X text 22 106 The osc~ object outputs a cosine wave. If no argument
+is supplied \, the input is taken to be an audio signal.;
+#X text 12 21 freq(Hz) = 1 / Periode (sec);
+#X text 11 39 freq(Hz) = 1000 / Periode (ms);
+#X restore 264 103 pd Help;
+#X text 178 82 13 12 2009;
+#X obj 128 199 osc~ 1000;
+#X msg 115 151 1000;
+#X connect 2 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 1;
+#X connect 5 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 5 0;
+#X coords 0 -1 1 1 141 17 1 100 100;
+#X restore -85 56 pd ARGO;
+#N canvas 312 168 336 264 ARGO 0;
+#X obj 101 101 cnv 10 139 15 empty ColorForm empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 nbx 6 12 0 999999 0 1 \$0-A ColorTime ms 53 7 1 9 -208064
+-1 -1 4 256;
+#X obj 85 231 outlet~;
+#X obj 115 125 t b f;
+#X obj 128 175 /;
+#X obj 167 105 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 203 105 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 259 140 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 265 147 pd ?;
+#X obj 257 97 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 161 113 425 238 Help 0;
+#X obj 8 85 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 87 Citation;
+#X text 10 6 Oscillateur sinusoïdal;
+#X text 22 106 The osc~ object outputs a cosine wave. If no argument
+is supplied \, the input is taken to be an audio signal.;
+#X text 12 21 freq(Hz) = 1 / Periode (sec);
+#X text 11 39 freq(Hz) = 1000 / Periode (ms);
+#X restore 264 103 pd Help;
+#X text 178 82 13 12 2009;
+#X obj 128 199 osc~ 1000;
+#X msg 115 151 1000;
+#X connect 2 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 1;
+#X connect 5 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 5 0;
+#X coords 0 -1 1 1 141 17 1 100 100;
+#X restore -73 80 pd ARGO;
+#N canvas 312 168 336 264 ARGO 0;
+#X obj 101 101 cnv 10 139 15 empty ColorForm empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 nbx 6 12 0 999999 0 1 \$0-A ColorTime ms 53 7 1 9 -208064
+-1 -1 5 256;
+#X obj 85 231 outlet~;
+#X obj 115 125 t b f;
+#X obj 128 175 /;
+#X obj 167 105 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 203 105 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 259 140 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 265 147 pd ?;
+#X obj 257 97 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 161 113 425 238 Help 0;
+#X obj 8 85 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 87 Citation;
+#X text 10 6 Oscillateur sinusoïdal;
+#X text 22 106 The osc~ object outputs a cosine wave. If no argument
+is supplied \, the input is taken to be an audio signal.;
+#X text 12 21 freq(Hz) = 1 / Periode (sec);
+#X text 11 39 freq(Hz) = 1000 / Periode (ms);
+#X restore 264 103 pd Help;
+#X text 178 82 13 12 2009;
+#X obj 128 199 osc~ 1000;
+#X msg 115 151 1000;
+#X connect 2 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 1;
+#X connect 5 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 5 0;
+#X coords 0 -1 1 1 141 17 1 100 100;
+#X restore -58 103 pd ARGO;
+#N canvas 312 168 336 264 ARGO 0;
+#X obj 101 101 cnv 10 139 15 empty ColorForm empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 nbx 6 12 0 999999 0 1 \$0-A ColorTime ms 53 7 1 9 -208064
+-1 -1 6 256;
+#X obj 85 231 outlet~;
+#X obj 115 125 t b f;
+#X obj 128 175 /;
+#X obj 167 105 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 203 105 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 259 140 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 265 147 pd ?;
+#X obj 257 97 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 161 113 425 238 Help 0;
+#X obj 8 85 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 87 Citation;
+#X text 10 6 Oscillateur sinusoïdal;
+#X text 22 106 The osc~ object outputs a cosine wave. If no argument
+is supplied \, the input is taken to be an audio signal.;
+#X text 12 21 freq(Hz) = 1 / Periode (sec);
+#X text 11 39 freq(Hz) = 1000 / Periode (ms);
+#X restore 264 103 pd Help;
+#X text 178 82 13 12 2009;
+#X obj 128 199 osc~ 1000;
+#X msg 115 151 1000;
+#X connect 2 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 1;
+#X connect 5 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 5 0;
+#X coords 0 -1 1 1 141 17 1 100 100;
+#X restore -46 127 pd ARGO;
+#N canvas 312 168 336 264 ARGO 0;
+#X obj 101 101 cnv 10 139 15 empty ColorForm empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 100 100 nbx 6 12 0 999999 0 1 \$0-A ColorTime ms 53 7 1 9 -208064
+-1 -1 2 256;
+#X obj 85 231 outlet~;
+#X obj 115 125 t b f;
+#X obj 128 175 /;
+#X obj 167 105 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 203 105 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 259 140 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 265 147 pd ?;
+#X obj 257 97 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 161 113 425 238 Help 0;
+#X obj 8 85 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 87 Citation;
+#X text 10 6 Oscillateur sinusoïdal;
+#X text 22 106 The osc~ object outputs a cosine wave. If no argument
+is supplied \, the input is taken to be an audio signal.;
+#X text 12 21 freq(Hz) = 1 / Periode (sec);
+#X text 11 39 freq(Hz) = 1000 / Periode (ms);
+#X restore 264 103 pd Help;
+#X text 178 82 13 12 2009;
+#X obj 128 199 osc~ 1000;
+#X msg 115 151 1000;
+#X connect 2 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 1;
+#X connect 5 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 5 0;
+#X coords 0 -1 1 1 141 17 1 100 100;
+#X restore -100 32 pd ARGO;
+#X obj -121 255 dac~ 1 2;
+#X obj 46 240 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 50 247 pd ??;
+#X obj -195 110 switch~;
+#N canvas 608 166 228 173 ARGOnOff 0;
+#X obj 100 100 tgl 18 1 \$0-SendOnOff \$0-ReceiveOnOff On/Off 20 11
+1 14 -4033 -1 -1 1 1;
+#X obj 99 10 loadbang;
+#X msg 99 33 \; pd dsp 1;
+#X obj 100 129 outlet;
+#X text -50 99 Audio On/Off du patch ->;
+#X text -22 45 Audio General On ->;
+#X text 107 82 17 3 2010;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 65 18 2 100 100;
+#X restore -195 92 pd ARGOnOff;
+#X text -190 76 V;
+#X text -190 69 |;
+#X text -202 58 On/Off Patch;
+#X text -204 169 Niveau general ->;
+#X text -198 179 General level ->;
+#N canvas 324 59 331 313 ARGO 0;
+#X obj 101 101 cnv 20 104 34 empty ColorAmpli empty 20 12 0 14 -261299
+-1 1.04858e+06;
+#X obj 85 285 outlet~;
+#X obj 134 104 cnv 10 20 10 empty ColorAmpli Ampli 1 5 1 14 -261299
+-1 1.04858e+06;
+#X obj 85 72 inlet~;
+#X obj 85 260 *~;
+#X obj 103 118 hsl 101 12 -80 20 0 1 \$0-A ColorAmpli -10dB 0 7 1 9
+-261299 -1 -1 7000 0;
+#X msg -24 161 label \$1;
+#X obj -25 138 tosymbol;
+#X obj -25 103 sprintf %ddB;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text -16 120 -> -80dB..20dB;
+#X text 106 182 -> 0.0001..10 = -80dB..20dB;
+#X text 209 97 5 5 2011;
+#X obj 100 163 expr (pow(10 \, $f1 / 20));
+#X text 107 140 -> -80..20;
+#X obj 227 270 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 231 277 pd ??;
+#X obj 100 206 sel 0.0001;
+#X msg 100 234 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 5 0 14 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 0;
+#X connect 14 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 4 1;
+#X connect 19 0 4 1;
+#X connect 19 0 7 0;
+#X coords 0 -1 1 1 106 36 1 100 100;
+#X restore -97 159 pd ARGO;
+#X connect 1 0 16 0;
+#X connect 2 0 16 0;
+#X connect 3 0 16 0;
+#X connect 4 0 16 0;
+#X connect 5 0 16 0;
+#X connect 10 0 9 0;
+#X connect 16 0 6 1;
+#X connect 16 0 6 0;

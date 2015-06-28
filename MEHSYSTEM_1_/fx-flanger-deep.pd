@@ -1,0 +1,32 @@
+#N canvas 1 97 845 669 12;
+#X obj -267 -363 r~ \$1-pre-fxall-l;
+#X obj -219 -333 r~ \$1-pre-fxall-r;
+#X obj -268 275 throw~ \$1-post-fxall-l;
+#X obj -227 251 throw~ \$1-post-fxall-r;
+#X obj -187 198 switch~;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -268 169 fx_switch \$0;
+#X obj -190 -299 r \$0-y-to-fx;
+#X obj -190 -270 lin-eq-conv 0 127 0 1;
+#X obj -296 -359 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -93 -218 r \$0-main-bpm-ms;
+#X obj -142 -243 r \$0-x-to-fx;
+#X obj -268 -153 st-flanger-patch.meh \$0 20 1;
+#X text 66 -231 st-flanger-patch.meh \; ---------------------- \; \$1-
+FX \; \$2- ms line para pasar de una a otro (default: 20ms) \; \$3-
+width y feedback \; \; inlet-1 inlet-2: signals \; inlet-3: 0-1 wet
+\; inlet-4: 0-15 - delay-time (predefinidos) \; inlet-5: main-bpm-ms
+;
+#X connect 0 0 12 0;
+#X connect 1 0 12 1;
+#X connect 6 0 2 0;
+#X connect 6 1 3 0;
+#X connect 6 2 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 2;
+#X connect 10 0 12 4;
+#X connect 11 0 12 3;
+#X connect 12 0 6 0;
+#X connect 12 1 6 1;
+#X coords 0 -1 1 1 240 70 1 0 0;

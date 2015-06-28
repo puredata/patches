@@ -1,0 +1,103 @@
+#N canvas 450 22 316 385 10;
+#X obj -33 -51 cnv 15 15 15 empty empty ExMM80b-MIDI-Visu.pd 0 8 1
+14 -262144 -66577 0;
+#X obj 217 289 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 221 293 pd ???;
+#N canvas 435 86 326 176 MIDICtrlChange 0;
+#X text 97 144 MIDI;
+#X obj 264 139 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 268 143 pd ???;
+#X obj 131 75 cyclone/speedlim 100;
+#X obj 101 101 cnv 5 125 15 empty ColorMIDI In 100 9 1 14 -262103 -1
+1.04858e+06;
+#X obj 131 103 bng 12 50 50 0 \$0-A \$0-B empty 6 9 0 9 -257985 -260097
+-1;
+#X obj 100 105 tgl 12 1 \$0-A \$0-B On 14 7 1 9 -257985 -1 -1 1 1;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 91 46 spigot;
+#X obj 91 19 midiin;
+#X obj 91 127 outlet;
+#X text 9 22 MM MIDI-In;
+#X text 168 138 Object midiout;
+#X text 133 126 -> To MM-MIDI-Out;
+#X text 230 100 4 1 2012;
+#X connect 3 0 5 0;
+#X connect 6 0 8 1;
+#X connect 8 0 3 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X coords 0 -1 1 1 127 17 1 100 100;
+#X restore 34 -28 pd MIDICtrlChange;
+#X obj 34 256 unpack f f;
+#X floatatom 34 286 5 0 0 0 - - -;
+#X floatatom 99 286 5 0 0 0 - - -;
+#X text 33 302 pitch;
+#X text 98 303 velocity;
+#X text 116 256 note on messages;
+#X obj 50 187 unpack f f;
+#X floatatom 50 217 5 0 0 0 - - -;
+#X floatatom 115 217 5 0 0 0 - - -;
+#X text 49 232 aftert;
+#X text 115 234 pitch;
+#X text 128 187 poly aftertouch messages;
+#X obj 67 124 unpack f f;
+#X floatatom 67 154 5 0 0 0 - - -;
+#X floatatom 132 154 5 0 0 0 - - -;
+#X text 66 169 value;
+#X text 132 169 ctrl nr;
+#X text 146 124 controller messages;
+#X floatatom 83 100 5 0 0 0 - - -;
+#X floatatom 100 78 5 0 0 0 - - -;
+#X floatatom 116 55 5 0 0 0 - - -;
+#X floatatom 133 32 5 0 0 0 - - -;
+#X text 130 100 program change;
+#X text 161 56 pitch bend;
+#X text 145 80 aftertouch;
+#X text 170 31 channel number;
+#X text -27 -27 On/Off ->;
+#X obj 34 6 cyclone/midiparse;
+#X connect 3 0 31 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 31 0 4 0;
+#X connect 31 1 10 0;
+#X connect 31 2 16 0;
+#X connect 31 3 22 0;
+#X connect 31 4 23 0;
+#X connect 31 5 24 0;
+#X connect 31 6 25 0;

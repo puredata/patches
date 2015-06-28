@@ -1,0 +1,42 @@
+#N canvas 93 56 961 710 12;
+#X obj -407 -392 r~ \$1-pre-fxall-l;
+#X obj -349 -362 r~ \$1-pre-fxall-r;
+#X obj -407 406 throw~ \$1-post-fxall-l;
+#X obj -325 359 switch~;
+#X obj -218 -418 r \$0-y-to-fx;
+#X obj -406 330 fx_switch \$0;
+#X obj -406 -326 fx_release-pre \$0;
+#X obj -366 382 throw~ \$1-post-fxall-r;
+#X obj -294 285 fx_release-post \$0 \$1;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -180 -333 r \$0-x-to-fx;
+#X obj -141 -308 r \$0-main-bpm-ms;
+#X obj -446 -408 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -218 -392 lin-eq-conv 0 127 0 1;
+#X text -25 -163 st-feedback-stereo.meh \; ---------------------- \;
+\$1- ms line para pasar de una a otro (default: 20ms) \; \$2- paneo
+(0: total \, 1: mono) \; \$3- desfasaje del canal derecho (0: paneo
+\, OTRO: desfasa \, pero no-panea) \;;
+#X obj -295 -233 st-del-fb-lcr.meh 20;
+#X obj -102 -367 lin-eq-conv 0 127 0 0.666;
+#X connect 0 0 6 0;
+#X connect 1 0 6 1;
+#X connect 4 0 13 0;
+#X connect 4 0 16 0;
+#X connect 5 0 2 0;
+#X connect 5 1 7 0;
+#X connect 5 2 3 0;
+#X connect 6 0 5 0;
+#X connect 6 0 15 0;
+#X connect 6 1 5 1;
+#X connect 6 1 15 1;
+#X connect 8 0 5 0;
+#X connect 8 1 5 1;
+#X connect 10 0 15 3;
+#X connect 11 0 15 4;
+#X connect 13 0 15 2;
+#X connect 15 0 8 0;
+#X connect 15 1 8 1;
+#X connect 16 0 15 5;
+#X coords 0 -1 1 1 240 70 1 0 0;

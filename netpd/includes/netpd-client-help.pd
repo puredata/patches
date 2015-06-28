@@ -1,0 +1,39 @@
+#N canvas 401 44 504 464 10;
+#X declare -stdpath extra/iemnet -stdpath extra/net;
+#X declare -stdpath extra/mrpeach;
+#X obj 0 0 cnv 15 500 30 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 7 7 netpd-client - a basic netpd client;
+#X obj 18 383 netpd-client;
+#X msg 28 247 disconnect;
+#X obj 18 413 print netpd-client:STATUS;
+#X text 12 48 [netpd-client] is a basic netpd client. It establishes
+a connection to the given netpd-server. It does both \, send OSC messages
+to and receive OSC messages from the netpd-server.;
+#X text 13 108 A description of the protocol used by this client (and
+also by the netpd-server) can be found at:;
+#X text 47 142 http://www.netpd.org/protocol_v2;
+#X obj 205 275 netpd-s /animal;
+#X msg 205 225 OSC /mammal cow ape lion;
+#X msg 224 246 OSC /bird/eagle wings;
+#X obj 205 313 netpd-r /animal/mammal;
+#X text 113 389 outlet0: status info;
+#X text 119 373 inlet0: commands;
+#X text 274 430 see also:;
+#X obj 338 430 netpd-s;
+#X obj 390 430 netpd-r /dummy;
+#X obj 205 335 print mammal;
+#X obj 351 313 netpd-r /animal/bird;
+#X obj 351 335 routeOSC /eagle;
+#X obj 351 357 print eagle;
+#X text 202 190 2) Send and receive message:;
+#X text 15 190 1) Establish connection:;
+#X msg 18 225 connect netpd.org 3025;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 17 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 23 0 2 0;

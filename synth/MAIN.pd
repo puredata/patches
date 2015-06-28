@@ -1,0 +1,17 @@
+#N canvas 1 79 1349 696 10;
+#X declare -path ./abs;
+#X declare -path ./abs/midi;
+#X declare -path ./abs/mod_matrix;
+#X declare -path ./abs/signal_bus;
+#X declare -path ./abs/wave_osc;
+#X declare -path ./abs/state_saving;
+#X declare -path ./abs/fx;
+#X declare -path ./abst;
+#X declare -path ./abst;
+#X obj 283 81 partial_synth;
+#X obj 1077 125 dsp;
+#X floatatom 1077 146 5 0 0 0 - - -;
+#X obj 1077 106 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;

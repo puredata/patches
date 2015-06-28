@@ -1,0 +1,143 @@
+#N canvas 507 32 635 881 10;
+#X obj -275 360 *~;
+#X obj -264 -18 loadbang;
+#X obj -275 604 vcf~;
+#X obj -264 9 metro;
+#X obj -264 90 / 100;
+#X obj -264 63 random 100;
+#X obj -264 523 line~;
+#X obj -237 144 swap 1;
+#X obj -237 171 -;
+#X obj -237 198 t f f;
+#X obj -237 279 line~;
+#X obj -260 658 / 100;
+#X obj -275 766 *~;
+#X obj -260 685 t f f;
+#X obj -170 739 -;
+#X obj -185 766 *~;
+#X obj -235 793 *~ 0.5;
+#X obj -275 820 throw~ stream_left;
+#X obj -153 820 throw~ stream_right;
+#X obj -264 117 t f f;
+#X obj -110 36 r dynamics;
+#X obj -110 90 + 1;
+#X obj -275 333 *~;
+#X obj -72 90 swap 1;
+#X obj -72 117 -;
+#X obj -182 9 random;
+#X obj -237 225 pow;
+#X obj -264 468 pack f f;
+#X obj -110 63 * 12;
+#X obj -160 63 swap 1;
+#X obj -160 90 -;
+#X msg -264 495 \$1 \$2;
+#X obj -275 306 r~ noise;
+#X obj -264 36 t b b b b;
+#X obj -160 117 pow 2;
+#X obj -264 387 pow 5;
+#X obj -170 712 swap 0.5;
+#X obj -260 631 random 50;
+#X obj -202 468 + 100;
+#X obj -202 441 random 60;
+#X obj -264 414 * 15700;
+#X obj -264 441 + 300;
+#X obj -254 550 * 20;
+#X obj -254 577 + 25;
+#X obj -237 360 *~;
+#X msg -237 252 \$1 \, 0 1;
+#X obj -220 9 + 10;
+#X obj -72 144 * 68;
+#X obj -72 63 pow 2;
+#X text -220 305 <- noise comes from here;
+#X text -227 381 <- (random 100/100)^5 is the way to make lower random
+values appear more often;
+#X text -214 359 <- makes envelope decay a bit shorter than 1 ms;
+#X text -217 414 <- defines [vcf~]'s frequency range (300-16000 Hz)
+;
+#X text -227 515 <- smoothes tone changes \, makes a sort of pitch
+glide between droplets;
+#X text -223 549 <- defines resonance range;
+#X text -223 576 <- defines lower resonance value (resonance varies
+from 20 to 45);
+#X text -244 608 <- is used to make noise impulses "ring" like water
+streams;
+#X text -251 332 <- randomises volume of each noise impulse;
+#X text -139 9 <- how often single noise impulses are being generated
+;
+#X text -32 819 <- send stereo stream to main.pd;
+#X text -194 278 <- amplitude envelope that splits noise to single
+impulses;
+#X text -200 189 Randomising in a certain range and then dividing to
+that range \, we get random values from 0 to 1 By raising these values
+to power more than 1 \, we make lower values appear more often (proportionally
+to that power).;
+#X text -199 627 next 8 objects are used to randomise pan and keep
+it in a range of 50% left - 50% right to have more natural stereo field
+;
+#X text -43 36 receive values from slider in main.pd;
+#X text -29 63 these objects define how slider in main patch influences
+upon various parameters in each water.pd instance;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 12 0;
+#X connect 2 0 15 0;
+#X connect 3 0 33 0;
+#X connect 4 0 19 0;
+#X connect 5 0 4 0;
+#X connect 6 0 2 1;
+#X connect 7 0 8 0;
+#X connect 7 1 8 1;
+#X connect 8 0 9 0;
+#X connect 9 0 26 0;
+#X connect 9 1 42 0;
+#X connect 10 0 44 0;
+#X connect 10 0 44 1;
+#X connect 11 0 13 0;
+#X connect 12 0 17 0;
+#X connect 12 0 16 0;
+#X connect 13 0 12 1;
+#X connect 13 1 36 0;
+#X connect 14 0 15 1;
+#X connect 15 0 18 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 16 0 18 0;
+#X connect 19 0 35 0;
+#X connect 19 1 7 0;
+#X connect 20 0 28 0;
+#X connect 20 0 29 0;
+#X connect 20 0 48 0;
+#X connect 21 0 26 1;
+#X connect 22 0 0 0;
+#X connect 23 0 24 0;
+#X connect 23 1 24 1;
+#X connect 24 0 47 0;
+#X connect 25 0 46 0;
+#X connect 26 0 45 0;
+#X connect 27 0 31 0;
+#X connect 28 0 21 0;
+#X connect 29 0 30 0;
+#X connect 29 1 30 1;
+#X connect 30 0 34 0;
+#X connect 31 0 6 0;
+#X connect 32 0 22 0;
+#X connect 33 0 5 0;
+#X connect 33 1 37 0;
+#X connect 33 2 39 0;
+#X connect 33 3 25 0;
+#X connect 34 0 22 1;
+#X connect 35 0 40 0;
+#X connect 36 0 14 0;
+#X connect 36 1 14 1;
+#X connect 37 0 11 0;
+#X connect 38 0 27 1;
+#X connect 39 0 38 0;
+#X connect 40 0 41 0;
+#X connect 41 0 27 0;
+#X connect 42 0 43 0;
+#X connect 43 0 2 2;
+#X connect 44 0 0 1;
+#X connect 45 0 10 0;
+#X connect 46 0 3 1;
+#X connect 47 0 25 1;
+#X connect 48 0 23 0;

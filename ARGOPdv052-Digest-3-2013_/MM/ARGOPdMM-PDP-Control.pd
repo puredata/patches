@@ -1,0 +1,77 @@
+#N canvas 420 47 227 134 10;
+#N canvas 413 140 398 282 ARGO 0;
+#X obj 101 101 cnv 10 81 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 104 cnv 10 20 10 empty ColorGEM PDP-Control 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 280 159 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 590 196 416 334 Help 0;
+#X obj 6 7 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 6 Citation;
+#X text 24 21 pdp_control: fine tune the pdp system. (threads & memory).
+;
+#X restore 287 166 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X obj 122 120 tgl 12 1 \$0-A \$0-B Thread 15 7 1 9 -262144 -1 -1 0
+1;
+#X obj 122 182 pdp_control;
+#X msg 122 155 thread \$1;
+#X text 187 117 switch thread processing on or off;
+#X text 186 97 16 11 2010;
+#X obj 122 211 print;
+#X text 176 212 a pdp_drop message will be sent out;
+#X text 176 228 when a package is dropped;
+#X obj 343 237 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 347 244 pd ??;
+#X connect 6 0 8 0;
+#X connect 7 0 11 0;
+#X connect 8 0 7 0;
+#X coords 0 -1 1 1 83 43 1 100 100;
+#X restore 30 8 pd ARGO;
+#X obj 121 13 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 389 153 420 398 Help 0;
+#X obj 9 7 cnv 15 400 380 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 128 pdp was all coded mostly in yuv since the beginning
+for efficiency and speed reasons \, so we have to pass throough conversions
+to connect to other pieces of code. _______________________________________________
+Pd-list@iem.at mailing list;
+#X text 13 115 From: ydegoyon@gmail.com;
+#X text 24 208 If you want to use PDP on Mac OS X 10.4/Tiger or 10.3/Panther
+\, you will need to install X11 (X11 comes installed with 10.5/Leopard).
+It comes on the install CD/DVD that your computer came with.;
+#X text 24 22 PDP - Pure Data Packet a packet processing library for
+pure data;
+#X text 23 52 This external pd library is a framework for image/video
+processing (and other raw data packets) that is fast \, simple and
+flexible and as much as possible compatible with the pd messaging system.
+;
+#X text 12 6 Citations;
+#X text 11 272 pdp_scale-help.pd;
+#X text 27 286 use this if you want to combine different packet sizes.
+or have movies that don't have a legal size (not a multiple of 8x8)
+;
+#X restore 128 20 pd Help;
+#X obj 8 71 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 17 71 Ne fonctionne pas sous Windows;
+#X text 18 83 Do not work under Windows;

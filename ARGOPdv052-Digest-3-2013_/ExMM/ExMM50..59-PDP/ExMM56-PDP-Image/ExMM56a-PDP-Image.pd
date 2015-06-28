@@ -1,0 +1,247 @@
+#N canvas 404 22 530 309 10;
+#N canvas 608 166 249 182 ARGOnOff 0;
+#X obj 100 100 tgl 18 1 \$0-SendOnOff \$0-ReceiveOnOff On/Off 20 9
+0 12 -4033 -1 -1 1 1;
+#X obj 99 39 loadbang;
+#X msg 99 62 \; pd dsp 1;
+#X obj 100 129 outlet;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 65 18 2 100 100;
+#X restore 169 -188 pd ARGOnOff;
+#X obj 169 -163 switch~;
+#X obj -43 -182 cnv 15 15 15 empty empty ExMM56a-PDP-Image.pd 0 8 1
+14 -262144 -1 0;
+#N canvas 320 164 399 343 ARGO 0;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 170 104 cnv 10 20 10 empty ColorGEM PDP-Out-glx 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 139 55 key;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 583 196 410 312 Help 0;
+#X obj 6 7 cnv 15 400 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 27 6 Citation;
+#X text 15 23 pdp_glx ouputs video in a window using the openGL extension
+on an X11 window system. if a pdp message is received and a window
+is not open \, one is created automaticly.;
+#X text 5 175 Fonctionne sous MacOSX + PD 0.41.4-extended;
+#X text 5 188 Fonctionne sous Linux Ubuntu 8.04 + PD 0.41.4-extended
+;
+#X restore 283 136 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X obj 91 316 pdp_glx;
+#X msg 217 286 fullscreen;
+#X msg 14 285 interpol \$1;
+#X msg 139 286 dim 400 300;
+#X obj 101 130 tgl 12 1 \$0-A \$0-B (F)ullScreen 15 7 1 9 -262144 -1
+-1 0 1;
+#X obj 167 262 sel 0;
+#X obj 140 76 select 32 70 102;
+#X obj 101 118 tgl 12 1 \$0-A \$0-B Interpol 15 7 1 9 -262144 -1 -1
+1 1;
+#X msg 342 286 create;
+#X msg 288 285 destroy;
+#X obj 101 106 tgl 12 1 \$0-A \$0-B PDPWindow 15 7 1 9 -262144 -1 -1
+1 1;
+#X obj 167 239 int;
+#X obj 175 205 t b b;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 91 285 spigot;
+#X msg 203 234 0;
+#X obj 222 205 t b b b;
+#X msg 237 234 1;
+#X obj 187 155 int;
+#X obj 13 54 r \$0-SendOnOff;
+#X obj 187 178 sel 0 1;
+#X obj 13 100 sel 0 1;
+#X text 255 96 17 2 2009;
+#X connect 2 0 13 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 18 0;
+#X connect 12 0 10 0;
+#X connect 12 1 8 0;
+#X connect 13 1 11 0;
+#X connect 13 2 11 0;
+#X connect 14 0 9 0;
+#X connect 15 0 7 0;
+#X connect 16 0 7 0;
+#X connect 17 0 26 0;
+#X connect 18 0 12 0;
+#X connect 19 0 16 0;
+#X connect 19 1 23 0;
+#X connect 21 0 22 0;
+#X connect 22 0 7 0;
+#X connect 23 0 22 1;
+#X connect 24 0 25 0;
+#X connect 24 1 18 0;
+#X connect 24 2 15 0;
+#X connect 25 0 22 1;
+#X connect 26 0 28 0;
+#X connect 27 0 29 0;
+#X connect 28 0 19 0;
+#X connect 28 1 24 0;
+#X connect 29 0 19 0;
+#X connect 29 1 26 0;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 171 56 pd ARGO;
+#N canvas 405 115 635 356 ARGO 0;
+#X obj 101 101 cnv 10 298 38 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 282 104 cnv 10 20 10 empty ColorGEM PDP-Image-png 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 161 102 bng 12 250 50 0 \$0-A \$0-B Send 15 7 1 9 -262144 -1
+-1;
+#X obj 62 -45 loadbang;
+#X obj 62 -21 delay 1000;
+#X obj 143 -3 openpanel;
+#X msg 170 44 set \$1;
+#X obj 143 21 t b s;
+#X obj 195 -35 bng 16 250 50 0 \$0-A \$0-B empty 0 0 1 9 -262144 -1
+-1;
+#X msg 39 62 set \$1;
+#X obj 3 115 list2symbol;
+#X obj 70 17 t b b;
+#X obj 411 127 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 564 35 420 319 Help 0;
+#X text 15 149 - Si le module est sauvé avec 1 nom de fichier \, Ce
+fichier sera lu automatiquement a la prochaine ouverture s'il n'a pas
+changé d'emplacement.;
+#X obj 12 196 cnv 15 400 100 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 16 196 - Erreur dans la fenêtre Pd:;
+#X obj 8 45 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 11 44 Citation;
+#X text 8 25 - Ouvre un fichier image au format png;
+#X text 43 213 pdp_reg: error loading png file xxxxx.xxx;
+#X text 62 228 Le fichier xxxxx.xxx n'a pas le bon format (png);
+#X restore 418 134 pd Help;
+#X obj 240 -16 cnv 15 350 70 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 243 -16 Ne fonctionne pas sous Windows;
+#X obj 101 135 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 277 outlet;
+#X text 95 138 PDP;
+#X obj -30 -44 r \$0-SendOnOff;
+#X obj -12 6 sel 0 1;
+#X obj 133 244 pdp_reg;
+#X text 243 -1 N'ouvre pas un fichier sans chemin d'acces \, placé
+dans le meme dossier que lui.;
+#X text 243 24 Ouvre mal une image dont les dimensions ne sont pas
+des multiples de 8;
+#X obj 117 171 t b b a;
+#X text 404 98 14 3 2010;
+#X text 169 169 <- 2 bangs sinon l'image ne s'affiche qu'à 1/2;
+#X obj 156 195 list2symbol;
+#X msg 97 64 /Esss.png;
+#X msg 155 220 load_png \$1;
+#X obj 103 119 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 142 -32 bang;
+#X symbolatom 100 118 49 0 0 0 - - -;
+#X connect 2 0 21 0;
+#X connect 3 0 4 0;
+#X connect 4 0 11 0;
+#X connect 5 0 7 0;
+#X connect 6 0 32 0;
+#X connect 7 0 32 0;
+#X connect 7 1 6 0;
+#X connect 8 0 5 0;
+#X connect 9 0 28 0;
+#X connect 10 0 6 0;
+#X connect 11 0 32 0;
+#X connect 11 1 28 0;
+#X connect 19 0 20 0;
+#X connect 20 1 28 0;
+#X connect 21 0 17 0;
+#X connect 24 0 2 0;
+#X connect 24 1 2 0;
+#X connect 24 2 27 0;
+#X connect 27 0 29 0;
+#X connect 28 0 10 0;
+#X connect 29 0 21 0;
+#X connect 30 0 31 0;
+#X connect 31 0 5 0;
+#X connect 32 0 9 0;
+#X connect 32 0 24 0;
+#X coords 0 -1 1 1 300 40 1 100 100;
+#X restore 171 -60 pd ARGO;
+#N canvas 497 183 428 275 ARGO 0;
+#X obj 101 101 cnv 10 150 22 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 184 108 cnv 10 20 10 empty ColorGEM PDP-Gain 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 54 12 cnv 15 360 60 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 59 15 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 101 119 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 241 outlet;
+#X text 255 104 12 10 2009;
+#X text 58 30 ATTENTION: Les images aux 2 entrées doivent avoir la
+meme taille.;
+#X obj 113 106 nbx 4 12 0 1000 0 1 \$0-A ColorGEM empty 40 7 1 9 -262144
+-1 -1 100 256;
+#X obj 137 166 / 100;
+#X obj 92 215 pdp_gain;
+#X text 144 196 right inlet sets overal gain;
+#X text 150 228 creation argument sets initial gain;
+#X text 218 242 (default = 1);
+#X text 150 214 pdp_gain clips when overdriven;
+#X text 19 101 100 = normal;
+#X connect 5 0 12 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 1;
+#X connect 12 0 7 0;
+#X coords 0 -1 1 1 152 24 1 100 100;
+#X restore 171 11 pd ARGO;
+#X text 33 13 Gain (100 = normal) ->;
+#X text -15 -48 Clic pour ouvrir un fichier ->;
+#X text -9 -37 Click to open a movie file ->;
+#X text 40 -24 (png format);
+#X text -2 29 Click "Send" button after...;
+#X text 50 -104 - Under MacOSX: the X11 application \, an xterm window
+and a pdp window open on a click on the "PDPWindow" button;
+#X text 45 -134 - Sous MacOSX: l'application X11 \, une fenêtre xterm
+et une fenêtre pdp s'ouvrent au clic sur le bouton "PDPWindow";
+#X text -8 65 Click to open a pdp window ->;
+#X text -44 55 Clic pour ouvrir une fenêtre pdp ->;
+#X obj 272 -179 cnv 15 190 35 empty empty empty 20 12 0 14 -258113
+-66577 0;
+#X text 275 -178 Ne fonctionne pas sous Windows;
+#X text 277 -165 Do not work under Windows;
+#X obj 385 34 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 391 41 pd ?;
+#X connect 0 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;

@@ -1,0 +1,46 @@
+#N canvas 97 56 961 710 12;
+#X obj -427 -322 r~ \$1-pre-fxall-l;
+#X obj -369 -292 r~ \$1-pre-fxall-r;
+#X obj -427 146 throw~ \$1-post-fxall-l;
+#X obj -345 99 switch~;
+#X obj -238 -318 r \$0-y-to-fx;
+#X obj -426 70 fx_switch \$0;
+#X obj -426 -256 fx_release-pre \$0;
+#X obj -386 122 throw~ \$1-post-fxall-r;
+#X obj -314 25 fx_release-post \$0 \$1;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -200 -263 r \$0-x-to-fx;
+#X obj -161 -238 r \$0-main-bpm-ms;
+#X obj -466 -338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -238 -292 lin-eq-conv 0 127 0 1;
+#X obj -315 -163 st-del-fb-mono-tape.meh 20;
+#X obj -122 -200 lin-eq-conv 0 127 0 1.05;
+#X text 82 -258 st-del-fb-mono-tape.meh \; ---------------------- \;
+\$1- ms line para pasar de una a otro (default: 20ms) \; \; inlet-1
+inlet-2: signals \; inlet-3: gain y volumen \; inlet-4: 0-15 - delay-time
+(predefinidos) \; inlet-5: main-bpm-ms \; inlet-6: feedback (puede
+ser >1) \;;
+#X text -12 -63 ¡¡¡CUIDADO!!! Feedback es directo y acepta <1;
+#X text -12 -53 ¡¡¡CUIDADO!!! Feedback es directo y acepta <1;
+#X text -12 -43 ¡¡¡CUIDADO!!! Feedback es directo y acepta <1;
+#X connect 0 0 6 0;
+#X connect 1 0 6 1;
+#X connect 4 0 13 0;
+#X connect 4 0 15 0;
+#X connect 5 0 2 0;
+#X connect 5 1 7 0;
+#X connect 5 2 3 0;
+#X connect 6 0 5 0;
+#X connect 6 0 14 0;
+#X connect 6 1 5 1;
+#X connect 6 1 14 1;
+#X connect 8 0 5 0;
+#X connect 8 1 5 1;
+#X connect 10 0 14 3;
+#X connect 11 0 14 4;
+#X connect 13 0 14 2;
+#X connect 14 0 8 0;
+#X connect 14 1 8 1;
+#X connect 15 0 14 5;
+#X coords 0 -1 1 1 240 70 1 0 0;

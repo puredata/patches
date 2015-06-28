@@ -1,0 +1,34 @@
+#N canvas 634 70 467 219 10;
+#X text 94 140 by Enrique Erne;
+#N canvas 882 127 307 123 NETPD 1;
+#N canvas 1168 127 481 299 abslist 0;
+#X msg 28 45 e-del;
+#X msg 28 65 e-spectdel;
+#X msg 39 174 e-2rect;
+#X msg 39 194 e-bitcrush;
+#X msg 113 45 e-crs4;
+#X msg 113 65 e-flanger;
+#X msg 113 85 e-pitchshifter;
+#X msg 113 125 e-rev1;
+#X msg 113 145 e-rev2;
+#X msg 113 165 e-rev3;
+#X msg 39 154 e-loop;
+#X msg 145 192 e-am;
+#X msg 183 192 e-ssb;
+#X msg 278 210 e-monitor;
+#X msg 42 15 mx-fx-list;
+#X msg 41 214 e-tanh;
+#X msg 28 85 e-spectfilt;
+#X msg 90 244 e-modf;
+#X msg 254 134 e-dwnsmp;
+#X restore 18 37 pd abslist;
+#X msg 19 13 version 0 2 7;
+#X restore 18 46 pd NETPD 2 0;
+#X text 17 158 netpd2-ified by Roman Haefeli;
+#N canvas 196 276 346 133 \$1-e-lib 0;
+#X text 29 25 maybe there will be a description...;
+#X msg 250 63 eN!;
+#X restore 18 17 pd \$1-e-lib;
+#X obj 18 78 mx-fx-list \$1 e-lib e-2rect e-am e-bitcrush e-crs4 e-del
+e-dwnsmp e-flanger e-loop e-modf e-monitor e-pitchshifter e-rev1 e-rev2
+e-rev3 e-ssb e-spectdel e-spectfilt e-tanh;

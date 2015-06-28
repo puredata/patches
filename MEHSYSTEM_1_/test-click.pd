@@ -1,0 +1,15 @@
+#N canvas 1 87 450 300 10;
+#X obj 42 64 inlet;
+#X obj 188 112 unpack;
+#X obj 188 47 loadbang;
+#X obj 42 167 outlet~;
+#X obj 42 127 tabplay~ \$0-click2;
+#X obj 188 144 tabwrite \$0-click2;
+#X obj 189 175 table \$0-click2 3;
+#X msg 188 80 0.25 0 \, 1 1 \, 0.25 2;
+#X connect 0 0 4 0;
+#X connect 1 0 5 0;
+#X connect 1 1 5 1;
+#X connect 2 0 7 0;
+#X connect 4 0 3 0;
+#X connect 7 0 1 0;

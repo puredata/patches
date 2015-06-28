@@ -1,0 +1,16 @@
+#N canvas 384 130 240 220 10;
+#X obj 21 11 inlet;
+#X obj 114 114 outlet finished;
+#X obj 21 54 netpd-properties;
+#X obj 21 76 route abslist;
+#X obj 21 169 outlet;
+#X obj 21 99 list;
+#X msg 21 121 \$1;
+#X obj 21 143 list trim;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 1 0;
+#X connect 3 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 4 0;

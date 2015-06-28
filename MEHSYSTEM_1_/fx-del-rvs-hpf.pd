@@ -1,0 +1,64 @@
+#N canvas 639 58 704 708 12;
+#X obj -346 -617 r~ \$1-pre-fxall-l;
+#X obj -292 -592 r~ \$1-pre-fxall-r;
+#X obj -347 109 throw~ \$1-post-fxall-l;
+#X obj -265 62 switch~;
+#X obj -346 33 fx_switch \$0;
+#X obj -306 85 throw~ \$1-post-fxall-r;
+#X obj -38 -533 r \$0-main-bpm-ms;
+#X obj -384 -617 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -40 -597 r \$0-x-to-fx;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -144 -595 loadbang;
+#X obj -37 -565 + 8;
+#X msg -100 -189 0 \$1;
+#X obj -346 -57 diy2/st-vcf;
+#X obj -145 -124 loadbang;
+#X msg -61 -104 0 \$1;
+#X obj -100 -240 r \$0-y-to-fx;
+#X obj -345 -146 diy2/st-highpass;
+#X obj -99 -215 lin-eq-conv 0 127 0 0.75;
+#X obj -61 -129 lin-eq-conv 0 127 1 0.8;
+#X text -84 -479 st-del-solodelay-reverse.meh \; ----------------------
+\; \$1- ms line para pasar de una a otro (default: 20ms) \; \; inlet-1
+inlet-2: signals \; inlet-3: 0-1 gain y volumen \; inlet-4: 0-15 -
+delay-time (predefinidos) \; inlet-5: main-bpm-ms;
+#X msg 3 -77 1 \$1;
+#X msg -145 -100 2 0.5;
+#X obj -61 -179 r \$0-y-to-fx;
+#X obj -61 -155 t f f;
+#X msg -144 -568 1;
+#X obj -345 -503 st-del-rvs-del.meh 20;
+#X obj 167 27 cnv 15 20 20 empty empty * 0 12 0 30 -262144 -258113
+0;
+#X obj 3 -103 lin-eq-conv 0 127 0 0.6;
+#X connect 0 0 26 0;
+#X connect 1 0 26 1;
+#X connect 4 0 2 0;
+#X connect 4 1 5 0;
+#X connect 4 2 3 0;
+#X connect 6 0 26 4;
+#X connect 8 0 11 0;
+#X connect 8 0 26 3;
+#X connect 10 0 25 0;
+#X connect 12 0 17 2;
+#X connect 13 0 4 0;
+#X connect 13 1 4 1;
+#X connect 14 0 22 0;
+#X connect 15 0 13 2;
+#X connect 16 0 18 0;
+#X connect 17 0 13 0;
+#X connect 17 1 13 1;
+#X connect 18 0 12 0;
+#X connect 19 0 15 0;
+#X connect 21 0 13 2;
+#X connect 22 0 13 2;
+#X connect 23 0 24 0;
+#X connect 24 0 19 0;
+#X connect 24 1 28 0;
+#X connect 25 0 26 2;
+#X connect 26 0 17 0;
+#X connect 26 1 17 1;
+#X connect 28 0 21 0;
+#X coords 0 -1 1 1 240 70 1 0 0;

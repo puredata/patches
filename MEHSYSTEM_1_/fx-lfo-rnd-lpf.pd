@@ -1,0 +1,55 @@
+#N canvas 527 72 830 669 12;
+#X obj -447 -283 r~ \$1-pre-fxall-l;
+#X obj -408 -253 r~ \$1-pre-fxall-r;
+#X obj -446 402 throw~ \$1-post-fxall-l;
+#X obj -406 378 throw~ \$1-post-fxall-r;
+#X obj -365 348 switch~;
+#X obj -377 30 diy2/st-lowpass;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -446 319 fx_switch \$0;
+#X obj -291 -201 r \$0-x-to-fx;
+#X obj -98 -201 r \$0-main-bpm-ms;
+#X msg -291 -19 0 \$1;
+#X obj -376 179 diy2/st-vcf;
+#X msg -167 126 0 \$1;
+#X msg -103 150 1 \$1;
+#X obj -418 -281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -167 101 lin-eq-conv 0 1 1 0.5;
+#X obj -167 17 t f f;
+#X obj -446 272 fx_vol-compensation \$1;
+#X obj -113 252 lin-eq-conv 0 127 0 1;
+#X obj -113 227 r \$0-y-to-fx;
+#X obj -291 -165 st-random.meh \$0 100;
+#X text -8 -169 st-random.meh.pd \; TIENE AUTO-START \; \; \$1- \$0
+\; \$2- ms line para pasar (0: mismo del random) \; \; inlet-1: lfo-lenght
+0-8 \; inlet-2: comienzo: 1 \, stop: -1 \; inlet-3: \$0-main-bpm-ms
+\;;
+#X obj -103 125 lin-eq-conv 0 1 0 0.6;
+#X connect 0 0 5 0;
+#X connect 0 0 17 0;
+#X connect 1 0 5 1;
+#X connect 1 0 17 1;
+#X connect 5 0 11 0;
+#X connect 5 1 11 1;
+#X connect 7 0 2 0;
+#X connect 7 1 3 0;
+#X connect 7 2 4 0;
+#X connect 8 0 20 0;
+#X connect 9 0 20 2;
+#X connect 10 0 5 2;
+#X connect 11 0 17 2;
+#X connect 11 1 17 3;
+#X connect 12 0 11 2;
+#X connect 13 0 11 2;
+#X connect 15 0 12 0;
+#X connect 16 0 15 0;
+#X connect 16 1 22 0;
+#X connect 17 0 7 0;
+#X connect 17 1 7 1;
+#X connect 18 0 17 4;
+#X connect 19 0 18 0;
+#X connect 20 0 10 0;
+#X connect 20 0 16 0;
+#X connect 22 0 13 0;
+#X coords 0 -1 1 1 240 70 1 0 0;

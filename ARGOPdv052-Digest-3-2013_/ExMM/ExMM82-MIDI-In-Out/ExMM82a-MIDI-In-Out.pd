@@ -1,0 +1,172 @@
+#N canvas 357 22 400 365 10;
+#X obj 244 310 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 248 314 pd ???;
+#X obj -93 -10 cnv 15 15 15 empty empty ExMM82a-MIDI-In-Out.pd 0 8
+1 14 -262144 -1 0;
+#X text -39 10 1 -> Preferences -> MIDI settings... input device ...
+;
+#X text 177 22 oitput device ...;
+#X text 137 52 patch;
+#X text 150 65 !;
+#X text 150 67 v;
+#X text 52 41 From an other application;
+#X text 138 321 patch;
+#X text 151 297 !;
+#X text 151 299 v;
+#X text 66 310 To an other application;
+#X obj -11 198 cnv 15 300 100 empty empty empty 20 12 0 14 -258113
+-66577 0;
+#X text 22 234 - Pd-0.42.5-extended + MacOS;
+#X text 22 268 - Pd-0.42.5-extended + Ubuntu;
+#X text -5 222 MIDI Out fonctionne sous: works under:;
+#X text -5 255 MIDI Out ne fonctionne pas: does not work under:;
+#X text -100 199 Choose Port ->;
+#X obj -11 82 cnv 15 300 95 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 22 96 - Pd-0.42.5-extended + MacOS;
+#X text 22 133 - Pd-0.42.5-extended + Windows;
+#X text -5 85 MIDI In fonctionne sous: works under:;
+#X text -5 122 MIDI In ne fonctionne pas: does not work under:;
+#X text 22 280 - Pd-0.42.5-extended + Windows;
+#N canvas 435 86 320 256 MIDI 0;
+#X obj 91 22 inlet;
+#X text 96 2 MIDI;
+#X text 9 22 MM MIDI-Out;
+#X obj 91 135 midiout;
+#X obj 131 75 cyclone/speedlim 100;
+#X obj 101 101 cnv 5 125 15 empty ColorMIDI Out 100 9 1 14 -262103
+-1 1.04858e+06;
+#X obj 131 103 bng 12 50 50 0 \$0-A \$0-B empty 6 9 0 9 -257985 -260097
+-1;
+#X obj 143 103 nbx 2 12 1 4 0 1 \$0-A ColorMIDI Port 25 7 1 9 -262103
+-1 -1 1 256;
+#X obj 100 100 tgl 12 1 \$0-A \$0-B On 14 7 1 9 -257985 -1 -1 0 1;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 91 53 spigot;
+#X text 129 19 <- From MM-MIDI-Play;
+#X text 178 44 Object cyclone/seq;
+#X text 178 32 Object midiin;
+#X text 178 8 MM-MIDI-In;
+#X obj 8 157 cnv 15 300 80 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 260 219 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 264 223 pd ???;
+#X text 42 178 - Pd-0.42.5-extended + MacOS;
+#X text 42 210 - Pd-0.42.5-extended + Ubuntu;
+#X text 15 162 MIDI Out fonctionne sous: works under:;
+#X text 15 195 MIDI Out ne fonctionne pas: does not work under:;
+#X text 43 221 - Pd-0.42.5-extended + Windows;
+#X text 232 100 24 1 2012;
+#X obj 19 82 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 276 222 423 171 Help 0;
+#X obj 7 -28 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 -29 Citation;
+#X text 5 -56 MM MIDI-Out;
+#X text 36 -8 use this to output raw MIDI;
+#X text 31 12 (the second inlet is the port;
+#X text 34 30 number.);
+#X text 7 77 cf ExMM85c-MIDI-Play-MIDIFile.pd;
+#X restore 26 88 pd Help;
+#X connect 0 0 10 0;
+#X connect 4 0 6 0;
+#X connect 7 0 3 1;
+#X connect 8 0 10 1;
+#X connect 10 0 3 0;
+#X connect 10 0 4 0;
+#X coords 0 -1 1 1 127 17 1 100 100;
+#X restore 85 203 pd MIDI;
+#X text 22 107 - Pd-0.42.5-extended + Ubuntu;
+#N canvas 435 86 446 184 MIDI 0;
+#X text 97 144 MIDI;
+#X obj 385 131 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 389 135 pd ???;
+#X obj 131 75 cyclone/speedlim 100;
+#X obj 101 101 cnv 5 125 15 empty ColorMIDI In 100 9 1 14 -262103 -1
+1.04858e+06;
+#X obj 131 103 bng 12 50 50 0 \$0-A \$0-B empty 6 9 0 9 -257985 -260097
+-1;
+#X obj 100 105 tgl 12 1 \$0-A \$0-B On 14 7 1 9 -257985 -1 -1 1 1;
+#X obj 101 112 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 91 46 spigot;
+#X obj 91 19 midiin;
+#X obj 91 127 outlet;
+#X text 9 22 MM MIDI-In;
+#X text 168 138 Object midiout;
+#X text 133 126 -> To MM-MIDI-Out;
+#X obj 139 -19 cnv 15 300 85 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 172 0 - Pd-0.42.5-extended + MacOS;
+#X text 172 47 - Pd-0.42.5-extended + Windows;
+#X text 145 -13 MIDI In fonctionne sous: works under:;
+#X text 144 34 MIDI In ne fonctionne pas: does not work under:;
+#X text 172 11 - Pd-0.42.5-extended + Ubuntu;
+#X obj 9 72 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 263 231 423 171 Help 0;
+#X obj 10 -36 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 13 -37 Citation;
+#X text 35 -18 This object is always omni and;
+#X text 34 -2 outputs the port number instead;
+#X text 35 16 of the channel.;
+#X text 8 -64 MM MIDI-In;
+#X text 10 73 cf ExMM80b-MIDI-Visu.pd;
+#X restore 16 78 pd Help;
+#X text 230 100 26 1 2012;
+#X connect 3 0 5 0;
+#X connect 6 0 8 1;
+#X connect 8 0 3 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X coords 0 -1 1 1 127 17 1 100 100;
+#X restore 85 154 pd MIDI;
+#X connect 27 0 25 0;

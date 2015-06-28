@@ -1,0 +1,69 @@
+#N canvas 247 77 961 689 12;
+#X obj -477 -602 r~ \$1-pre-fxall-l;
+#X obj -419 -572 r~ \$1-pre-fxall-r;
+#X obj -477 256 throw~ \$1-post-fxall-l;
+#X obj -395 209 switch~;
+#X obj -476 180 fx_switch \$0;
+#X obj -476 -536 fx_release-pre \$0;
+#X obj -436 232 throw~ \$1-post-fxall-r;
+#X obj -477 142 fx_release-post \$0 \$1;
+#X obj -117 -472 r \$0-y-to-fx;
+#X msg -301 -486 0 \$1;
+#X obj -477 -354 diy2/st-vcf;
+#X obj -218 -326 loadbang;
+#X msg -117 -421 0 \$1;
+#X obj -301 -537 r \$0-y-to-fx;
+#X obj -476 -443 diy2/st-highpass;
+#X obj -145 -362 r \$0-x-to-fx;
+#X obj -70 -322 r \$0-main-bpm-ms;
+#X obj -145 -337 + 8;
+#X text -114 -339 2000ms max;
+#X obj -300 -512 lin-eq-conv 0 127 0 0.75;
+#X obj -117 -446 lin-eq-conv 0 127 1 0.8;
+#X msg -229 -295 0.8;
+#X obj -289 -258 st-del-fb-st.meh;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X msg -74 -392 1 \$1;
+#X text 0 -238 st-del-fb-st.meh \; ---------------------- \; \$1- ms
+line para pasar de una a otro (default: 20ms) \; \$2- paneo (0: total
+\, 1: mono) \; \$3- desfasaje del canal derecho progresivo (0: paneo
+\, OTRO: desfasa \, pero no-panea) \; \$4- siendo \$3=1 \, éste agrega
+un desfase constante en RIGHT \; \; inlet-1 inlet-2: signals \; inlet-3:
+gain y volumen \; inlet-4: 0-15 - delay-time (predefinidos) \; inlet-5:
+main-bpm-ms \; inlet-6: feedback \;;
+#X msg -72 -287 0.666;
+#X obj -74 -418 lin-eq-conv 0 127 0 0.6;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 4 0 2 0;
+#X connect 4 1 6 0;
+#X connect 4 2 3 0;
+#X connect 5 0 14 0;
+#X connect 5 1 14 1;
+#X connect 7 0 4 0;
+#X connect 7 1 4 1;
+#X connect 8 0 20 0;
+#X connect 8 0 27 0;
+#X connect 9 0 14 2;
+#X connect 10 0 7 0;
+#X connect 10 0 22 0;
+#X connect 10 1 7 1;
+#X connect 10 1 22 1;
+#X connect 11 0 21 0;
+#X connect 11 0 26 0;
+#X connect 12 0 10 2;
+#X connect 13 0 19 0;
+#X connect 14 0 10 0;
+#X connect 14 1 10 1;
+#X connect 15 0 17 0;
+#X connect 16 0 22 4;
+#X connect 17 0 22 3;
+#X connect 19 0 9 0;
+#X connect 20 0 12 0;
+#X connect 21 0 22 2;
+#X connect 22 0 7 0;
+#X connect 22 1 7 1;
+#X connect 24 0 10 2;
+#X connect 26 0 22 5;
+#X connect 27 0 24 0;
+#X coords 0 -1 1 1 240 70 1 0 0;

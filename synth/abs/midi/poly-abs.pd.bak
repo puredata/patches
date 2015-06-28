@@ -1,0 +1,62 @@
+#N canvas 276 242 856 424 10;
+#X obj -186 211 inlet;
+#X obj -123 211 inlet;
+#X obj -186 259 outlet;
+#X obj -137 259 outlet;
+#X obj -88 259 outlet;
+#N canvas 0 0 450 300 poly-abs 0;
+#X obj 111 91 inlet;
+#X obj 157 91 inlet;
+#X obj 117 242 outlet;
+#X obj 170 241 outlet;
+#X obj 219 241 outlet;
+#X obj 150 150 poly 5 1;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 5 0 2 0;
+#X connect 5 1 3 0;
+#X connect 5 2 4 0;
+#X restore -186 235 pd poly-abs;
+#X obj 0 0 cnv 15 120 70 empty empty voices 3 12 0 14 -191407 -4032
+0;
+#X obj 6 100 + 1;
+#X obj -58 150 s voices;
+#X obj 6 55 hradio 9 1 1 12 empty \$0_voice_stealing <voice_stealing_1>
+-2 -8 0 10 -99865 -262144 -1 1;
+#X obj 6 150 pack f f;
+#X msg 385 260 \; \$1_voices_count label <\$2_voices>;
+#X obj 385 177 prepend \$0;
+#X obj 385 239 prepend \$0;
+#X msg 385 198 \; \$1_voice_stealing label <voice_stealing_\$2>;
+#X obj 14 126 t b f;
+#X text -183 72 feed with notein \, than pack;
+#X text -176 88 pretty much like poly;
+#X obj 6 28 hradio 9 1 1 12 empty \$0_voices_count <4_voices> 45 -8
+0 10 -99865 -262144 -1 4;
+#X obj 6 173 t b l b;
+#X msg 25 236 \; pd-poly-abs obj 150 150 poly \$1 \$2 \, connect 0
+0 5 0 \, connect 1 0 5 1 \, connect 5 0 2 0 \, connect 5 1 3 0 \, connect
+5 2 4 0;
+#X msg 6 297 \; pd-poly-abs.pd menusave;
+#X msg 45 198 \; pd-poly-abs vis 1 \, mouse 151 151 1 1 \, cut \, vis
+1;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 5 0 2 0;
+#X connect 5 1 3 0;
+#X connect 5 2 4 0;
+#X connect 7 0 8 0;
+#X connect 7 0 10 0;
+#X connect 7 0 13 0;
+#X connect 9 0 15 0;
+#X connect 9 0 12 0;
+#X connect 10 0 19 0;
+#X connect 12 0 14 0;
+#X connect 13 0 11 0;
+#X connect 15 0 10 0;
+#X connect 15 1 10 1;
+#X connect 18 0 7 0;
+#X connect 19 0 21 0;
+#X connect 19 1 20 0;
+#X connect 19 2 22 0;
+#X coords 0 -1 1 1 120 70 2 0 0;

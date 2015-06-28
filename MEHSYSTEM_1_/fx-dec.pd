@@ -1,0 +1,27 @@
+#N canvas 278 97 603 669 12;
+#X obj -169 275 throw~ \$1-post-fxall-l;
+#X obj -128 251 throw~ \$1-post-fxall-r;
+#X obj -88 198 switch~;
+#X obj -35 -118 r \$0-y-to-fx;
+#X obj -80 -182 r \$0-x-to-fx;
+#X obj 2 2 fx_panel \$0 \$1 \$2 \$3 \$4;
+#X obj -169 169 fx_switch \$0;
+#X obj -169 -323 r~ \$1-pre-fxall-l;
+#X obj -125 -293 r~ \$1-pre-fxall-r;
+#X obj -35 -89 lin-eq-conv 0 127 0 1;
+#X obj -219 -314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -168 -46 st-decimator.meh;
+#X obj -80 -156 lin-eq-conv 0 127 0 1;
+#X connect 3 0 9 0;
+#X connect 4 0 12 0;
+#X connect 6 0 0 0;
+#X connect 6 1 1 0;
+#X connect 6 2 2 0;
+#X connect 7 0 11 0;
+#X connect 8 0 11 1;
+#X connect 9 0 11 3;
+#X connect 11 0 6 0;
+#X connect 11 1 6 1;
+#X connect 12 0 11 2;
+#X coords 0 -1 1 1 240 70 1 0 0;

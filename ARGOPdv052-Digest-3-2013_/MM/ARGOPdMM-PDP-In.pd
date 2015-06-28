@@ -1,0 +1,1601 @@
+#N canvas 237 43 782 435 10;
+#X text 282 127 2 Sorties Audio;
+#X text 281 54 2 Sorties Audio;
+#X text 276 5 cf ExMM50a-PDP-Film.pd;
+#X text 280 65 cf ExMM50b-PDP-Film.pd;
+#X text 281 140 cf ExMM50c-PDP-Film.pd;
+#N canvas 433 73 417 270 ARGO 0;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 170 104 cnv 10 20 10 empty ColorGEM PDP-Noise 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 554 227 410 324 Help 0;
+#X obj 5 5 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 8 4 Citation;
+#X text 23 20 pdp_noise creates a random image (with uniform distribution
+between -1 and 1) when a bang is received;
+#X restore 283 136 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X obj 136 120 tgl 12 1 \$0-A \$0-B Color 15 7 1 9 -262144 -1 -1 1
+1;
+#X text 255 96 17 2 2009;
+#X obj 100 154 sel 0;
+#X obj 127 215 pdp_noise;
+#X msg 59 179 type grey;
+#X msg 127 179 type yv12;
+#X msg 193 179 dim \$1 \$1;
+#X obj 98 243 outlet;
+#X obj 179 120 nbx 3 12 1 999 0 1 \$0-A ColorPDP Quantity 32 7 1 9
+-262144 -1 -1 17 256;
+#X obj 101 105 bng 12 250 50 0 \$0-A ColorPDP empty 16 7 1 9 -262144
+-1 -1;
+#X obj 87 77 inlet~;
+#X obj -50 112 threshold~ 0.5 5 0.49 5;
+#X obj 101 101 cnv 2 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 102 102 cnv 2 8 2 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 78 61 Trig Decl;
+#X obj 101 138 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X connect 6 0 8 0;
+#X connect 8 0 10 0;
+#X connect 8 1 11 0;
+#X connect 9 0 13 0;
+#X connect 10 0 9 0;
+#X connect 11 0 9 0;
+#X connect 12 0 9 0;
+#X connect 14 0 12 0;
+#X connect 15 0 9 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 590 -71 pd ARGO;
+#N canvas 377 139 539 398 ARGO 0;
+#X obj 101 101 cnv 10 186 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 184 104 cnv 10 20 10 empty ColorGEM PDP-Video-ieee 1 5 1 14
+-128992 -1 1.04858e+06;
+#X obj 181 137 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 548 314 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 57 28 Philips SPC900NC;
+#X text 58 40 Logitech;
+#X text 15 0 Contrairement a son nom l'objet pdp_ieee1394 fonctionne
+sous MacOSX avec certaines webcam USB;
+#X text 26 116 written by Lluis Gomez i Bigorda ( lluisgomez@hangar.org
+);
+#X text 25 74 pdp_ieee1394 ( source pdp_ieee1394l.c ) : fire wire capture
+object for linux;
+#X text 26 101 Constructor : pdp_ieee1394;
+#X text 15 216 ATTENTION;
+#X text 28 231 Les objets pdp_ieee1394 pour MacOSX et Linux sont tres
+différents;
+#X restore 310 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 194 41 Ne fonctionne pas sous Windows;
+#X msg 165 265 stop;
+#X msg 253 290 open;
+#X msg 138 291 close;
+#X obj 172 216 sel 0;
+#X msg 131 78 0;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 197 330 pdp_ieee1394;
+#X obj 172 193 int;
+#X obj 138 57 sel 0 1;
+#X obj 182 160 change;
+#X obj 196 290 metro 70;
+#X obj 181 119 nbx 3 12 0 10 0 1 \$0-A ColorPDP Device 32 7 1 9 -262144
+-1 -1 0 256;
+#X obj 406 259 tosymbol;
+#X obj 405 236 sprintf /dev/video%d;
+#X msg 407 305 open /dev/video0;
+#X msg 406 280 set open \$1;
+#X obj 81 181 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 243 133 cnv 10 20 10 empty ColorGEM (Linux) 1 5 1 14 -128992
+-1 1.04858e+06;
+#X text 305 97 4 10 2009;
+#X obj 214 241 t b b;
+#X obj 138 241 t b b;
+#X connect 2 0 19 0;
+#X connect 5 0 6 0;
+#X connect 6 0 18 0;
+#X connect 9 0 20 0;
+#X connect 10 0 16 0;
+#X connect 11 0 16 0;
+#X connect 12 0 30 0;
+#X connect 12 1 29 0;
+#X connect 13 0 2 0;
+#X connect 16 0 15 0;
+#X connect 17 0 12 0;
+#X connect 18 0 13 0;
+#X connect 18 1 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 16 0;
+#X connect 21 0 23 0;
+#X connect 22 0 25 0;
+#X connect 23 0 22 0;
+#X connect 24 0 16 0;
+#X connect 25 0 24 0;
+#X connect 26 0 16 0;
+#X connect 29 0 20 0;
+#X connect 29 1 24 0;
+#X connect 30 0 11 0;
+#X connect 30 1 9 0;
+#X coords 0 -1 1 1 188 55 1 100 100;
+#X restore -25 -83 pd ARGO;
+#N canvas 311 65 541 395 ARGO 0;
+#X obj 101 101 cnv 10 180 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 181 104 cnv 10 20 10 empty ColorPDP PDP-Video-v4l 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 181 137 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 287 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 540 89 413 384 Help 0;
+#X obj 6 63 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 62 Citation;
+#X text 26 19 Philips SPC900NC;
+#X text 20 79 pdp_v4l grabs video from the video4linux device. it sends
+out the most recently grabbed frame whenever a bang message is received
+\, and will then discard that frame (it will be sent out on time at
+most). the output framerate is limited by the device only.;
+#X text 20 146 (to make sure you receive every frame with little jitter
+\, poll pdp_v4l with a high rate metronome);
+#X text 9 4 Fonctionne sous Linux avec webcam USB;
+#X text 21 213 "Philips webcam detection is now automatic. However
+this requires a fairly recent kernel (one which includes the pwc driver
+version 8.6 or higher). If you have a pwc and pdp_v4l does not display
+a "pwc detected" message \, you can conifigure with --enable-pwc. This
+forces pdp_v4l to use the pwc api extensions.";
+#X text 8 199 http://www.debian-doc.org/packages/p/pd-pdp/README.html
+;
+#X restore 294 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X msg 172 264 stop;
+#X msg 153 291 close;
+#X obj 172 216 sel 0;
+#X msg 131 78 0;
+#X obj 153 241 t b b b;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 172 193 int;
+#X obj 138 57 sel 0 1;
+#X obj 182 160 change;
+#X obj 196 290 metro 70;
+#X text 194 41 Ne fonctionne pas sous Windows \, MacOSX;
+#X obj 182 119 nbx 3 12 0 10 0 1 \$0-A ColorPDP Device 32 7 1 9 -262144
+-1 -1 0 256;
+#X obj 269 244 tosymbol;
+#X obj 268 221 sprintf /dev/video%d;
+#X msg 270 290 open /dev/video0;
+#X obj 271 366 print;
+#X msg 269 265 set open \$1;
+#X obj 214 241 t b b b;
+#X text 97 157 PDP;
+#X obj 197 330 pdp_v4l;
+#X obj 236 138 cnv 10 20 10 empty ColorGEM (Linux) 1 5 1 14 -128992
+-1 1.04858e+06;
+#X text 291 101 8 3 2009;
+#X connect 2 0 17 0;
+#X connect 5 0 6 0;
+#X connect 6 0 16 0;
+#X connect 8 0 18 0;
+#X connect 9 0 28 0;
+#X connect 10 0 12 0;
+#X connect 10 1 26 0;
+#X connect 11 0 2 0;
+#X connect 12 0 9 0;
+#X connect 12 1 8 0;
+#X connect 15 0 10 0;
+#X connect 16 0 11 0;
+#X connect 16 1 15 0;
+#X connect 17 0 15 0;
+#X connect 18 0 28 0;
+#X connect 20 0 22 0;
+#X connect 21 0 25 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 23 0 28 0;
+#X connect 25 0 23 0;
+#X connect 26 0 18 0;
+#X connect 26 1 23 0;
+#X connect 28 0 14 0;
+#X coords 0 -1 1 1 182 55 1 100 100;
+#X restore 169 -83 pd ARGO;
+#N canvas 311 65 641 403 ARGO 0;
+#X obj 101 101 cnv 10 180 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 180 104 cnv 10 20 10 empty ColorPDP PDP-Video-v4l2 1 5 1 14
+-128992 -1 1.04858e+06;
+#X obj 181 137 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 287 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 578 144 414 309 Help 0;
+#X obj 6 5 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 4 Citation;
+#X text 18 18 pdp_v4l2 is an interface for video 4 linux 2 devices
+;
+#X text 17 33 it's very similar to pdp_v4l but should support more
+recent cameras \, if it doesn't with yours report bugs to ydegoyon@free.fr
+;
+#X text 17 73 authors : Yves Degoyon and Lluis Gomez i Bigorda;
+#X text 18 87 code was inspired by pdp_v4l by Tom Schouten and xawtv
+by Gerd Knorr;
+#X restore 294 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X msg 172 264 stop;
+#X msg 153 291 close;
+#X obj 172 216 sel 0;
+#X msg 131 78 0;
+#X obj 153 241 t b b b;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 172 193 int;
+#X obj 138 57 sel 0 1;
+#X obj 182 160 change;
+#X obj 196 290 metro 70;
+#X obj 197 330 pdp_v4l2;
+#X text 194 41 Ne fonctionne pas sous Windows \, MacOSX;
+#X obj 182 119 nbx 3 12 0 10 0 1 \$0-A ColorPDP Device 32 7 1 9 -262144
+-1 -1 0 256;
+#X obj 269 244 tosymbol;
+#X obj 268 221 sprintf /dev/video%d;
+#X msg 270 290 open /dev/video0;
+#X obj 271 366 print;
+#X msg 269 265 set open \$1;
+#X obj 214 241 t b b b;
+#X text 291 101 17 2 2009;
+#X text 97 157 PDP;
+#X obj 235 140 cnv 10 20 10 empty ColorGEM (Linux) 1 5 1 14 -128992
+-1 1.04858e+06;
+#X floatatom 399 108 5 0 0 0 - - -;
+#X floatatom 402 273 5 0 0 0 - - -;
+#X msg 402 297 freq \$1;
+#X floatatom 463 273 5 0 0 0 - - -;
+#X msg 463 297 freqMHz \$1;
+#X text 507 271 sets the v4l tuner frequency (in v4l units and MHz)
+;
+#X floatatom 400 156 5 0 0 0 - - -;
+#X msg 400 176 format \$1;
+#X text 484 154 sets the pixel format (like YUYV \, RGB32 \, ...);
+#X msg 399 128 input \$1;
+#X text 483 106 sets the v4l input (like camera \, tuner \, svideo
+\, ...);
+#X text 482 117 see initialization phase for valid inputs;
+#X text 487 205 sets the video standard ( for tuner cards );
+#X text 484 165 see initialization phase for valid formats;
+#X text 487 217 see initialization phase for valid standards;
+#X floatatom 403 207 5 0 0 0 - - -;
+#X msg 403 227 standard \$1;
+#X msg 102 295 model;
+#X connect 2 0 17 0;
+#X connect 5 0 6 0;
+#X connect 6 0 16 0;
+#X connect 8 0 18 0;
+#X connect 9 0 19 0;
+#X connect 10 0 12 0;
+#X connect 10 1 27 0;
+#X connect 11 0 2 0;
+#X connect 12 0 9 0;
+#X connect 12 1 8 0;
+#X connect 15 0 10 0;
+#X connect 16 0 11 0;
+#X connect 16 1 15 0;
+#X connect 17 0 15 0;
+#X connect 18 0 19 0;
+#X connect 19 0 14 0;
+#X connect 21 0 23 0;
+#X connect 22 0 26 0;
+#X connect 23 0 22 0;
+#X connect 24 0 25 0;
+#X connect 24 0 19 0;
+#X connect 26 0 24 0;
+#X connect 27 0 18 0;
+#X connect 27 1 24 0;
+#X connect 31 0 40 0;
+#X connect 32 0 33 0;
+#X connect 33 0 19 0;
+#X connect 34 0 35 0;
+#X connect 35 0 19 0;
+#X connect 37 0 38 0;
+#X connect 38 0 19 0;
+#X connect 40 0 19 0;
+#X connect 46 0 47 0;
+#X connect 47 0 19 0;
+#X connect 48 0 19 0;
+#X coords 0 -1 1 1 182 55 1 100 100;
+#X restore 357 -83 pd ARGO;
+#X obj 517 170 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 389 153 420 398 Help 0;
+#X obj 9 7 cnv 15 400 380 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 128 pdp was all coded mostly in yuv since the beginning
+for efficiency and speed reasons \, so we have to pass throough conversions
+to connect to other pieces of code. _______________________________________________
+Pd-list@iem.at mailing list;
+#X text 13 115 From: ydegoyon@gmail.com;
+#X text 24 208 If you want to use PDP on Mac OS X 10.4/Tiger or 10.3/Panther
+\, you will need to install X11 (X11 comes installed with 10.5/Leopard).
+It comes on the install CD/DVD that your computer came with.;
+#X text 24 22 PDP - Pure Data Packet a packet processing library for
+pure data;
+#X text 23 52 This external pd library is a framework for image/video
+processing (and other raw data packets) that is fast \, simple and
+flexible and as much as possible compatible with the pd messaging system.
+;
+#X text 12 6 Citations;
+#X text 11 272 pdp_scale-help.pd;
+#X text 27 286 use this if you want to combine different packet sizes.
+or have movies that don't have a legal size (not a multiple of 8x8)
+;
+#X restore 524 177 pd Help;
+#N canvas 2 230 539 398 ARGO 0;
+#X obj 101 101 cnv 10 186 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 216 104 cnv 10 20 10 empty ColorGEM PDP-Video 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 175 130 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 532 109 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 24 73 pdp_ieee1394 : fire wire capture object for OSX;
+#X text 24 102 inspired by pix_video from Gem;
+#X text 24 116 written by Yves Degoyon (ydegoyon@free.fr);
+#X text 25 89 Constructor : pdp_ieee1394 <width> <height>;
+#X text 57 28 Philips SPC900NC;
+#X text 58 40 Logitech;
+#X text 15 0 Contrairement a son nom l'objet pdp_ieee1394 fonctionne
+sous MacOSX avec certaines webcam USB;
+#X restore 310 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 194 35 Ne fonctionne pas sous Windows;
+#X msg 179 265 stop;
+#X msg 153 291 close;
+#X msg 371 289 reset;
+#X msg 81 291 quality \$1;
+#X obj 160 214 sel 0;
+#X obj 101 101 vradio 12 1 1 4 \$0-A ColorGEM Normal_Quality 14 7 1
+9 -262144 -1 -1 0;
+#X obj 115 116 cnv 10 20 10 empty empty High_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 128 cnv 10 20 10 empty empty Fast_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 140 cnv 5 20 5 empty empty All_data 0 4 1 9 -128992 -1 0
+;
+#X msg 131 78 0;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 160 191 int;
+#X obj 138 57 sel 0 1;
+#X obj 114 165 change;
+#X obj 175 118 bng 12 250 50 0 \$0-A ColorGEM Reset 16 7 1 9 -262144
+-1 -1;
+#X obj 196 290 metro 70;
+#X text 233 162 "Set Quality before starting capture";
+#X obj 229 130 cnv 10 20 10 empty ColorGEM MacOSX 1 5 1 14 -128992
+-1 1.04858e+06;
+#X msg 257 289 open /dev/video0/;
+#X obj 230 117 cnv 10 20 10 empty ColorGEM 320x240 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 196 330 pdp_ieee1394 320 240;
+#X obj 175 142 nbx 3 12 1 60 0 1 \$0-A ColorPDP Frames/sec 32 7 1 9
+-262144 -1 -1 20 256;
+#X obj 266 196 t b f;
+#X msg 258 218 1000;
+#X obj 277 241 /;
+#X obj 214 241 t b b b;
+#X obj 152 241 t b b;
+#X text 295 97 3 10 2009;
+#X connect 2 0 23 0;
+#X connect 5 0 6 0;
+#X connect 6 0 22 0;
+#X connect 9 0 25 0;
+#X connect 10 0 30 0;
+#X connect 11 0 30 0;
+#X connect 12 0 30 0;
+#X connect 13 0 36 0;
+#X connect 13 1 35 0;
+#X connect 14 0 12 0;
+#X connect 18 0 2 0;
+#X connect 21 0 13 0;
+#X connect 22 0 18 0;
+#X connect 22 1 21 0;
+#X connect 23 0 21 0;
+#X connect 24 0 11 0;
+#X connect 25 0 30 0;
+#X connect 28 0 30 0;
+#X connect 30 0 20 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 32 1 34 1;
+#X connect 33 0 34 0;
+#X connect 34 0 25 1;
+#X connect 35 0 25 0;
+#X connect 35 1 28 0;
+#X connect 35 2 14 0;
+#X connect 36 0 10 0;
+#X connect 36 1 9 0;
+#X coords 0 -1 1 1 188 55 1 100 100;
+#X restore 169 -144 pd ARGO;
+#N canvas 2 230 539 398 ARGO 0;
+#X obj 101 101 cnv 10 186 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 216 104 cnv 10 20 10 empty ColorGEM PDP-Video 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 175 130 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 532 109 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 24 73 pdp_ieee1394 : fire wire capture object for OSX;
+#X text 24 102 inspired by pix_video from Gem;
+#X text 24 116 written by Yves Degoyon (ydegoyon@free.fr);
+#X text 25 89 Constructor : pdp_ieee1394 <width> <height>;
+#X text 57 28 Philips SPC900NC;
+#X text 58 40 Logitech;
+#X text 15 0 Contrairement a son nom l'objet pdp_ieee1394 fonctionne
+sous MacOSX avec certaines webcam USB;
+#X restore 310 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 194 35 Ne fonctionne pas sous Windows;
+#X msg 179 265 stop;
+#X msg 153 291 close;
+#X msg 371 289 reset;
+#X msg 81 291 quality \$1;
+#X obj 160 214 sel 0;
+#X obj 101 101 vradio 12 1 1 4 \$0-A ColorGEM Normal_Quality 14 7 1
+9 -262144 -1 -1 0;
+#X obj 115 116 cnv 10 20 10 empty empty High_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 128 cnv 10 20 10 empty empty Fast_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 140 cnv 5 20 5 empty empty All_data 0 4 1 9 -128992 -1 0
+;
+#X msg 131 78 0;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 160 191 int;
+#X obj 138 57 sel 0 1;
+#X obj 114 165 change;
+#X obj 175 118 bng 12 250 50 0 \$0-A ColorGEM Reset 16 7 1 9 -262144
+-1 -1;
+#X obj 196 290 metro 70;
+#X text 233 162 "Set Quality before starting capture";
+#X obj 229 130 cnv 10 20 10 empty ColorGEM MacOSX 1 5 1 14 -128992
+-1 1.04858e+06;
+#X msg 257 289 open /dev/video0/;
+#X obj 175 142 nbx 3 12 1 60 0 1 \$0-A ColorPDP Frames/sec 32 7 1 9
+-262144 -1 -1 20 256;
+#X obj 266 196 t b f;
+#X msg 258 218 1000;
+#X obj 277 241 /;
+#X obj 214 241 t b b b;
+#X obj 152 241 t b b;
+#X text 295 97 3 10 2009;
+#X obj 230 117 cnv 10 20 10 empty ColorGEM 160x120 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 196 330 pdp_ieee1394 160 120;
+#X connect 2 0 23 0;
+#X connect 5 0 6 0;
+#X connect 6 0 22 0;
+#X connect 9 0 25 0;
+#X connect 10 0 37 0;
+#X connect 11 0 37 0;
+#X connect 12 0 37 0;
+#X connect 13 0 34 0;
+#X connect 13 1 33 0;
+#X connect 14 0 12 0;
+#X connect 18 0 2 0;
+#X connect 21 0 13 0;
+#X connect 22 0 18 0;
+#X connect 22 1 21 0;
+#X connect 23 0 21 0;
+#X connect 24 0 11 0;
+#X connect 25 0 37 0;
+#X connect 28 0 37 0;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 30 1 32 1;
+#X connect 31 0 32 0;
+#X connect 32 0 25 1;
+#X connect 33 0 25 0;
+#X connect 33 1 28 0;
+#X connect 33 2 14 0;
+#X connect 34 0 10 0;
+#X connect 34 1 9 0;
+#X connect 37 0 20 0;
+#X coords 0 -1 1 1 188 55 1 100 100;
+#X restore 363 -145 pd ARGO;
+#N canvas 2 230 539 398 ARGO 0;
+#X obj 101 101 cnv 10 186 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 216 104 cnv 10 20 10 empty ColorGEM PDP-Video 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 175 130 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 532 109 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 24 73 pdp_ieee1394 : fire wire capture object for OSX;
+#X text 24 102 inspired by pix_video from Gem;
+#X text 24 116 written by Yves Degoyon (ydegoyon@free.fr);
+#X text 25 89 Constructor : pdp_ieee1394 <width> <height>;
+#X text 57 28 Philips SPC900NC;
+#X text 58 40 Logitech;
+#X text 15 0 Contrairement a son nom l'objet pdp_ieee1394 fonctionne
+sous MacOSX avec certaines webcam USB;
+#X restore 310 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 194 35 Ne fonctionne pas sous Windows;
+#X msg 179 265 stop;
+#X msg 153 291 close;
+#X msg 371 289 reset;
+#X msg 81 291 quality \$1;
+#X obj 160 214 sel 0;
+#X obj 101 101 vradio 12 1 1 4 \$0-A ColorGEM Normal_Quality 14 7 1
+9 -262144 -1 -1 0;
+#X obj 115 116 cnv 10 20 10 empty empty High_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 128 cnv 10 20 10 empty empty Fast_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 140 cnv 5 20 5 empty empty All_data 0 4 1 9 -128992 -1 0
+;
+#X msg 131 78 0;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 160 191 int;
+#X obj 138 57 sel 0 1;
+#X obj 114 165 change;
+#X obj 175 118 bng 12 250 50 0 \$0-A ColorGEM Reset 16 7 1 9 -262144
+-1 -1;
+#X obj 196 290 metro 70;
+#X text 233 162 "Set Quality before starting capture";
+#X obj 229 130 cnv 10 20 10 empty ColorGEM MacOSX 1 5 1 14 -128992
+-1 1.04858e+06;
+#X msg 257 289 open /dev/video0/;
+#X obj 230 117 cnv 10 20 10 empty ColorGEM 640x480 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 175 142 nbx 3 12 1 60 0 1 \$0-A ColorPDP Frames/sec 32 7 1 9
+-262144 -1 -1 20 256;
+#X obj 266 196 t b f;
+#X msg 258 218 1000;
+#X obj 277 241 /;
+#X obj 214 241 t b b b;
+#X obj 152 241 t b b;
+#X text 295 97 3 10 2009;
+#X obj 196 330 pdp_ieee1394 640 480;
+#X connect 2 0 23 0;
+#X connect 5 0 6 0;
+#X connect 6 0 22 0;
+#X connect 9 0 25 0;
+#X connect 10 0 37 0;
+#X connect 11 0 37 0;
+#X connect 12 0 37 0;
+#X connect 13 0 35 0;
+#X connect 13 1 34 0;
+#X connect 14 0 12 0;
+#X connect 18 0 2 0;
+#X connect 21 0 13 0;
+#X connect 22 0 18 0;
+#X connect 22 1 21 0;
+#X connect 23 0 21 0;
+#X connect 24 0 11 0;
+#X connect 25 0 37 0;
+#X connect 28 0 37 0;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 31 1 33 1;
+#X connect 32 0 33 0;
+#X connect 33 0 25 1;
+#X connect 34 0 25 0;
+#X connect 34 1 28 0;
+#X connect 34 2 14 0;
+#X connect 35 0 10 0;
+#X connect 35 1 9 0;
+#X connect 37 0 20 0;
+#X coords 0 -1 1 1 188 55 1 100 100;
+#X restore -24 -144 pd ARGO;
+#N canvas 2 230 539 398 ARGO 0;
+#X obj 101 101 cnv 10 186 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 216 104 cnv 10 20 10 empty ColorGEM PDP-Video 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 175 130 tgl 12 1 \$0-A \$0-B Capture 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 532 109 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 24 73 pdp_ieee1394 : fire wire capture object for OSX;
+#X text 24 102 inspired by pix_video from Gem;
+#X text 24 116 written by Yves Degoyon (ydegoyon@free.fr);
+#X text 25 89 Constructor : pdp_ieee1394 <width> <height>;
+#X text 57 28 Philips SPC900NC;
+#X text 58 40 Logitech;
+#X text 15 0 Contrairement a son nom l'objet pdp_ieee1394 fonctionne
+sous MacOSX avec certaines webcam USB;
+#X restore 310 128 pd Help;
+#X obj 138 11 r \$0-SendOnOff;
+#X obj 138 34 t f f;
+#X obj 191 36 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 194 35 Ne fonctionne pas sous Windows;
+#X msg 179 265 stop;
+#X msg 153 291 close;
+#X msg 371 289 reset;
+#X msg 81 291 quality \$1;
+#X obj 160 214 sel 0;
+#X obj 101 101 vradio 12 1 1 4 \$0-A ColorGEM Normal_Quality 14 7 1
+9 -262144 -1 -1 0;
+#X obj 115 116 cnv 10 20 10 empty empty High_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 128 cnv 10 20 10 empty empty Fast_Quality 0 4 1 9 -128992
+-1 0;
+#X obj 115 140 cnv 5 20 5 empty empty All_data 0 4 1 9 -128992 -1 0
+;
+#X msg 131 78 0;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 371 outlet;
+#X obj 160 191 int;
+#X obj 138 57 sel 0 1;
+#X obj 114 165 change;
+#X obj 175 118 bng 12 250 50 0 \$0-A ColorGEM Reset 16 7 1 9 -262144
+-1 -1;
+#X obj 196 290 metro 70;
+#X text 233 162 "Set Quality before starting capture";
+#X obj 229 130 cnv 10 20 10 empty ColorGEM MacOSX 1 5 1 14 -128992
+-1 1.04858e+06;
+#X msg 257 289 open /dev/video0/;
+#X obj 175 142 nbx 3 12 1 60 0 1 \$0-A ColorPDP Frames/sec 32 7 1 9
+-262144 -1 -1 20 256;
+#X obj 266 196 t b f;
+#X msg 258 218 1000;
+#X obj 277 241 /;
+#X obj 214 241 t b b b;
+#X obj 152 241 t b b;
+#X text 295 97 3 10 2009;
+#X obj 230 117 cnv 10 20 10 empty ColorGEM 64x48 1 5 1 14 -128992 -1
+1.04858e+06;
+#X obj 196 330 pdp_ieee1394 64 48;
+#X connect 2 0 23 0;
+#X connect 5 0 6 0;
+#X connect 6 0 22 0;
+#X connect 9 0 25 0;
+#X connect 10 0 37 0;
+#X connect 11 0 37 0;
+#X connect 12 0 37 0;
+#X connect 13 0 34 0;
+#X connect 13 1 33 0;
+#X connect 14 0 12 0;
+#X connect 18 0 2 0;
+#X connect 21 0 13 0;
+#X connect 22 0 18 0;
+#X connect 22 1 21 0;
+#X connect 23 0 21 0;
+#X connect 24 0 11 0;
+#X connect 25 0 37 0;
+#X connect 28 0 37 0;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 30 1 32 1;
+#X connect 31 0 32 0;
+#X connect 32 0 25 1;
+#X connect 33 0 25 0;
+#X connect 33 1 28 0;
+#X connect 33 2 14 0;
+#X connect 34 0 10 0;
+#X connect 34 1 9 0;
+#X connect 37 0 20 0;
+#X coords 0 -1 1 1 188 55 1 100 100;
+#X restore 556 -145 pd ARGO;
+#X text 282 43 1 Sortie PDP;
+#X text 278 -7 1 Sortie PDP;
+#X text 282 100 1 Entree Contrôle Frame;
+#X text 282 114 1 Sortie PDP;
+#X text 282 166 1 Entree Contrôle Frame;
+#X text 282 180 1 Sortie PDP;
+#N canvas 533 132 616 354 ARGO 0;
+#X obj 101 101 cnv 10 298 58 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 155 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 288 104 cnv 10 20 10 empty ColorGEM PDP-Film 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 86 324 outlet;
+#X obj 40 -2 loadbang;
+#X obj 40 22 delay 1000;
+#X obj 143 17 openpanel;
+#X msg 170 62 set \$1;
+#X msg 195 241 open \$1;
+#X obj 140 211 list2symbol;
+#X obj 143 38 t b s;
+#X msg 4 147 set \$1;
+#X obj 29 217 list2symbol;
+#X obj 53 62 t b b;
+#X obj 201 134 cnv 10 8 8 empty empty I 0 8 1 18 -128992 -1 0;
+#X text 92 82 Frame;
+#X obj 91 62 inlet~;
+#X obj 306 142 nbx 5 12 -2 1e+08 0 0 \$0-A ColorGEM TotalFrames 0 -5
+1 9 -262144 -1 -1 0 256;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 420 123 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 371 87 416 412 Help 0;
+#X text 7 11 - Ouvre des fichiers Film (.mov .avi...);
+#X obj 8 285 cnv 15 400 100 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 12 285 - Erreur dans la fenêtre Pd:;
+#X text 19 41 YUV = Luma \, ChromaB \, ChromaR;
+#X text 7 29 - RGB = Red \, Green \, Blue;
+#X obj 7 64 cnv 15 400 170 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 63 Citation;
+#X text 18 91 pdp_qt~ is the same as pdp_qt exept that it also outputs
+the audio data corresponding to the current frame on its 2 rightmost
+outlets. if there is a lag between audio and video a pdp_del object
+can be inserted to delay the image. note that in order to get acceptable
+audio quality with relatively few dropouts you might need to increase
+the pd audio latency.;
+#X text 18 76 pdp_qt plays a quicktime movie.;
+#X text 37 300 - pdp_qt: error decoding audio;
+#X text 50 317 ???;
+#X text 36 332 - GL: invalid operation;
+#X text 50 348 en RGBA ???;
+#X text 17 184 In pdp_qt~ playback is synchronized to the audio stream.
+;
+#X text 10 241 - Si le module est sauvé avec 1 nom de fichier \, Ce
+fichier sera lu automatiquement a la prochaine ouverture s'il n'a pas
+changé d'emplacement.;
+#X restore 427 129 pd Help;
+#X obj -52 -2 r \$0-SendOnOff;
+#X obj -52 63 sel 1;
+#X obj -52 21 t f f;
+#X obj -15 63 delay 1000;
+#X obj 195 280 pdp_qt~;
+#X obj 245 155 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 389 155 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text 361 159 Audio Right;
+#X text 218 159 Audio Left;
+#X obj 225 327 outlet~;
+#X obj 367 325 outlet~;
+#X msg 123 240 autoplay 0;
+#X msg 75 240 loop 0;
+#X obj 219 4 cnv 15 340 90 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 222 5 Ne fonctionne pas sous Windows;
+#X text 222 20 N'ouvre pas un fichier sans chemin d'acces dans le meme
+dossier que lui.;
+#X text 222 47 Fen Pd -> pdp_qt: error decoding audio;
+#X text 222 74 Sous MacOSX le son est haché;
+#X text 96 160 PDP;
+#X obj 103 115 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 144 -4 bang;
+#X symbolatom 100 114 49 0 0 0 - - -;
+#X text 406 98 14 3 2010;
+#X obj 495 122 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 501 129 pd ?;
+#N canvas 642 214 424 256 Frame 0;
+#X obj 286 18 inlet;
+#X obj 18 222 outlet;
+#X msg 286 193 range 0 \$1;
+#X msg 208 191 set \$1;
+#X obj 100 68 +~;
+#X obj 208 100 snapshot~;
+#X obj 208 144 change;
+#X obj 18 112 snapshot~;
+#X obj 18 183 change;
+#X obj 19 69 metro 40;
+#X obj 208 122 int;
+#X obj 18 134 int;
+#X obj 18 159 clip 0 10;
+#X obj 74 40 *~ 10;
+#X obj 74 15 inlet~;
+#X obj 208 222 outlet;
+#X obj 117 15 inlet;
+#X obj 286 47 max 1;
+#X text 326 46 Bug si 0 frame;
+#X msg 146 190 label \$1;
+#X obj 146 168 tosymbol;
+#X obj 155 16 loadbang;
+#X obj 156 56 metro 200;
+#X obj 211 17 r SendFluid;
+#X obj 146 141 int;
+#X obj 285 222 outlet;
+#X obj 258 76 / 2;
+#X connect 0 0 12 2;
+#X connect 0 0 17 0;
+#X connect 2 0 15 0;
+#X connect 2 0 25 0;
+#X connect 3 0 15 0;
+#X connect 4 0 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 10 0;
+#X connect 6 0 3 0;
+#X connect 7 0 11 0;
+#X connect 8 0 1 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 13 0 4 0;
+#X connect 14 0 13 0;
+#X connect 16 0 4 1;
+#X connect 16 0 24 0;
+#X connect 17 0 2 0;
+#X connect 17 0 26 0;
+#X connect 19 0 15 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 21 0 9 0;
+#X connect 22 0 5 0;
+#X connect 23 0 22 1;
+#X connect 24 0 20 0;
+#X connect 26 0 13 1;
+#X restore 252 241 pd Frame;
+#X obj 103 142 hsl 201 12 0 472 0 1 \$0-SendFrame \$0-ReceiveFrame
+empty 0 7 1 9 -262144 -1 -1 10000 0;
+#X obj 103 142 hsl 201 12 0 472 0 0 \$0-SendFrame \$0-ReceiveFrame
+236 0 8 1 12 -262144 -1 -1 10000 0;
+#X msg -28 182 ..;
+#X connect 4 0 5 0;
+#X connect 5 0 13 0;
+#X connect 5 0 24 0;
+#X connect 6 0 10 0;
+#X connect 7 0 42 0;
+#X connect 8 0 25 0;
+#X connect 9 0 8 0;
+#X connect 10 0 42 0;
+#X connect 10 1 7 0;
+#X connect 11 0 49 0;
+#X connect 12 0 7 0;
+#X connect 13 0 42 0;
+#X connect 13 1 49 0;
+#X connect 16 0 46 0;
+#X connect 21 0 23 0;
+#X connect 22 0 49 0;
+#X connect 23 0 22 0;
+#X connect 24 0 32 0;
+#X connect 24 0 33 0;
+#X connect 25 0 3 0;
+#X connect 25 2 17 0;
+#X connect 25 2 46 2;
+#X connect 25 3 30 0;
+#X connect 25 4 31 0;
+#X connect 32 0 25 0;
+#X connect 33 0 25 0;
+#X connect 40 0 41 0;
+#X connect 41 0 6 0;
+#X connect 42 0 9 0;
+#X connect 42 0 11 0;
+#X connect 46 0 25 0;
+#X connect 46 1 48 0;
+#X connect 46 2 47 0;
+#X connect 47 0 46 1;
+#X connect 49 0 12 0;
+#X coords 0 -1 1 1 300 60 1 100 100;
+#X restore -25 97 pd ARGO;
+#N canvas 482 112 654 354 ARGO 0;
+#X obj 101 101 cnv 10 298 58 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 155 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 288 104 cnv 10 20 10 empty ColorGEM PDP-Film 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 86 324 outlet;
+#X obj 40 -2 loadbang;
+#X obj 40 22 delay 1000;
+#X obj 143 17 openpanel;
+#X msg 170 62 set \$1;
+#X msg 195 241 open \$1;
+#X obj 140 211 list2symbol;
+#X obj 143 38 t b s;
+#X msg 4 147 set \$1;
+#X obj 29 217 list2symbol;
+#X obj 53 62 t b b;
+#X obj 201 134 cnv 10 8 8 empty empty I 0 8 1 18 -128992 -1 0;
+#X text 92 82 Frame;
+#X obj 91 62 inlet~;
+#X obj 306 142 nbx 5 12 -2 1e+08 0 0 \$0-A ColorGEM TotalFrames 0 -5
+1 9 -262144 -1 -1 0 256;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 420 123 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 699 93 416 412 Help 0;
+#X text 7 11 - Ouvre des fichiers Film (.mov .avi...);
+#X obj 8 285 cnv 15 400 100 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 12 285 - Erreur dans la fenêtre Pd:;
+#X text 19 41 YUV = Luma \, ChromaB \, ChromaR;
+#X text 7 29 - RGB = Red \, Green \, Blue;
+#X obj 7 64 cnv 15 400 170 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 63 Citation;
+#X text 18 76 pdp_qt plays a quicktime movie.;
+#X text 39 300 - GL: invalid operation;
+#X text 53 314 en RGBA ???;
+#X text 10 241 - Si le module est sauvé avec 1 nom de fichier \, Ce
+fichier sera lu automatiquement a la prochaine ouverture s'il n'a pas
+changé d'emplacement.;
+#X text 16 93 the second outlet outputs the current frame number. the
+third outlet outputs the total number of frames in a movie when it
+is opened.;
+#X restore 427 129 pd Help;
+#X obj -52 -2 r \$0-SendOnOff;
+#X obj -52 63 sel 1;
+#X obj -52 21 t f f;
+#X obj -15 63 delay 1000;
+#X msg 123 240 autoplay 0;
+#X msg 75 240 loop 0;
+#X obj 219 4 cnv 15 340 90 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 222 5 Ne fonctionne pas sous Windows;
+#X text 96 160 PDP;
+#X obj 103 115 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 144 -4 bang;
+#X symbolatom 100 114 49 0 0 0 - - -;
+#X text 406 98 14 3 2010;
+#X obj 495 122 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 501 129 pd ?;
+#N canvas 642 214 424 256 Frame 0;
+#X obj 286 18 inlet;
+#X obj 18 222 outlet;
+#X msg 286 193 range 0 \$1;
+#X msg 208 191 set \$1;
+#X obj 100 68 +~;
+#X obj 208 100 snapshot~;
+#X obj 208 144 change;
+#X obj 18 112 snapshot~;
+#X obj 18 183 change;
+#X obj 19 69 metro 40;
+#X obj 208 122 int;
+#X obj 18 134 int;
+#X obj 18 159 clip 0 10;
+#X obj 74 40 *~ 10;
+#X obj 74 15 inlet~;
+#X obj 208 222 outlet;
+#X obj 117 15 inlet;
+#X obj 286 47 max 1;
+#X text 326 46 Bug si 0 frame;
+#X msg 146 190 label \$1;
+#X obj 146 168 tosymbol;
+#X obj 155 16 loadbang;
+#X obj 156 56 metro 200;
+#X obj 211 17 r SendFluid;
+#X obj 146 141 int;
+#X obj 285 222 outlet;
+#X obj 258 76 / 2;
+#X connect 0 0 12 2;
+#X connect 0 0 17 0;
+#X connect 2 0 15 0;
+#X connect 2 0 25 0;
+#X connect 3 0 15 0;
+#X connect 4 0 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 10 0;
+#X connect 6 0 3 0;
+#X connect 7 0 11 0;
+#X connect 8 0 1 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 13 0 4 0;
+#X connect 14 0 13 0;
+#X connect 16 0 4 1;
+#X connect 16 0 24 0;
+#X connect 17 0 2 0;
+#X connect 17 0 26 0;
+#X connect 19 0 15 0;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 21 0 9 0;
+#X connect 22 0 5 0;
+#X connect 23 0 22 1;
+#X connect 24 0 20 0;
+#X connect 26 0 13 1;
+#X restore 252 241 pd Frame;
+#X obj 103 142 hsl 201 12 0 472 0 1 \$0-SendFrame \$0-ReceiveFrame
+empty 0 7 1 9 -262144 -1 -1 10000 0;
+#X obj 103 142 hsl 201 12 0 472 0 0 \$0-SendFrame \$0-ReceiveFrame
+236 0 8 1 12 -262144 -1 -1 10000 0;
+#X obj 195 280 pdp_qt;
+#X text 224 18 Do not work under Windows;
+#X text 221 37 Ce MM n'ouvre pas un fichier sans chemin d'acces \,
+placé dans le meme dossier que lui.;
+#X text 220 62 This MM does not open a file with no path \, placed
+in the same folder as him.;
+#X msg -28 182 ..;
+#X connect 4 0 5 0;
+#X connect 5 0 13 0;
+#X connect 5 0 24 0;
+#X connect 6 0 10 0;
+#X connect 7 0 32 0;
+#X connect 8 0 39 0;
+#X connect 9 0 8 0;
+#X connect 10 0 32 0;
+#X connect 10 1 7 0;
+#X connect 11 0 43 0;
+#X connect 12 0 7 0;
+#X connect 13 0 32 0;
+#X connect 13 1 43 0;
+#X connect 16 0 36 0;
+#X connect 21 0 23 0;
+#X connect 22 0 43 0;
+#X connect 23 0 22 0;
+#X connect 24 0 25 0;
+#X connect 24 0 26 0;
+#X connect 25 0 39 0;
+#X connect 26 0 39 0;
+#X connect 30 0 31 0;
+#X connect 31 0 6 0;
+#X connect 32 0 9 0;
+#X connect 32 0 11 0;
+#X connect 36 0 39 0;
+#X connect 36 1 38 0;
+#X connect 36 2 37 0;
+#X connect 37 0 36 1;
+#X connect 39 0 3 0;
+#X connect 39 2 17 0;
+#X connect 39 2 36 2;
+#X connect 43 0 12 0;
+#X coords 0 -1 1 1 300 60 1 100 100;
+#X restore -25 162 pd ARGO;
+#N canvas 405 115 635 356 ARGO 0;
+#X obj 101 101 cnv 10 298 38 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 282 104 cnv 10 20 10 empty ColorGEM PDP-Image-png 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 161 102 bng 12 250 50 0 \$0-A \$0-B Send 15 7 1 9 -262144 -1
+-1;
+#X obj 62 -45 loadbang;
+#X obj 62 -21 delay 1000;
+#X obj 143 -3 openpanel;
+#X msg 170 44 set \$1;
+#X obj 143 21 t b s;
+#X obj 195 -35 bng 16 250 50 0 \$0-A \$0-B empty 0 0 1 9 -262144 -1
+-1;
+#X msg 39 62 set \$1;
+#X obj 3 115 list2symbol;
+#X obj 70 17 t b b;
+#X obj 411 127 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 564 35 420 319 Help 0;
+#X text 15 149 - Si le module est sauvé avec 1 nom de fichier \, Ce
+fichier sera lu automatiquement a la prochaine ouverture s'il n'a pas
+changé d'emplacement.;
+#X obj 12 196 cnv 15 400 100 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 16 196 - Erreur dans la fenêtre Pd:;
+#X obj 8 45 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 11 44 Citation;
+#X text 8 25 - Ouvre un fichier image au format png;
+#X text 43 213 pdp_reg: error loading png file xxxxx.xxx;
+#X text 62 228 Le fichier xxxxx.xxx n'a pas le bon format (png);
+#X restore 418 134 pd Help;
+#X obj 240 -16 cnv 15 350 70 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 243 -16 Ne fonctionne pas sous Windows;
+#X obj 101 135 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 277 outlet;
+#X text 95 138 PDP;
+#X obj -30 -44 r \$0-SendOnOff;
+#X obj -12 6 sel 0 1;
+#X obj 133 244 pdp_reg;
+#X text 243 -1 N'ouvre pas un fichier sans chemin d'acces \, placé
+dans le meme dossier que lui.;
+#X text 243 24 Ouvre mal une image dont les dimensions ne sont pas
+des multiples de 8;
+#X obj 117 171 t b b a;
+#X text 404 98 14 3 2010;
+#X text 169 169 <- 2 bangs sinon l'image ne s'affiche qu'à 1/2;
+#X obj 156 195 list2symbol;
+#X msg 155 220 load_png \$1;
+#X obj 103 119 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 142 -32 bang;
+#X symbolatom 100 118 49 0 0 0 - - -;
+#X msg 97 64 ..;
+#X connect 2 0 21 0;
+#X connect 3 0 4 0;
+#X connect 4 0 11 0;
+#X connect 5 0 7 0;
+#X connect 6 0 31 0;
+#X connect 7 0 31 0;
+#X connect 7 1 6 0;
+#X connect 8 0 5 0;
+#X connect 9 0 32 0;
+#X connect 10 0 6 0;
+#X connect 11 0 31 0;
+#X connect 11 1 32 0;
+#X connect 19 0 20 0;
+#X connect 20 1 32 0;
+#X connect 21 0 17 0;
+#X connect 24 0 2 0;
+#X connect 24 1 2 0;
+#X connect 24 2 27 0;
+#X connect 27 0 28 0;
+#X connect 28 0 21 0;
+#X connect 29 0 30 0;
+#X connect 30 0 5 0;
+#X connect 31 0 9 0;
+#X connect 31 0 24 0;
+#X connect 32 0 10 0;
+#X coords 0 -1 1 1 300 40 1 100 100;
+#X restore -25 228 pd ARGO;
+#N canvas 489 129 396 363 MM-PDP 0;
+#X obj 29 -141 cnv 1 1 340 empty empty empty 20 12 0 14 -1 -262144
+0;
+#X text 1 -160 MM-PDP AFaire;
+#X text 35 -132 Ajouter;
+#X msg 84 -141 open /dev/video0;
+#X msg 85 -120 open /dev/video1;
+#X text 112 -104 etc...;
+#X text 35 -91 pour les ordinateurs ayant plusieurs cameras;
+#X text 194 -131 dans les MM PDP-Video MacOSX;
+#X text 35 -76 comme les MM PDP-Video Linux avec;
+#X obj 240 -73 nbx 3 12 0 10 0 1 \$0-A ColorPDP Device 32 7 1 9 -262144
+-1 -1 0 256;
+#X text 35 6 Ajouter le bouton des PDP-Film (Frame);
+#X restore 587 175 pd MM-PDP AFaire;
+#X obj 481 68 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 490 68 Ne fonctionne pas sous Windows;
+#X text 491 80 Do not work under Windows;
+#X obj 700 239 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 704 246 pd ??;
+#N canvas 230 125 521 386 ARGO 0;
+#X obj 101 101 cnv 10 298 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 288 104 cnv 10 20 10 empty ColorGEM PDP-Film 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 205 135 bng 12 250 50 0 \$0-A \$0-B Begin 15 7 1 9 -262144 -1
+-1;
+#X obj 53 -45 loadbang;
+#X obj 53 -21 delay 1000;
+#X obj 185 -3 openpanel;
+#X msg 170 44 set \$1;
+#X msg 253 222 open \$1;
+#X obj 252 175 list2symbol;
+#X obj 143 21 t b s;
+#X msg 39 62 set \$1;
+#X obj -3 120 list2symbol;
+#X obj 53 5 t b b;
+#X obj 134 135 tgl 12 1 \$0-A \$0-B Play(Space) 15 7 1 9 -262144 -1
+-1 0 1;
+#X obj 253 135 tgl 12 1 \$0-A \$0-B Loop 15 7 1 9 -262144 -1 -1 0 1
+;
+#X obj 121 -46 key;
+#X obj -39 -45 r \$0-SendOnOff;
+#X obj 222 265 pdp_qt~;
+#X msg 218 223 play;
+#X msg 71 224 stop;
+#X obj 244 150 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 389 150 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text 360 155 Audio Right;
+#X text 217 154 Audio Left;
+#X obj 233 317 outlet~;
+#X obj 374 317 outlet~;
+#X msg 308 222 loop \$1;
+#X msg 141 223 autoplay \$1;
+#X obj 71 198 sel 0;
+#X msg 106 223 cont;
+#X obj 185 171 t b b;
+#X msg 183 194 1;
+#X obj 71 173 t f f;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 86 318 outlet;
+#X text 95 154 PDP;
+#X obj -12 6 sel 0 1;
+#X msg -11 32 0;
+#X obj 122 -22 select 32;
+#X obj 101 115 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 187 -25 bang;
+#X symbolatom 100 114 49 0 0 0 - - -;
+#X obj 375 207 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 424 135 508 414 Help 0;
+#X text 15 11 - Ouvre des fichiers Film (.mov .avi...);
+#X obj 19 269 cnv 15 400 130 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 23 269 - Erreur dans la fenêtre Pd:;
+#X obj 19 72 cnv 15 400 190 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 22 71 Citation;
+#X text 30 98 pdp_qt~ is the same as pdp_qt exept that it also outputs
+the audio data corresponding to the current frame on its 2 rightmost
+outlets. if there is a lag between audio and video a pdp_del object
+can be inserted to delay the image. note that in order to get acceptable
+audio quality with relatively few dropouts you might need to increase
+the pd audio latency.;
+#X text 30 84 pdp_qt plays a quicktime movie.;
+#X text 48 284 - pdp_qt: error decoding audio;
+#X text 47 316 - GL: invalid operation;
+#X text 61 332 en RGBA ???;
+#X text 29 203 pdp_glx ouputs video in a window using the openGL extension
+on an X11 window system. if a pdp message is received and a window
+is not open \, one is created automaticly.;
+#X text 61 299 ???... alors que l'Audio fonctionne;
+#X text 348 43 Augmenter (50...100...);
+#X text 37 42 Preferences -> Audio Settings... -> delay (msec) ->;
+#X text 15 -4 PDP-Film;
+#X text 23 349 - N'ouvre pas un fichier sans chemin d'acces dans le
+meme dossier que lui.;
+#X text 15 27 - En cas de probleme Audio (son haché):;
+#X restore 382 214 pd Help;
+#X obj 262 10 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 271 10 Ne fonctionne pas sous Windows;
+#X text 272 22 Do not work under Windows;
+#X obj 302 135 bng 12 250 50 0 \$0-A \$0-B Frame-0/310 15 7 1 9 -262144
+-1 -1;
+#N canvas 65 210 487 250 LabelFrame 0;
+#X obj 14 10 inlet;
+#X obj 16 211 outlet;
+#X text 22 227 label;
+#X msg 15 187 label \$1;
+#X obj 15 165 tosymbol;
+#X text 124 138 <- ATTENTION jamais d'espace dans un label;
+#X obj 14 34 change;
+#X obj 50 92 t b f;
+#X obj 102 10 inlet;
+#X obj 102 65 change;
+#X obj 14 139 sprintf Frame-%d/%d;
+#X obj 14 72 + 1;
+#X connect 0 0 6 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 6 0 11 0;
+#X connect 7 0 10 0;
+#X connect 7 1 10 1;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X connect 10 0 4 0;
+#X connect 11 0 10 0;
+#X restore 196 294 pd LabelFrame;
+#X text 403 98 30 10 2010;
+#X obj 420 280 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 424 287 pd ??;
+#X msg 97 64 ..;
+#X connect 2 0 30 0;
+#X connect 3 0 4 0;
+#X connect 4 0 12 0;
+#X connect 5 0 9 0;
+#X connect 6 0 41 0;
+#X connect 7 0 17 0;
+#X connect 8 0 7 0;
+#X connect 9 0 41 0;
+#X connect 9 1 6 0;
+#X connect 10 0 52 0;
+#X connect 11 0 6 0;
+#X connect 12 0 41 0;
+#X connect 12 1 52 0;
+#X connect 13 0 32 0;
+#X connect 14 0 26 0;
+#X connect 15 0 38 0;
+#X connect 16 0 36 0;
+#X connect 17 0 34 0;
+#X connect 17 1 48 0;
+#X connect 17 2 48 1;
+#X connect 17 3 24 0;
+#X connect 17 4 25 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 26 0 17 0;
+#X connect 27 0 17 0;
+#X connect 28 0 19 0;
+#X connect 28 1 29 0;
+#X connect 29 0 17 0;
+#X connect 30 0 31 0;
+#X connect 30 1 18 0;
+#X connect 31 0 13 0;
+#X connect 32 0 28 0;
+#X connect 32 1 27 0;
+#X connect 36 0 37 0;
+#X connect 36 1 52 0;
+#X connect 37 0 13 0;
+#X connect 38 0 13 0;
+#X connect 39 0 40 0;
+#X connect 40 0 5 0;
+#X connect 41 0 8 0;
+#X connect 41 0 10 0;
+#X connect 47 0 17 0;
+#X connect 48 0 47 0;
+#X connect 52 0 11 0;
+#X coords 0 -1 1 1 300 55 1 100 100;
+#X restore -26 37 pd ARGO;
+#N canvas 310 85 491 375 ARGO 0;
+#X obj 101 101 cnv 10 298 53 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 288 104 cnv 10 20 10 empty ColorGEM PDP-Film 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 205 135 bng 12 250 50 0 \$0-A \$0-B Begin 15 7 1 9 -262144 -1
+-1;
+#X obj 62 -45 loadbang;
+#X obj 54 -5 delay 1000;
+#X obj 179 -3 openpanel;
+#X msg 194 44 set \$1;
+#X msg 253 232 open \$1;
+#X obj 252 175 list2symbol;
+#X obj 167 21 t b s;
+#X msg 39 62 set \$1;
+#X obj 13 118 list2symbol;
+#X obj 70 17 t b b;
+#X obj 130 135 tgl 12 1 \$0-A \$0-B Play(Space) 15 7 1 9 -262144 -1
+-1 0 1;
+#X obj 253 135 tgl 12 1 \$0-A \$0-B Loop 15 7 1 9 -262144 -1 -1 1 1
+;
+#X obj 130 -46 key;
+#X obj 371 219 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 345 115 422 453 Help 0;
+#X text 9 0 - Ouvre des fichiers Film (.mov .avi...);
+#X obj 8 21 cnv 15 400 150 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 11 20 Citation;
+#X text 19 47 pdp_qt~ is the same as pdp_qt exept that it also outputs
+the audio data corresponding to the current frame on its 2 rightmost
+outlets. if there is a lag between audio and video a pdp_del object
+can be inserted to delay the image. note that in order to get acceptable
+audio quality with relatively few dropouts you might need to increase
+the pd audio latency.;
+#X text 19 33 pdp_qt plays a quicktime movie.;
+#X text 14 171 - Si le module est sauvé avec 1 nom de fichier et un
+chemin d'accés \, ce fichier sera lu automatiquement a la prochaine
+ouverture s'il n'a pas changé d'emplacement.;
+#X obj 7 222 cnv 15 400 200 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 11 222 - Erreur dans la fenêtre Pd:;
+#X text 36 237 - pdp_qt: error decoding audio;
+#X text 35 269 - GL: invalid operation;
+#X text 49 285 en RGBA ???;
+#X text 49 252 ???... alors que l'Audio fonctionne;
+#X text 14 356 - N'ouvre pas un fichier sans chemin d'acces dans le
+meme dossier que lui.;
+#X text 49 388 - This MM does not open a file with no path \, placed
+in the same folder as him.;
+#X text 33 301 - pdp_qt: opening /Volumes/.../xxx.mov;
+#X text 45 312 pdp_qt: ERROR: not a quicktime file;
+#X text 58 324 Le fichier /Volumes/.../xxx.mov n'existe pas ou a été
+déplacé;
+#X text 9 -20 - PDP-Film;
+#X restore 378 226 pd Help;
+#X msg 218 233 play;
+#X msg 71 234 stop;
+#X msg 308 232 loop \$1;
+#X msg 141 233 autoplay \$1;
+#X obj 71 208 sel 0;
+#X msg 106 233 cont;
+#X obj 185 171 t b b;
+#X msg 183 194 1;
+#X obj 71 183 t f f;
+#X obj 101 150 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 86 305 outlet;
+#X text 95 154 PDP;
+#X obj 187 266 pdp_qt;
+#X obj -30 -44 r \$0-SendOnOff;
+#X obj -12 6 sel 0 1;
+#X msg -11 32 0;
+#X obj 299 135 bng 12 250 50 0 \$0-A \$0-B Frame-88/310 15 7 1 9 -262144
+-1 -1;
+#X obj 104 114 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 198 -25 bang;
+#X obj 119 -23 select 32;
+#X symbolatom 100 114 49 0 0 0 - - -;
+#X obj 250 33 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 259 33 Ne fonctionne pas sous Windows;
+#X text 260 45 Do not work under Windows;
+#N canvas 65 210 487 250 LabelFrame 0;
+#X obj 14 10 inlet;
+#X obj 16 211 outlet;
+#X text 22 227 label;
+#X msg 15 187 label \$1;
+#X obj 15 165 tosymbol;
+#X text 124 138 <- ATTENTION jamais d'espace dans un label;
+#X obj 14 65 change;
+#X obj 50 92 t b f;
+#X obj 102 10 inlet;
+#X obj 102 65 change;
+#X obj 14 139 sprintf Frame-%d/%d;
+#X connect 0 0 6 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 6 0 10 0;
+#X connect 7 0 10 0;
+#X connect 7 1 10 1;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X connect 10 0 4 0;
+#X restore 202 292 pd LabelFrame;
+#X text 345 155 30 10 2010;
+#X obj 409 280 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 413 287 pd ??;
+#X msg 97 64 ..;
+#X connect 2 0 24 0;
+#X connect 3 0 4 0;
+#X connect 4 0 12 0;
+#X connect 5 0 9 0;
+#X connect 6 0 38 0;
+#X connect 7 0 30 0;
+#X connect 8 0 7 0;
+#X connect 9 0 38 0;
+#X connect 9 1 6 0;
+#X connect 10 0 46 0;
+#X connect 11 0 6 0;
+#X connect 12 0 38 0;
+#X connect 12 1 46 0;
+#X connect 13 0 26 0;
+#X connect 14 0 20 0;
+#X connect 15 0 37 0;
+#X connect 18 0 30 0;
+#X connect 19 0 30 0;
+#X connect 20 0 30 0;
+#X connect 21 0 30 0;
+#X connect 22 0 19 0;
+#X connect 22 1 23 0;
+#X connect 23 0 30 0;
+#X connect 24 0 25 0;
+#X connect 24 1 18 0;
+#X connect 25 0 13 0;
+#X connect 26 0 22 0;
+#X connect 26 1 21 0;
+#X connect 30 0 28 0;
+#X connect 30 1 42 0;
+#X connect 30 2 42 1;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 32 1 46 0;
+#X connect 33 0 13 0;
+#X connect 34 0 30 0;
+#X connect 35 0 36 0;
+#X connect 36 0 5 0;
+#X connect 37 0 13 0;
+#X connect 38 0 8 0;
+#X connect 38 0 10 0;
+#X connect 42 0 34 0;
+#X connect 46 0 11 0;
+#X coords 0 -1 1 1 300 55 1 100 100;
+#X restore -26 -23 pd ARGO;

@@ -1,0 +1,1243 @@
+#N canvas 348 22 736 357 10;
+#X obj -131 -173 cnv 15 15 15 empty empty ExMM32i-GEMVideo-Record-Image.pd
+0 8 1 14 -262144 -1 0;
+#X obj -22 -99 switch~;
+#N canvas 608 166 228 173 ARGOnOff 0;
+#X obj 100 100 tgl 18 1 \$0-SendOnOff \$0-ReceiveOnOff On/Off 20 11
+1 14 -4033 -1 -1 1 1;
+#X obj 99 10 loadbang;
+#X msg 99 33 \; pd dsp 1;
+#X obj 100 129 outlet;
+#X text -50 99 Audio On/Off du patch ->;
+#X text -22 45 Audio General On ->;
+#X text 107 82 17 3 2010;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 65 18 2 100 100;
+#X restore -22 -117 pd ARGOnOff;
+#X text -124 -78 On/Off camera ->;
+#X text -110 -156 Connecter une camera à l'ordinateur en USB \, Firewire..
+;
+#X text -110 -143 Connect a camera to the computer via USB \, Firewire
+..;
+#X text -120 -28 pas sous MacOSX;
+#X text -137 -40 Grey ne fonctionne;
+#X text -137 -15 Grey does not work;
+#X text -102 -3 under MacOSX;
+#N canvas 413 140 402 279 ARGO 0;
+#X obj 101 101 cnv 10 95 41 \$0-A \$0-B empty 20 12 0 14 -1 -1 1.04858e+06
+;
+#X obj 101 109 nbx 4 12 0 1e+37 0 0 \$0 \$0-ReceiveCpuPeak CPUPeak
+45 7 1 11 -24198 -1 -24198 10 256;
+#X obj 101 122 nbx 4 12 0 1e+37 0 0 \$0 \$0-ReceiveCpuMean CPUMean
+45 7 1 11 -24198 -1 -24198 11.15 256;
+#X obj 145 -55 cputime;
+#X obj 145 -76 t b b;
+#X text 188 24 (c) musil@iem.kug.ac.at;
+#X text 230 37 IEM KUG;
+#X text 78 18 CPU-load;
+#X obj 144 -125 loadbang;
+#X text 205 48 graz \, austria 2001;
+#X obj 145 -100 metro 500;
+#X obj 145 -34 * 0.2;
+#X text 237 -88 -dsp-load in %;
+#X text 228 -101 measure average- and peak-;
+#X obj 37 18 * 100;
+#X obj 37 63 int;
+#X obj 37 41 + 0.499;
+#X obj 37 86 * 0.01;
+#N canvas 524 162 422 273 1p1zmodif 0;
+#X text 134 89 (c) musil@iem.kug.ac.at;
+#X text 179 99 IEM KUG;
+#X obj 14 195 +;
+#X text 151 108 graz \, austria 2001;
+#X text 135 71 y[n] = a0*x[n] + a1*x[n-1] + b1*y[n-1];
+#X text 18 13 x[n];
+#X text 16 244 y[n];
+#X text 84 111 y[n-1];
+#X text 134 56 <float> control-IIR-filter 1.order;
+#X obj 15 28 inlet;
+#X obj 14 228 outlet;
+#X obj 15 112 * 0.1;
+#X obj 59 156 * 0.9;
+#X text 139 144 a1 = 0;
+#X text 139 155 b1 = 0.9;
+#X text 139 133 a0 = 0.1;
+#X obj 15 50 t f b;
+#X text 135 40 Inspiré de 1p1z;
+#X obj 59 112 f 0;
+#X connect 2 0 10 0;
+#X connect 2 0 18 1;
+#X connect 9 0 16 0;
+#X connect 11 0 2 0;
+#X connect 12 0 2 1;
+#X connect 16 0 11 0;
+#X connect 16 1 18 0;
+#X connect 18 0 12 0;
+#X restore 37 -8 pd 1p1zmodif;
+#X text 146 9 Inspiré de 5.reference/iemabs/help-dsp.pd;
+#X text 141 83 25 3 2010;
+#X connect 3 0 11 0;
+#X connect 4 0 3 0;
+#X connect 4 1 3 1;
+#X connect 8 0 10 0;
+#X connect 10 0 4 0;
+#X connect 11 0 18 0;
+#X connect 11 0 1 0;
+#X connect 14 0 16 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 0;
+#X connect 17 0 2 0;
+#X connect 18 0 14 0;
+#X coords 0 -1 1 1 97 43 1 100 100;
+#X restore 432 -153 pd ARGO;
+#N canvas 298 58 736 570 ARGO 0;
+#X obj 467 98 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 619 94 421 480 Help 0;
+#X text 16 173 - FullScreen ne fonctionne pas sous Windows avec certaines
+cartes video;
+#X obj 15 -24 cnv 15 380 90 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 20 -26 Citation;
+#X text 19 -13 "GEM is the Graphics Environment for Multimedia. It
+was originally written by Mark Danks to generate real-time computer
+graphics \, especially for audio-visual compositions.";
+#X text 19 37 "GEM is a collection of externals which allow the user
+to create OpenGL graphics within Pd";
+#X text 14 74 - Raccourcis clavier;
+#X text 16 130 - En "FullScreen" taper F ou Pomme + Tab sous MacOSX...
+;
+#X text 124 143 taper F ou Alt + Tab sous Windows...;
+#X text 124 155 taper F ou Alt + F4 sous Linux...;
+#X obj 14 395 cnv 15 400 190 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 17 401 Impossible de supprimer la barre de menu sous MacOSX.5
++ Pd-0.41.4-extended;
+#X text 17 427 Pas de probleme sous MacOSX.4 + Pd-0.41.4-extended;
+#X text 29 483 Solution: Quitter Pd et relancer;
+#X text 18 444 - Problème Windows: Quand on sort de fullscreen le dessin
+des objets dans les patches est buggé (taille du texte \, HSlider décalés...)
+;
+#X text 30 495 Vu avec carte Matrox + Windows XP SP2 + Pd-0.41.4-extended
+;
+#X text 22 552 Solution: cocher Compatible;
+#X text 39 287 Inconvenient: Charge CPU => la texture est calculée
+(objet pix_texture) par le processeur de l'ordinateur et pas par la
+carte video);
+#X text 22 529 GL: énumérant non valide (répété);
+#X text 22 540 OpenGL: invalid enumérant (repeat);
+#X text 18 515 - Erreur dans la fenêtre Pd:;
+#X text 16 235 Il faut cocher compatible avec certaines cartes video
+\, de certains PC \, sous Windows...;
+#X text 17 261 Compatible Off -> mode 1: TEXTURE_RECTANGLE;
+#X text 17 273 Compatible On -> mode 0: TEXTURE_2D;
+#X text 15 209 - Compatible envoie le message 1 ou 0 à tous les objets
+pix_texture des autres modules;
+#X text 12 -49 - GEM On ouvre une fenetre;
+#X text 138 73 g / G -> GEM On/Off;
+#X text 139 87 f / F -> FullScreen On/Off;
+#X text 140 100 b /B -> Menu bar On/Off;
+#X text 140 114 Echap / Esc -> FullScreen Off;
+#X text 19 361 16/9 = 512/288 = 1024/576 = 1152/648 = 1280/720 = 1440/810
+;
+#X text 13 349 16/10 = 512/320 = 1024/640 = 1152/720 = 1280x800 = 1440/900
+;
+#X text 347 336 = 1280/960;
+#X text 24 337 4/3 = 160/120 = 320/240 = 512/384 = 640/480 = 1024x768
+;
+#X restore 474 104 pd Help;
+#X obj 101 101 cnv 22 183 69 empty empty GEM 5 12 1 18 -1 -262144 1.04858e+06
+;
+#X obj 191 154 tgl 12 1 \$0-A \$0-ColorGEM (F)ullScreen 15 7 1 11 -24198
+-1 -24198 0 1;
+#X obj 103 124 tgl 12 1 \$0-A \$0-ColorGEM (G)EM 15 7 1 11 -24198 -1
+-24198 1 1;
+#X obj 191 105 nbx 2 12 1 30 0 1 \$0-A \$0-ColorGEM Frames/sec 26 7
+1 11 -24198 -1 -24198 15 256;
+#X obj 191 139 tgl 12 1 \$0-A \$0-ColorGEM KeyShortCut 15 7 1 11 -24198
+-1 -24198 1 1;
+#X obj 283 -26 key;
+#X msg 15 448 create;
+#X msg 430 446 destroy;
+#X msg 387 446 reset;
+#X msg 204 446 fullscreen \$1;
+#X msg 488 446 0;
+#X obj 169 497 gemwin;
+#X obj 68 251 sel 1;
+#X msg 191 366 set \$1;
+#X msg 160 414 0;
+#X msg 87 204 set \$1;
+#X msg 68 229 1;
+#X msg -80 447 frame \$1;
+#X obj 462 381 t b b;
+#X obj 429 404 delay 200;
+#X msg 294 446 dimen 640 480;
+#X msg -15 449 1;
+#X obj 283 11 spigot;
+#X text -85 365 delay sinon ne marche pas;
+#X text -85 376 en Pd-0.39.2-extended-RC1;
+#X obj 70 -28 gemkeyname;
+#X obj 516 377 select 0 1;
+#X obj 78 178 t b f f f;
+#X msg 532 424 color 16 22 16;
+#X msg 517 401 color 0 22 0;
+#X obj 125 67 select 65 97 70 102 76 108 71 103 66 98;
+#X obj -25 -25 r SendGEM;
+#X obj 519 469 s \$0-ColorGEM;
+#X obj 191 124 tgl 12 1 SendMode \$0-ColorGEM Compatible 15 7 1 11
+-24198 -1 -24198 0 1;
+#X obj 61 68 select 27;
+#X msg -21 134 0;
+#X obj 103 154 hradio 12 1 1 3 \$0-A \$0-ColorGEM 640x480 39 7 1 11
+-24198 -1 -24198 1;
+#X obj 246 178 t b f;
+#X obj 15 275 t b b b b b b b b b b b b;
+#N canvas 0 22 450 300 Dimension 0;
+#X obj 169 76 sel 0 1 2;
+#X msg 203 141 set dimen 1280 720;
+#X msg 187 183 set dimen 640 480;
+#X msg 169 225 set dimen 320 240;
+#X msg 198 162 label 640x480;
+#X msg 213 120 label 1280x720;
+#X msg 179 204 label 320x240;
+#X obj 169 50 inlet;
+#X obj 103 257 outlet;
+#X obj 303 259 outlet;
+#X connect 0 0 3 0;
+#X connect 0 0 6 0;
+#X connect 0 1 2 0;
+#X connect 0 1 4 0;
+#X connect 0 2 1 0;
+#X connect 0 2 5 0;
+#X connect 1 0 9 0;
+#X connect 2 0 9 0;
+#X connect 3 0 9 0;
+#X connect 4 0 8 0;
+#X connect 5 0 8 0;
+#X connect 6 0 8 0;
+#X connect 7 0 0 0;
+#X restore 273 213 pd Dimension;
+#X obj 84 303 operating_system;
+#X msg 203 393 0;
+#X obj 203 415 t f f;
+#X obj 85 327 select linux macos windows;
+#X obj 61 42 mrpeach/str to_list;
+#X text 150 -29 Sortir de fullscreen;
+#X text 146 -19 sous Linux avec Esc ->;
+#X text -64 37 Sortir de fullscreen;
+#X text -76 47 sous MacOS avec Esc ->;
+#X obj -3 396 delay 300;
+#X obj -15 424 delay 300;
+#X msg 71 370 set \$1;
+#X msg 64 421 1;
+#X obj 187 179 t b f;
+#X msg 65 447 border \$1 \, menubar \$1;
+#X obj 103 139 tgl 12 1 \$0-A \$0-ColorGEM (B)arMenu 15 7 1 11 -24198
+-1 -24198 1 1;
+#X obj 137 366 t b b;
+#X obj 36 16 spigot;
+#X obj 69 -6 == 0;
+#X obj -47 68 sel f F g G b B;
+#X obj 138 204 t b f b;
+#X msg 177 226 1;
+#X obj -21 112 t b b;
+#X msg 6 158 set 1;
+#X obj -33 486 cnv 15 120 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj -16 493 s RenderGEM;
+#X obj 533 498 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 537 505 pd ??;
+#X text 293 101 24 11 2010;
+#X connect 3 0 62 0;
+#X connect 4 0 29 0;
+#X connect 5 0 19 0;
+#X connect 6 0 24 1;
+#X connect 7 0 24 0;
+#X connect 7 0 36 0;
+#X connect 8 0 13 0;
+#X connect 9 0 13 0;
+#X connect 10 0 13 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 14 0 40 0;
+#X connect 14 1 20 0;
+#X connect 15 0 16 0;
+#X connect 15 0 43 0;
+#X connect 16 0 11 0;
+#X connect 17 0 18 0;
+#X connect 18 0 14 0;
+#X connect 19 0 13 0;
+#X connect 20 0 21 0;
+#X connect 20 1 12 0;
+#X connect 21 0 9 0;
+#X connect 22 0 13 0;
+#X connect 23 0 13 0;
+#X connect 23 0 67 0;
+#X connect 24 0 32 0;
+#X connect 27 0 60 0;
+#X connect 27 1 59 0;
+#X connect 28 0 31 0;
+#X connect 28 1 30 0;
+#X connect 29 0 18 0;
+#X connect 29 1 17 0;
+#X connect 29 3 28 0;
+#X connect 30 0 34 0;
+#X connect 31 0 34 0;
+#X connect 32 2 3 0;
+#X connect 32 3 3 0;
+#X connect 32 6 4 0;
+#X connect 32 7 4 0;
+#X connect 32 8 57 0;
+#X connect 32 9 57 0;
+#X connect 33 0 4 0;
+#X connect 36 0 64 0;
+#X connect 37 0 3 0;
+#X connect 38 0 39 0;
+#X connect 39 0 18 0;
+#X connect 39 1 41 0;
+#X connect 40 4 51 0;
+#X connect 40 7 42 0;
+#X connect 40 8 22 0;
+#X connect 40 9 10 0;
+#X connect 40 10 9 0;
+#X connect 40 11 12 0;
+#X connect 41 0 38 0;
+#X connect 41 1 22 0;
+#X connect 42 0 45 0;
+#X connect 43 0 44 0;
+#X connect 44 0 11 0;
+#X connect 45 0 16 0;
+#X connect 45 1 58 0;
+#X connect 45 2 16 0;
+#X connect 46 0 36 0;
+#X connect 51 0 8 0;
+#X connect 51 0 52 0;
+#X connect 52 0 23 0;
+#X connect 53 0 54 0;
+#X connect 54 0 56 0;
+#X connect 55 0 18 0;
+#X connect 55 1 53 0;
+#X connect 56 0 13 0;
+#X connect 57 0 55 0;
+#X connect 58 0 54 0;
+#X connect 58 1 43 0;
+#X connect 59 0 46 0;
+#X connect 59 0 61 0;
+#X connect 60 0 59 1;
+#X connect 61 0 3 0;
+#X connect 61 1 3 0;
+#X connect 61 2 4 0;
+#X connect 61 3 4 0;
+#X connect 61 4 57 0;
+#X connect 61 5 57 0;
+#X connect 62 0 18 0;
+#X connect 62 1 15 0;
+#X connect 62 2 63 0;
+#X connect 63 0 6 0;
+#X connect 64 0 37 0;
+#X connect 64 1 65 0;
+#X connect 65 0 57 0;
+#X connect 65 0 54 0;
+#X coords 0 -1 1 1 185 71 1 100 100;
+#X restore 225 -169 pd ARGO;
+#N canvas 352 215 338 213 ARGO 0;
+#X obj 101 101 cnv 10 208 17 empty ColorForm empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 247 106 cnv 10 20 10 empty ColorForm GEM-Info 1 5 1 14 -228856
+-1 1.04858e+06;
+#X text 83 80 gemlist;
+#X obj 101 14 inlet;
+#X obj 179 14 loadbang;
+#X obj 179 44 delay 1000;
+#X obj 11 22 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 599 156 412 359 Help 0;
+#X obj 7 227 cnv 15 400 70 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 11 227 - Erreur dans la fenêtre Pd:;
+#X obj 6 67 cnv 15 400 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 66 Citation;
+#X text 23 85 [pix_info] will give you some meta-information about
+the image data consisting of the image-dimensions \, the pixel-size
+\, the colour-space and the pointer to the image-data itself.;
+#X text 23 138 The colour-space is given as an openGL-int-constant.
+(6408=GL_RGBA (rgba) \, 6409=GL_LUMINANCE (grey) \, 34233 might be
+YUV (not standardized);
+#X text 22 175 You might not be able to do anything with the data-pointer.
+;
+#X text 18 14 RGB = Red Green Blue = 6407 decimal = 1907 hexa;
+#X text 18 44 YUV = Luma \, ChromaB \, ChromaR = 34233 decimal = 85B9
+hexa;
+#X text 12 29 RGBA = Red Green Blue Alpha = 6408 decimal = 1908 hexa
+;
+#X text 12 0 Grey = Niveaux de gris = 6409 decimal = 1909 hexa;
+#X text 12 -19 GEM-Info;
+#X restore 18 29 pd Help;
+#X text 13 136 Préférer des images dont la taille en pixels est un
+multiple de 8x8 pixels (cf library PDP... et GEM?);
+#N canvas 449 136 449 399 Geminfo 0;
+#X obj 34 23 inlet;
+#X obj 123 27 inlet;
+#X obj 15 357 outlet;
+#X text 27 4 gemlist;
+#X text 127 9 bang;
+#X text 20 373 label;
+#X obj 33 57 pix_info;
+#X obj 12 139 change;
+#X obj 59 139 change;
+#X obj 158 136 change;
+#X obj 185 194 sel 32993 34233 6409 6408 32992 6407;
+#X msg 14 333 label \$1;
+#X obj 14 311 tosymbol;
+#X msg 185 233 RGBA;
+#X msg 221 233 YUV;
+#X msg 256 233 Grey;
+#X msg 327 233 RGB;
+#X msg 398 233 ?;
+#X text 180 285 <- ATTENTION jamais d'espace dans un label;
+#X obj 11 234 clip 0 100000;
+#X obj 99 234 clip 0 100000;
+#X msg 175 87 0;
+#X obj 124 57 t b b b b;
+#X obj 13 285 sprintf %dx%d--%s--%dbytes;
+#X obj 158 168 t b f;
+#X obj 59 171 t b f;
+#X obj 105 137 change;
+#X obj 105 169 t b f;
+#X connect 0 0 6 0;
+#X connect 1 0 22 0;
+#X connect 6 1 7 0;
+#X connect 6 2 8 0;
+#X connect 6 3 26 0;
+#X connect 6 4 9 0;
+#X connect 7 0 19 0;
+#X connect 8 0 25 0;
+#X connect 9 0 24 0;
+#X connect 10 0 13 0;
+#X connect 10 1 14 0;
+#X connect 10 2 15 0;
+#X connect 10 3 13 0;
+#X connect 10 4 16 0;
+#X connect 10 5 16 0;
+#X connect 10 6 17 0;
+#X connect 11 0 2 0;
+#X connect 12 0 11 0;
+#X connect 13 0 23 2;
+#X connect 14 0 23 2;
+#X connect 15 0 23 2;
+#X connect 16 0 23 2;
+#X connect 17 0 23 2;
+#X connect 19 0 23 0;
+#X connect 20 0 23 1;
+#X connect 21 0 9 0;
+#X connect 21 0 8 0;
+#X connect 21 0 7 0;
+#X connect 22 0 7 0;
+#X connect 22 1 8 0;
+#X connect 22 2 9 0;
+#X connect 22 3 21 0;
+#X connect 23 0 12 0;
+#X connect 24 0 19 0;
+#X connect 24 1 10 0;
+#X connect 25 0 19 0;
+#X connect 25 1 20 0;
+#X connect 26 0 27 0;
+#X connect 27 0 19 0;
+#X connect 27 1 23 3;
+#X restore 101 43 pd Geminfo;
+#X obj 101 106 bng 12 250 50 0 \$0-A \$0-B 80x60--YUV--2bytes 15 7
+1 11 -262144 -1 -1;
+#X text 5 101 Reload Image ->;
+#X obj 283 170 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 287 177 pd ??;
+#X text 251 81 17 11 2010;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 10 1;
+#X coords 0 -1 1 1 210 19 1 100 100;
+#X restore -12 24 pd ARGO;
+#N canvas 370 332 385 311 ARGO 0;
+#X text 80 84 gemlist;
+#X obj 93 203 pix_texture;
+#X obj 95 -3 inlet;
+#X msg 71 172 quality \$1;
+#X obj 270 147 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 271 106 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X msg 270 170 client_storage \$1;
+#X msg 271 125 repeat \$1;
+#X msg 272 85 env \$1;
+#X obj 273 65 hradio 15 1 0 6 empty empty empty 0 -6 0 8 -262144 -1
+-1 0;
+#X obj 136 20 select 0 1;
+#X msg 152 68 0;
+#X msg 110 68 set 0;
+#X msg 48 108 set \$1;
+#X obj 101 101 cnv 10 144 40 empty ColorForm empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 164 105 cnv 10 20 10 empty ColorForm GEM-Direct 1 5 1 14 -228856
+-1 1.04858e+06;
+#X obj 100 118 tgl 12 1 \$0-A ColorGEM Quality 15 6 1 9 -262144 -1
+-1 0 1;
+#X obj 100 106 tgl 12 1 \$0-A ColorGEM On/Off 15 6 1 9 -262144 -1 -1
+1 1;
+#X obj 159 173 int;
+#X obj 136 -3 r \$0-SendOnOff;
+#X obj 187 44 delay 1000;
+#X obj 119 44 delay 1000;
+#X obj 234 7 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 109 51 451 506 Help 0;
+#X obj 13 281 cnv 15 400 150 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 16 284 - Erreur dans la fenêtre Pd:;
+#X text 28 337 Se produit avec certaines cartes video \, de certains
+PC \, sous Windows...;
+#X text 28 365 Inconvenient: Charge CPU => la texture est calculée
+(objet pix_texture) par le processeur de l'ordinateur et pas par la
+carte video);
+#X text 28 302 GL: énumérant non valide (répété);
+#X text 28 313 OpenGL: invalid enumérant (repeat);
+#X obj 13 35 cnv 15 430 180 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 28 51 Description: apply texture mapping;
+#X text 27 69 Send a quality message to change the quality of the texture
+mapping. GL_LINEAR is better than GL_NEAREST (but also more computationally
+expensive). However \, on many machines (especially SGIs) \, there
+is no speed difference.;
+#X text 26 128 [pix_texture] tries to use the fastest way to get a
+pix onto a texture. This implies using "rectangle"-texturing if available.
+This \, in turn \, can lead to some problems with several geos. Try
+using "rectangle 0" if you experience problems. Rectangle textures
+cannot be REPEATed (they are always clamped-to-edge);
+#X text 17 35 Citation;
+#X text 15 -1 Envoie l'entrée remplir la fenêtre GEM;
+#X text 15 12 Send the input fill the GEM window;
+#X text 4 -25 GEM-Direct;
+#X text 28 325 Solution: cocher Compatible dans MM-GEM;
+#X text 27 246 Utile avec certaines cartes video de certains PC sous
+Windows...;
+#X text 27 219 SendMode recu du MM GEM: Compatible = mode 0/1 = rectangle
+0/1;
+#X text 21 438 Nouveau depuis GEM-Direct 25 3 2010:;
+#X text 31 451 - Ajout spigot sur l'entrée;
+#X text 31 463 - Flip;
+#X restore 241 13 pd Help;
+#X msg 14 172 mode \$1;
+#X obj 14 122 == 0;
+#X obj 14 36 r SendMode;
+#X obj 14 102 nbx 1 14 -1e+37 1e+37 0 1 empty empty empty 0 -6 0 10
+-262144 -1 -1 0 256;
+#X obj 92 142 spigot;
+#X obj 162 130 hradio 12 1 1 4 \$0-A \$0-B 4x3 51 7 1 11 -262144 -1
+-1 1;
+#N canvas 303 128 648 228 Dimension 0;
+#X obj 157 30 inlet;
+#X obj 215 196 outlet;
+#X obj -24 192 outlet;
+#X msg 213 113 label 4x3;
+#X msg 279 113 label 16x10;
+#X msg 358 114 label 16x9;
+#X text 248 25 4/3 = 5.33333333/4;
+#X text 236 37 16/10 = 6.4/4;
+#X text 242 49 16/9 = 7.11111111/4;
+#X msg -157 111 5.33333;
+#X msg -102 111 6.4;
+#X msg -70 111 7.11111;
+#X obj -41 29 inlet;
+#X obj 75 31 inlet;
+#X text -65 1 Flip Horizontal;
+#X text 54 3 Flip Vertical;
+#X obj 81 191 outlet;
+#X text -32 13 0/1;
+#X text 83 15 0/1;
+#X obj 75 55 select 0 1;
+#X msg 72 112 4;
+#X msg 109 112 -4;
+#X obj -24 166 *;
+#X obj -41 54 select 0 1;
+#X msg -14 111 1;
+#X msg 22 111 -1;
+#X text 248 61 3/4 = 3/4;
+#X msg 145 113 label 3x4;
+#X obj 157 56 sel 0 1 2 3;
+#X msg -188 111 3;
+#X obj -13 141 t b f;
+#X connect 0 0 28 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 9 0 22 0;
+#X connect 10 0 22 0;
+#X connect 11 0 22 0;
+#X connect 12 0 23 0;
+#X connect 13 0 19 0;
+#X connect 19 0 20 0;
+#X connect 19 1 21 0;
+#X connect 20 0 16 0;
+#X connect 21 0 16 0;
+#X connect 22 0 2 0;
+#X connect 23 0 24 0;
+#X connect 23 1 25 0;
+#X connect 24 0 30 0;
+#X connect 25 0 30 0;
+#X connect 27 0 1 0;
+#X connect 28 0 29 0;
+#X connect 28 0 27 0;
+#X connect 28 1 9 0;
+#X connect 28 1 3 0;
+#X connect 28 2 10 0;
+#X connect 28 2 4 0;
+#X connect 28 3 11 0;
+#X connect 28 3 5 0;
+#X connect 29 0 22 0;
+#X connect 30 0 22 0;
+#X connect 30 1 22 1;
+#X restore 135 231 pd Dimension;
+#X obj 94 258 rectangle 4 4;
+#X obj 100 130 tgl 12 1 \$0-A \$0-B empty 15 6 1 9 -262144 -1 -1 0
+1;
+#X obj 112 130 tgl 12 1 \$0-A \$0-B Flip 15 7 1 9 -262144 -1 -1 0 1
+;
+#X obj 331 236 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 335 243 pd ??;
+#X text 204 84 24 11 2010;
+#X connect 1 0 32 0;
+#X connect 2 0 29 0;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 22 0;
+#X connect 10 1 21 0;
+#X connect 11 0 1 0;
+#X connect 12 0 18 0;
+#X connect 13 0 18 0;
+#X connect 17 0 3 0;
+#X connect 18 0 19 0;
+#X connect 18 0 29 1;
+#X connect 19 0 1 0;
+#X connect 19 0 13 0;
+#X connect 20 0 10 0;
+#X connect 21 0 19 0;
+#X connect 22 0 11 0;
+#X connect 22 0 12 0;
+#X connect 25 0 1 0;
+#X connect 26 0 25 0;
+#X connect 27 0 28 0;
+#X connect 28 0 26 0;
+#X connect 29 0 1 0;
+#X connect 30 0 31 2;
+#X connect 31 0 32 1;
+#X connect 31 1 32 2;
+#X connect 31 2 30 0;
+#X connect 33 0 31 0;
+#X connect 34 0 31 1;
+#X coords 0 -1 1 1 146 42 1 100 100;
+#X restore -23 53 pd ARGO;
+#X obj 547 144 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 551 151 pd ??;
+#N canvas 444 51 682 543 ARGO 0;
+#X obj 101 101 cnv 10 164 86 empty ColorForm empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 189 104 cnv 10 20 10 empty ColorForm GEM-Video 1 5 1 14 -228856
+-1 1.04858e+06;
+#X obj 101 183 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X text 84 188 gemlist;
+#X obj 93 437 outlet;
+#X obj 113 101 nbx 3 12 1 100 0 1 \$0-A \$0-B Render 35 7 1 9 -262144
+-1 -1 50 256;
+#X msg 50 151 set \$1;
+#X obj 113 117 bng 12 250 50 0 \$0-A ColorGEM empty 0 0 1 9 -262144
+-1 -1;
+#X obj 113 134 bng 12 250 50 0 \$0-A ColorGEM Config 16 7 1 9 -262144
+-1 -1;
+#X obj 125 117 nbx 3 12 0 10 0 1 \$0-A ColorGEM Device 32 7 1 9 -262144
+-1 -1 0 256;
+#X obj 206 115 vradio 12 1 1 6 \$0-A ColorGEM 1600x1200 14 7 1 9 -262144
+-1 -1 5;
+#X obj 220 130 cnv 10 20 10 empty empty 1280x960 0 4 1 9 -228856 -1
+0;
+#X obj 221 142 cnv 10 20 10 empty empty 640x480 0 4 1 9 -228856 -1
+0;
+#X obj 221 154 cnv 10 20 10 empty empty 320x240 0 4 1 9 -228856 -1
+0;
+#X obj 220 166 cnv 10 20 10 empty empty 160x120 0 4 1 9 -228856 -1
+0;
+#X obj 221 178 cnv 6 20 6 empty empty 80x60 0 4 1 9 -228856 -1 0;
+#X obj 113 151 vradio 12 1 1 3 \$0-A ColorGEM RGBA 15 7 1 9 -262144
+-1 -1 1;
+#X obj 128 166 cnv 7 20 6 empty empty YUV 0 4 1 9 -228856 -1 0;
+#X obj 53 24 r \$0-SendOnOff;
+#X obj 91 232 gemhead;
+#X obj 93 415 pix_video;
+#X msg -13 306 dialog;
+#X msg 36 306 device \$1;
+#X obj 35 286 change;
+#X msg 210 331 dimen 160 120;
+#X msg 209 308 dimen 320 240;
+#X msg 208 287 dimen 640 480;
+#X msg 206 266 dimen 1280 960;
+#X obj 206 218 select 0 1 2 3 4 5;
+#X msg 206 243 dimen 1600 1200;
+#X msg 211 352 dimen 80 60;
+#X obj 206 197 change;
+#X msg 101 305 colorspace RGBA;
+#X msg 111 331 colorspace YUV;
+#X obj 101 256 change;
+#X obj 101 279 select 0 1;
+#X msg 128 208 enumerate;
+#X msg 353 171 driver \$1;
+#X msg 352 148 0;
+#X msg 413 148 2;
+#X msg 382 148 1;
+#X msg 351 93 0;
+#X msg 412 93 2;
+#X msg 381 93 1;
+#X msg 352 123 quality \$1;
+#X msg 442 94 3;
+#X msg 354 195 0;
+#X msg 415 195 2;
+#X msg 384 195 1;
+#X msg 445 196 3;
+#X msg 355 225 channel \$1;
+#X msg 418 248 mode NTSC;
+#X msg 355 247 mode PAL;
+#X obj 76 -21 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 528 31 411 557 Help 0;
+#X text 92 -40 http://webcam-osx.sourceforge.net/;
+#X text 5 -90 - Fonctionne avec:;
+#X text 32 -78 - WebCam Philips USB SPC900NC;
+#X text 90 -52 + Driver Quicktime macam;
+#X text 61 -64 - Sous MacOSX.4 + Pd 0.39.2-extended;
+#X text 93 -2 + Driver Philips;
+#X text 63 -27 - Sous WindowsXP + Pd 0.38.4-extended;
+#X text 63 50 - Sous MacOSX.4 + Pd 0.39.2-extended;
+#X text 92 62 sans driver specifique;
+#X text 32 37 - Camescope Panasonic DV TriCCD NV-GS500 connecté USB
+;
+#X text 63 -14 - Sous WindowsXP + Pd 0.39.2-extended;
+#X obj 4 324 cnv 15 400 320 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 42 505 Solution: cocher Compatible;
+#X text 42 517 Se produit avec certaines cartes video \, de certains
+PC \, sous Windows...;
+#X text 42 542 Inconvenient: Charge CPU => la texture est calculée
+(objet pix_texture) par le processeur de l'ordinateur et pas par la
+carte video);
+#X text 36 482 GL: énumérant non valide (répété);
+#X text 7 323 - Erreur dans la fenêtre Pd:;
+#X text 19 336 - Sous MacOSX:;
+#X text 39 347 could not make new SG channnel;
+#X text 39 404 enumerate not supported on this OS;
+#X text 41 433 GEM: pix_videoDarwin: no video yet;
+#X text 42 444 pix_videoDarwin: SGIdle failed;
+#X text 18 470 - Sous WindowsXP;
+#X text 36 493 OpenGL: invalid enumerant (repeated);
+#X text 30 596 error: pix_videoDS: Could not open device: 0;
+#X text 41 608 en l'absence d'une camera connectée;
+#X text 42 619 ou en l'absence du driver de la camera;
+#X text 51 358 en l'absence d'une camera connectée;
+#X text 51 368 ou en l'absence du driver de la camera;
+#X text 52 415 DeviceList ne fonctionne pas sous MacOSX:;
+#X text 56 455 Ce module ne fonctionne pas sous Pd 0.38.4-extended
+;
+#X text 18 584 - error: pix_videoDS: No video capture devices found!
+;
+#X text 5 199 - Avec une seule camera: essayer device 0;
+#X text 32 76 - WebCam USB Logitech QuickCam Pro5000;
+#X text 65 89 - Sous WindowsXP + Driver Logitech;
+#X text 66 102 - Sous MacOSX + Driver macam v 0.9.1.;
+#X text 80 114 Fonctionne avec 3 WebCam identiques connectees simultanement
+en ouvrant 3 x le module ARGOGEMVideov04.pd et en choisissant Device
+0 \, 1 et 2;
+#X text 5 214 - En cas d'absence d'image (reduite a un point);
+#X text 40 227 - Essayer - Quitter Pd et relancer;
+#X text 17 255 YUV = Luma \, ChromaB \, ChromaR;
+#X text 5 243 - RGB = Red \, Green \, Blue;
+#X text 5 -106 - ATTENTION: GEM doit etre "On";
+#X text 7 274 ATTENTION un patch contenant un MiniModule GEM-Video
+peut prendre 10 secondes a s'ouvrir avec certaines cameras. Patience...
+;
+#X text 64 9 - Sous Linux Ubuntu 8.04 + Pd 0.41.4-extended sans driver
+specifique;
+#X text 5 155 - Ne fonctionne pas avec WebCam USB Logitech QuickCam
+Pro5000 sous Linux Ubuntu 8.04 + Pd 0.41.4-extended;
+#X text 58 180 -> "Unsupported color model"???;
+#X text 50 380 ou si une autre application utilise la camera;
+#X restore 83 -15 pd Help;
+#X obj 128 178 cnv 7 20 6 empty empty Grey 0 4 1 9 -228856 -1 0;
+#X obj 279 143 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 294 142 On/Off;
+#X obj -3 24 loadbang;
+#X obj -4 187 delay 2000;
+#X obj 150 -81 cnv 15 360 170 empty empty empty 20 12 0 14 -258113
+-66577 0;
+#X text 157 28 0/1 On/Off fonctionne sous Windows;
+#X text 157 60 quality fonctionne sous MacOSX mais pas d'effet visible
+;
+#X text 157 69 dialog ne fonctionne pas sous Linux;
+#X text 157 18 0/1 On/Off ne fonctionne pas sous MacOSX \, Linux;
+#X text 156 39 quality ne fonctionne pas sous Windows \, Linux avec
+camera Philips;
+#X text 158 -11 enumerate fonctionne sous Windows;
+#X text 158 7 dimen fonctionne sous MacOSX;
+#X text 158 -2 dimen ne fonctionne pas sous Windows avec cmera Philips
+;
+#X text 157 -20 enumerate ne fonctionne pas sous MacOSX \, Linux;
+#X obj 298 311 cnv 15 360 120 empty empty empty 20 12 0 14 -258113
+-66577 0;
+#X text 305 312 driver ne fonctionne pas sous MacOSX \, Windows;
+#X text 305 322 driver fonctionne sous Linux;
+#X text 302 370 channel ne fonctionne pas sous MacOSX \, Windows;
+#X text 302 380 channel fonctionne sous Linux;
+#X text 302 392 mode ne fonctionne pas sous MacOSX \, Windows;
+#X text 302 402 mode fonctionne sous Linux;
+#X text 305 343 video driver 0: video4linux;
+#X text 304 353 video driver 1: ieee1394 for linux;
+#X text 305 333 Par ex: la fen Pd affiche a l'ouverture du patch:;
+#X obj 101 101 tgl 12 1 \$0-A \$0-B empty 15 7 1 9 -262144 -1 -1 1
+1;
+#X obj 244 409 print;
+#X msg 414 278 zoom 2 2;
+#X msg 113 353 colorspace Grey;
+#X msg 174 377 colorspace Gray;
+#X obj 54 50 sel 0;
+#X msg 55 75 0;
+#X text 40 97 On/Off ->;
+#X msg 482 145 0;
+#X msg 512 145 1;
+#X msg 483 168 swap \$1;
+#X text 302 413 swap ne fonctionne pas sous MacOSX;
+#X msg 491 216 dimen 800 600;
+#X msg 491 239 dimen 400 300;
+#X msg 493 260 dimen 799 599;
+#X msg 493 283 dimen 512 512;
+#X msg 163 244 reset;
+#X obj 162 134 bng 12 250 50 0 \$0-A ColorGEM Reset 16 7 1 9 -262144
+-1 -1;
+#X text 269 100 7 1 2011;
+#X text 161 -37 - RGBA ne fonctionne pas sous MacOSX + Pd-0.42.5-extended
+;
+#X text 161 -58 - Grey fonctionne sous Windows \, Linux;
+#X text 161 -68 - Grey ne fonctionne pas sous MacOSX;
+#X text 155 -78 colorspace;
+#X text 161 -47 - RGBA fonctionne sous MacOSX + Pd-0.41.4-extended
+;
+#X obj 617 418 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 621 425 pd ??;
+#X connect 5 0 6 0;
+#X connect 6 0 19 0;
+#X connect 7 0 36 0;
+#X connect 8 0 21 0;
+#X connect 9 0 23 0;
+#X connect 10 0 31 0;
+#X connect 16 0 34 0;
+#X connect 18 0 85 0;
+#X connect 19 0 20 0;
+#X connect 20 0 4 0;
+#X connect 21 0 20 0;
+#X connect 22 0 20 0;
+#X connect 23 0 22 0;
+#X connect 24 0 20 0;
+#X connect 25 0 20 0;
+#X connect 26 0 20 0;
+#X connect 27 0 20 0;
+#X connect 28 0 29 0;
+#X connect 28 1 27 0;
+#X connect 28 2 26 0;
+#X connect 28 3 25 0;
+#X connect 28 4 24 0;
+#X connect 28 5 30 0;
+#X connect 29 0 20 0;
+#X connect 30 0 20 0;
+#X connect 31 0 28 0;
+#X connect 32 0 20 0;
+#X connect 33 0 20 0;
+#X connect 34 0 35 0;
+#X connect 35 0 32 0;
+#X connect 35 1 33 0;
+#X connect 35 2 83 0;
+#X connect 36 0 20 0;
+#X connect 37 0 20 0;
+#X connect 38 0 37 0;
+#X connect 39 0 37 0;
+#X connect 40 0 37 0;
+#X connect 41 0 44 0;
+#X connect 42 0 44 0;
+#X connect 43 0 44 0;
+#X connect 44 0 20 0;
+#X connect 45 0 44 0;
+#X connect 46 0 50 0;
+#X connect 47 0 50 0;
+#X connect 48 0 50 0;
+#X connect 49 0 50 0;
+#X connect 50 0 20 0;
+#X connect 51 0 20 0;
+#X connect 52 0 20 0;
+#X connect 56 0 20 0;
+#X connect 58 0 59 0;
+#X connect 59 0 34 0;
+#X connect 80 0 19 0;
+#X connect 83 0 20 0;
+#X connect 84 0 20 0;
+#X connect 85 0 86 0;
+#X connect 86 0 80 0;
+#X connect 88 0 90 0;
+#X connect 89 0 90 0;
+#X connect 90 0 20 0;
+#X connect 92 0 20 0;
+#X connect 93 0 20 0;
+#X connect 94 0 20 0;
+#X connect 95 0 20 0;
+#X connect 96 0 20 0;
+#X connect 97 0 96 0;
+#X coords 0 -1 1 1 166 88 1 100 100;
+#X restore -23 -76 pd ARGO;
+#X text 219 126 Si on choisit le nom "Truc" \, les fichiers se nommerront:
+Truc00000.tif Truc00001.tif Truc00002.tif etc...;
+#X text 219 152 (ou Truc00000.jpg Truc00001.jpg Truc00002.jpg etc...)
+;
+#X text 207 -20 2 Choisir le format des images: TIFF ou JPEG;
+#X text 200 48 ou;
+#X text 219 113 Choisir l'emplacement et le nom des fichiers;
+#X text 207 -91 0 Choisir la taille des images dans le MM GEM;
+#X text 207 -49 1 Régler Render (seuls les MM GEM de Render inférieur
+à celui de GEM-Record sont enregistrés);
+#X text -110 104 On/Off ->;
+#X text 219 -77 Ne pas choisir FullScreen;
+#X text 219 -64 Choisir la résolution des images dans le MM GEM-Video
+;
+#X text 207 62 3 bis Enregistrer une suite d'images:;
+#X text 220 75 Choisir Frames / sec dans MM GEM;
+#X text 219 87 Cliquer le gros bouton du MM GEM-Record-Image;
+#X text 219 100 ATTENTION Il y a autant d'images enregistrées que de
+frames.;
+#X text 207 -3 3 Enregistrer une image:;
+#X text 219 11 Cliquer le bouton "1 image".;
+#X text 219 23 Elle se nommera "gem00000.jpg" dans la racine du disque
+de démarrage.;
+#N canvas 383 67 383 453 ARGO 0;
+#X obj 101 101 cnv 10 228 34 empty \$0-Canvas empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 34 48 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 620 48 454 583 Help 0;
+#X obj 2 356 cnv 15 430 360 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 3 151 cnv 15 430 180 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 7 153 Probleme MacOSX;
+#X text 17 193 Solution: Pd-0.38.4-extended ou Pd-0.39.3-extended;
+#X text 38 166 - Les couleurs des images sont fausses sous Pd-0.39.2-extended-rc1
+rc2 rc3... Pd-0.39.3-extended-rc5...;
+#X text 8 212 Probleme MacOSX;
+#X text 44 224 - Impossible de changer la qualité des images JPEG:
+le message file xx avec xx > 1 donne une image au format TIFF avec
+une extension .JPEG!;
+#X text -5 -337 GEM-Record-Image;
+#X text 9 357 Citation;
+#X text 18 394 [pix_write] takes a picture of the frame buffer and
+saves it to a file. When a "bang" message is sent to [pix_write] \,
+that is the moment that something is captured from the current frame
+buffer. If you set "auto" to 1 (enabled) \, an image is written each
+rendering frame.;
+#X text 20 465 Currently only single-images are supported (no animations
+\, videos \, AVIs \, ...);
+#X text 19 672 You can set the size of the snapshot window as well
+as the position. These can be set via creation arguments too: [pix_write
+[<posX> <posY> [<sizeX> <sizeY>]]];
+#X text 20 505 With the "file" message you can specify a base-filename
+and the type of image-files you want to create.;
+#X text 20 548 The actual name of the file will be something like "<basefilename><current#>.<ext>"
+(like "GEM00001.tif");
+#X text 24 583 Supported file-types are TIFF (type=0) and JPEG (type>0
+\; quality=type \; you might want a high-quality (type>80) to like
+your images);
+#X text 24 634 TIFF-writing is very slow ! JPEG is fast (but ugly with
+low quality);
+#X text 20 375 Make a snapshot of the frame-buffer and write it to
+a file;
+#X text 10 -293 Ce MiniModule (MM) n'est pas relié explicitement (avec
+un cable) à un autre MM.;
+#X text 9 -320 Enregistre la fenetre GEM \, sur le disque dur \, en
+une suite de fichiers image au format TIFF ou JPEG;
+#X text 7 12 Astuce 1: Utiliser QuickTime Player Pro -> Menu Fichier
+-> Ouvrir une suite d'images... pour transformer une suite d'images
+en film (.mov ou .avi etc...);
+#X text 10 102 ImageJ -> Menu File -> Save as -> AVI... -> Choisir
+Compression \, Quality \, Frame Rate -> OK;
+#X text 7 75 ImageJ -> Menu File -> Import -> Image Sequence... ->
+selectionner la 1ere image Truc00000.jpg -> OK;
+#X text 8 62 Astuce 2 avec ImageJ:;
+#X text 11 129 Pour transformer une suite d'images en film .avi;
+#X text 8 268 Probleme Windows;
+#X text 39 281 - Les couleurs des images sont fausses en JPEG sous
+Pd-0.41.4-extended + carte Matrox (OK en TIFF);
+#X text 10 -46 Si on choisit le nom "Truc" \, les fichiers se nommerront:
+Truc00000.tif Truc00001.tif Truc00002.tif etc...;
+#X text 10 -20 (ou Truc00000.jpg Truc00001.jpg Truc00002.jpg etc...)
+;
+#X text -2 -192 2 Choisir le format des images: TIFF ou JPEG;
+#X text -3 -126 ou;
+#X text 10 -59 Choisir l'emplacement et le nom des fichiers;
+#X text -2 -263 0 Choisir la taille des images dans le MM GEM;
+#X text -2 -221 1 Régler Render (seuls les MM GEM de Render inférieur
+à celui de GEM-Record sont enregistrés);
+#X text 10 -249 Ne pas choisir FullScreen;
+#X text 10 -236 Choisir la résolution des images dans le MM GEM-Video
+;
+#X text -2 -110 3 bis Enregistrer une suite d'images:;
+#X text 11 -97 Choisir Frames / sec dans MM GEM;
+#X text 10 -85 Cliquer le gros bouton du MM GEM-Record-Image;
+#X text 10 -72 ATTENTION Il y a autant d'images enregistrées que de
+frames.;
+#X text -2 -175 3 Enregistrer une image:;
+#X text 10 -161 Cliquer le bouton "1 image".;
+#X text 10 -149 Elle se nommera "gem00000.jpg" dans la racine du disque
+de démarrage.;
+#X restore 40 54 pd Help;
+#X obj 46 191 gemhead;
+#X msg 63 170 set \$1;
+#X obj 152 429 pix_write;
+#X msg 106 387 file \$1;
+#X obj 174 214 sel 0 1;
+#X obj 193 278 savepanel;
+#X obj 195 337 delay 1000;
+#X obj 299 251 float;
+#X obj 344 251 + 1;
+#X obj 298 210 metro 1000;
+#X msg 344 231 -1;
+#X msg 215 388 auto 1;
+#X msg 164 387 auto 0;
+#X msg 298 186 stop;
+#X msg 264 338 file;
+#X obj 264 387 route list;
+#X obj 264 363 pack s s;
+#N canvas 41 143 290 366 CouleurRecord 0;
+#X obj 122 -19 +;
+#X obj 122 37 +;
+#X obj 61 -75 * -65536;
+#X obj 117 -75 * -256;
+#X obj 163 -77 * -1;
+#X obj 122 68 - 1;
+#X obj 41 -174 inlet;
+#X text 77 -97 R;
+#X text 123 -99 G;
+#X text 172 -98 B;
+#X obj 122 123 outlet;
+#X text 137 -190 Rouge;
+#X msg 134 -121 255;
+#X msg 167 -121 0;
+#X obj 134 -148 t b b b;
+#X msg 198 -121 0;
+#X obj 40 -148 t b b b;
+#X msg 40 -121 220;
+#X msg 73 -121 220;
+#X msg 104 -121 220;
+#X msg 122 96 color \$1 \$1 -1;
+#X obj 135 -173 inlet;
+#X text 46 -192 Gris;
+#X connect 0 0 1 1;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 20 0;
+#X connect 6 0 16 0;
+#X connect 12 0 2 0;
+#X connect 13 0 3 0;
+#X connect 14 0 12 0;
+#X connect 14 1 13 0;
+#X connect 14 2 15 0;
+#X connect 15 0 4 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 16 2 19 0;
+#X connect 17 0 2 0;
+#X connect 18 0 3 0;
+#X connect 19 0 4 0;
+#X connect 20 0 10 0;
+#X connect 21 0 14 0;
+#X restore 204 74 pd CouleurRecord;
+#X obj 198 100 hsl 130 20 0 127 0 0 \$0-A \$0-B GEM-Record-Image 0
+11 1 14 -228856 -228856 -1 0 1;
+#X obj 229 120 nbx 4 16 0 9999 0 0 \$0-A ColorTime sec 50 9 1 12 -208064
+-1 -1 0 256;
+#X obj 100 112 vradio 12 1 1 2 \$0-SendFormat \$0-ReceiveFormat empty
+14 5 1 9 -262144 -1 -1 1;
+#X obj 114 115 cnv 10 20 10 empty empty TIFF 0 4 1 9 -228856 -1 0;
+#X obj 114 128 cnv 5 20 7 empty empty JPEG 0 4 1 9 -228856 -1 0;
+#X obj 142 123 bng 13 1000 50 0 \$0-SendImage \$0-ReceiveImage empty
+17 6 1 9 -262144 -258113 -1;
+#X obj 157 125 cnv 10 20 10 empty empty 1 0 4 1 10 -228856 -1 0;
+#X obj 165 125 cnv 10 20 10 empty empty image 0 4 1 10 -228856 -1 0
+;
+#X obj 112 100 nbx 3 12 1 100 0 1 \$0-A \$0-B Render 33 7 1 9 -262144
+-1 -1 60 256;
+#X obj 100 100 tgl 12 1 \$0-A \$0-B empty 15 7 1 9 -262144 -1 -1 1
+1;
+#X text 42 96 On/Off ->;
+#X obj 175 100 bng 20 250 50 0 \$0-A *0-B empty 17 7 0 10 -262144 -258113
+-1;
+#X obj 174 192 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 195 362 t b b b;
+#X msg 185 169 set 1;
+#X msg 133 169 set 0;
+#X obj 194 303 t b b b b s b;
+#X obj 174 145 t b b b b b;
+#X obj 193 245 t b b b;
+#X obj 115 196 t b b;
+#X text 317 83 9 1 2011;
+#X obj 332 410 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 336 417 pd ??;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 6 0 5 0;
+#X connect 7 1 39 0;
+#X connect 8 0 37 0;
+#X connect 9 0 34 0;
+#X connect 10 0 11 0;
+#X connect 11 0 10 1;
+#X connect 11 0 22 0;
+#X connect 12 0 10 0;
+#X connect 13 0 11 0;
+#X connect 14 0 5 0;
+#X connect 15 0 5 0;
+#X connect 16 0 12 0;
+#X connect 17 0 19 0;
+#X connect 18 0 5 0;
+#X connect 19 0 18 0;
+#X connect 20 0 21 0;
+#X connect 21 0 38 0;
+#X connect 23 0 6 0;
+#X connect 26 0 40 0;
+#X connect 29 0 4 0;
+#X connect 30 0 3 0;
+#X connect 32 0 38 0;
+#X connect 33 0 7 0;
+#X connect 34 0 12 0;
+#X connect 34 1 14 0;
+#X connect 34 2 13 0;
+#X connect 35 0 33 0;
+#X connect 36 0 33 0;
+#X connect 37 0 9 0;
+#X connect 37 1 20 1;
+#X connect 37 2 13 0;
+#X connect 37 3 17 0;
+#X connect 37 4 19 1;
+#X connect 37 5 35 0;
+#X connect 38 0 33 0;
+#X connect 38 1 15 0;
+#X connect 38 3 16 0;
+#X connect 38 4 20 0;
+#X connect 39 0 8 0;
+#X connect 39 1 36 0;
+#X connect 39 2 13 0;
+#X connect 40 0 5 0;
+#X connect 40 1 13 0;
+#X coords 0 -1 1 1 230 36 1 100 100;
+#X restore -50 108 pd ARGO;
+#X connect 2 0 1 0;
+#X connect 16 0 13 0;
+#X connect 16 0 12 0;

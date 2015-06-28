@@ -1,0 +1,34 @@
+#N canvas 1 116 1326 650 10;
+#N canvas 1 68 450 300 (subpatch) 0;
+#X array \$0-test 48000 float 2;
+#X coords 0 1 48000 -1 1000 300 1 0 0;
+#X restore 100 140 graph;
+#X obj 220 -57 inlet~;
+#X obj 221 23 tabwrite~ \$0-test;
+#X obj 378 -22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 102 75 hradio 10 1 0 100 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 427 -62 inlet;
+#X obj 897 -52 inlet;
+#X obj 220 -25 *~ 1;
+#X obj 487 -45 loadbang;
+#X obj 507 14 \$1;
+#X obj 429 42 metro 10;
+#X obj 896 -29 \$0;
+#X obj 896 -6 list append \$2;
+#X obj 900 41 soundfiler;
+#X msg 896 17 write -wave -bytes 4 \$2.wav \$1-test;
+#X connect 1 0 7 0;
+#X connect 3 0 2 0;
+#X connect 5 0 10 0;
+#X connect 6 0 11 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 1;
+#X connect 10 0 3 0;
+#X connect 11 0 12 0;
+#X connect 12 0 14 0;
+#X connect 14 0 13 0;
+#X coords 0 -1 1 1 1000 340 1 100 100;

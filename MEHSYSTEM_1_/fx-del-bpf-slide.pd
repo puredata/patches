@@ -1,0 +1,46 @@
+#N canvas 77 56 961 710 12;
+#X obj -408 -367 r~ \$1-pre-fxall-l;
+#X obj -350 -342 r~ \$1-pre-fxall-r;
+#X obj -409 219 throw~ \$1-post-fxall-l;
+#X obj -327 172 switch~;
+#X obj -408 143 fx_switch \$0;
+#X obj -407 -316 fx_release-pre \$0;
+#X obj -368 195 throw~ \$1-post-fxall-r;
+#X obj -316 108 fx_release-post \$0 \$1;
+#X obj 12 -93 r \$0-main-bpm-ms;
+#X obj -466 -288 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -316 -24 st-del-solodelay.meh 20 0 1 0.25;
+#X obj 12 -117 r \$0-x-to-fx;
+#X obj -94 -115 loadbang;
+#X text 19 -282 st-del-solodelay.meh \; ---------------------- \; \$1-
+ms line para pasar de una a otro (default: 20ms) \; \; inlet-1 inlet-2:
+signals \; inlet-3: 0-1 gain y volumen \; inlet-4: 0-15 - delay-time
+(predefinidos) \; inlet-5: main-bpm-ms;
+#X msg -94 -88 1;
+#X obj 2 2 fx_panel8 \$0 \$1 \$2 \$3 \$4;
+#X obj -316 -276 st-bp.meh;
+#X obj -189 -313 lin-eq-conv 0 127 0 1;
+#X obj -189 -340 r \$0-y-to-fx;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 4 0 2 0;
+#X connect 4 1 6 0;
+#X connect 4 2 3 0;
+#X connect 5 0 4 0;
+#X connect 5 0 16 0;
+#X connect 5 1 4 1;
+#X connect 5 1 16 1;
+#X connect 7 0 4 0;
+#X connect 7 1 4 1;
+#X connect 8 0 10 4;
+#X connect 10 0 7 0;
+#X connect 10 1 7 1;
+#X connect 11 0 10 3;
+#X connect 12 0 14 0;
+#X connect 14 0 10 2;
+#X connect 16 0 10 0;
+#X connect 16 1 10 1;
+#X connect 17 0 16 2;
+#X connect 18 0 17 0;
+#X coords 0 -1 1 1 240 70 1 0 0;

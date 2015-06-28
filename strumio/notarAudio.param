@@ -1,0 +1,27 @@
+/freeverb/wet float 0;
+/freeverb/width float 1;
+/freeverb/roomsize float 0.3;
+/freeverb/freeze float 0;
+/freeverb/damping float 0.4;
+/echovd/wet float 0;
+/echovd/delay float 100;
+/echovd/strength float 0.5;
+/bufferfx/wet float 0;
+/bufferfx/length float 3;
+/bufferfx/update float 30;
+/lofi/wet float 0;
+/lofi/freq float 0.5;
+/lofi/bits float 0.4;
+/tremolo/wet float 0;
+/tremolo/frequency float 0;
+/tremolo/shape float 0;
+/tr4/patterns clear;
+/tr4/patterns list 0 matrix 12 16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 -1 -1 -1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1;
+/tr4/patterns float 0;
+/tr4/quantization symbol beat;

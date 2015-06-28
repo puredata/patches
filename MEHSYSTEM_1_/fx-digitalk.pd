@@ -1,0 +1,55 @@
+#N canvas 309 56 842 710 12;
+#X msg -178 -37 0 \$1;
+#X obj -382 11 diy2/st-material;
+#X obj -177 -60 lin-eq-conv 0 127 0 1;
+#X obj -174 -82 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5400 1;
+#X msg -243 -36 1 0.5;
+#X obj -296 -65 loadbang;
+#X msg -296 -36 0 0.5;
+#X obj 2 2 fx_panel \$0 \$1 \$2 \$3 \$4;
+#X obj -508 -343 r~ \$1-pre-fxall-l;
+#X obj -450 -313 r~ \$1-pre-fxall-r;
+#X obj -507 425 throw~ \$1-post-fxall-l;
+#X obj -425 378 switch~;
+#X obj -506 349 fx_switch \$0;
+#X obj -507 -277 fx_release-pre \$0;
+#X obj -466 401 throw~ \$1-post-fxall-r;
+#X obj -385 304 fx_release-post \$0 \$1;
+#X text 60 -363 Este FX es un agregado al BYPASS;
+#X obj -540 -360 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 56 -154 st-feedback-stereo.meh \; ---------------------- \;
+\$1- ms line para pasar de una a otro \; \$2- paneo (0: total \, 1:-mono)
+\; \$3- delay adicional del canal derecho;
+#X obj -326 -308 r \$0-x-to-fx;
+#X obj -414 -172 st-decimator.meh;
+#X obj -326 -252 lin-eq-conv 0 127 0 1;
+#X obj 168 21 cnv 15 35 40 empty empty * 0 30 0 60 -262144 -258113
+0;
+#X connect 0 0 1 2;
+#X connect 1 0 15 0;
+#X connect 1 1 15 1;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 2;
+#X connect 5 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 2;
+#X connect 8 0 13 0;
+#X connect 9 0 13 1;
+#X connect 12 0 10 0;
+#X connect 12 1 14 0;
+#X connect 12 2 11 0;
+#X connect 13 0 12 0;
+#X connect 13 0 20 0;
+#X connect 13 1 12 1;
+#X connect 13 1 20 1;
+#X connect 15 0 12 0;
+#X connect 15 1 12 1;
+#X connect 19 0 21 0;
+#X connect 20 0 1 0;
+#X connect 20 1 1 1;
+#X connect 21 0 20 2;
+#X connect 21 0 20 3;
+#X coords 0 -1 1 1 240 70 1 0 0;

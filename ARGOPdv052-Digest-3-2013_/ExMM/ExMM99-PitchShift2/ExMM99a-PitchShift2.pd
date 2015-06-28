@@ -1,0 +1,413 @@
+#N canvas 193 22 751 441 10;
+#X obj -159 -140 cnv 15 15 15 empty empty ExMM99a-PitchShift2.pd 0
+8 1 14 -262144 -1 0;
+#X text 25 155 Adjust ->;
+#X floatatom 229 112 5 0 0 2 - - -;
+#X msg 197 82 -5;
+#X msg 262 82 5;
+#X msg 229 82 0;
+#N canvas 219 46 718 469 ARGO 0;
+#X obj 368 103 cnv 10 20 10 empty empty Play 1 5 1 14 -262144 -1 1.04858e+06
+;
+#X obj 101 130 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 82 450 outlet~;
+#X obj -13 64 openpanel;
+#X msg 212 352 1;
+#X msg 141 326 0;
+#X msg 25 107 set \$1;
+#X msg 242 377 open \$1;
+#X obj 197 291 t b b;
+#X msg 222 436 set 0;
+#X obj 177 193 sel 1 0;
+#X floatatom 230 231 5 0 0 0 - - -;
+#X msg 230 208 set \$1;
+#X obj 204 261 sel 1;
+#X msg 110 361 set 1;
+#X obj 185 6 key;
+#X obj 186 29 select 32;
+#X obj 42 7 loadbang;
+#X obj 243 404 readsf~ 2;
+#X obj -12 84 t b s;
+#X obj 151 100 tgl 12 1 \$0-A \$0-B Play(Space) 14 6 1 9 -262144 -1
+-1 1 1;
+#X obj 311 100 bng 12 250 50 0 \$0-A \$0-B Stop 14 6 1 9 -262144 -1
+-1;
+#X obj 249 100 tgl 12 1 \$0-A \$0-B Loop 15 6 1 9 -262144 -1 -1 1 1
+;
+#X obj 48 196 list2symbol;
+#X obj 100 100 bng 12 250 50 0 \$0-A \$0-B empty 14 6 1 9 -262144 -1
+-1;
+#X obj 174 328 delay 5;
+#X obj 102 6 inlet~;
+#X obj 101 58 threshold~ 0.5 5 0.49 5;
+#X obj 101 100 cnv 2 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 102 101 cnv 2 8 2 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 75 81 Trig Decl;
+#X obj 106 113 hradio 14 1 0 20 empty empty empty 0 6 0 8 -260097 -260097
+-260097 0;
+#X obj -13 42 bang;
+#X text 403 115 <- Click the name to change;
+#X symbolatom 101 113 49 0 0 0 - - -;
+#X obj 49 140 cnv 15 400 50 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X text 51 139 Nom du fichier / File name;
+#X text 454 152 <- Ajouter ../ devant le nom du fichier \; pour remonter
+d'un dossier;
+#X obj 654 424 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 658 431 pd ??;
+#X obj 396 258 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 309 46 564 575 Help 0;
+#X obj 9 -296 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 -297 Citation;
+#X obj 8 -51 cnv 15 550 310 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 20 -44 - Ne lit pas un fichier au format mp3 \, SoundDesigner
+II (.SDII ou .SD2);
+#X text 23 56 Solution: ouvrir puis sauver le fichier au format aiff
+avec Audacity;
+#X text 36 43 error: dsp: xxx.aiff: unknown or bad header format;
+#X text 31 -281 READSF~ - read a soundfile;
+#X text 30 -263 The wave \, aiff \, and nextstep formats are parsed
+automatically \, although only 2- 3- and 4- byte samples are accepted
+(4 bytes implies floating point and is not available in aiff format.)
+;
+#X text 13 -189 - Si le Patch est sauvé avec 1 Player contenant un
+nom de fichier Audio \, ce fichier sera lu automatiquement à la prochaine
+ouverture s'il n'a pas changé d'emplacement.;
+#X text 191 206 If the sample rate of pd is set to 44100 \, files having
+the sample rates of 44100 are correctly played \, other files will
+be transposed.;
+#X text 193 179 WARNING The sample rate of the output depends on the
+system sample rate of pd:;
+#X text 21 95 - ATTENTION Le taux d'échantillonnage de la lecture du
+fichier dépends du taux d'échantillonnage de Pd.;
+#X text 33 122 Si le taux d'échantillonnage de Pd est de 44100 (Menu
+Preferences -> Audio Settings...) \, les fichiers échantillonnés à
+44100 Hz sont lus correctement \, sinon ils sont transposés.;
+#X text 12 -143 - Peut Ouvrir automatiquement 1 fichier qui se trouve
+dans le même dossier que lui \, quelquesoit l'emplacement du dossier.
+Pour cela ouvrir le module et taper le nom du fichier (sans chemin
+d'accés) dans le message. Le dossier contenant le patch et le fichier
+Audio est ainsi transportable.;
+#X text 21 4 - Ne lit pas un fichier au format aiff "Entier petit boutien"
+comme les pistes d'un CD Audio copiées avec le finder du Mac. Le message
+d'erreur s'affichent:;
+#X text 8 -434 MM Audio-Play;
+#X text 18 -404 Le canal 2 d'un fichier Audio Stereo est mélangé au
+canal 1;
+#X text 18 -390 Les canaux 3 \, 4... d'un fichier Audio de plus de
+2 canaux ne sont pas lus.;
+#X text 197 -328 Channels 3 \, 4... of an Audio file of more than 2
+channels are not read.;
+#X text 197 -342 Channel 2 of a Stereo Audio file is mixed with channel
+1;
+#X text 19 -418 Lit un fichier Audio Mono (1 canal) au format aiff
+\, wav.;
+#X text 198 -357 Reads a Mono Audio file (1 channel) with aiff \, wav
+format..;
+#X restore 403 264 pd Help;
+#X text 405 96 13 11 2010;
+#X msg 53 158 bell.aiff;
+#X connect 3 0 19 0;
+#X connect 4 0 18 0;
+#X connect 5 0 18 0;
+#X connect 6 0 43 0;
+#X connect 7 0 18 0;
+#X connect 8 0 25 0;
+#X connect 8 1 43 0;
+#X connect 9 0 20 0;
+#X connect 10 0 8 0;
+#X connect 10 1 9 0;
+#X connect 10 1 5 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 24 0;
+#X connect 14 0 20 0;
+#X connect 15 0 16 0;
+#X connect 16 0 20 0;
+#X connect 17 0 43 0;
+#X connect 18 0 2 0;
+#X connect 18 1 2 0;
+#X connect 18 2 11 0;
+#X connect 18 2 9 0;
+#X connect 19 0 43 0;
+#X connect 19 1 6 0;
+#X connect 20 0 10 0;
+#X connect 21 0 5 0;
+#X connect 21 0 9 0;
+#X connect 22 0 12 0;
+#X connect 23 0 34 0;
+#X connect 23 0 7 0;
+#X connect 24 0 8 0;
+#X connect 25 0 4 0;
+#X connect 25 0 14 0;
+#X connect 26 0 27 0;
+#X connect 27 0 24 0;
+#X connect 31 0 32 0;
+#X connect 32 0 3 0;
+#X connect 43 0 23 0;
+#X coords 0 -1 1 1 300 35 2 100 100;
+#X restore 86 32 pd ARGO;
+#X obj 5 85 switch~;
+#N canvas 608 166 228 173 ARGOnOff 0;
+#X obj 100 100 tgl 18 1 \$0-SendOnOff \$0-ReceiveOnOff On/Off 20 11
+1 14 -4033 -1 -1 1 1;
+#X obj 99 10 loadbang;
+#X msg 99 33 \; pd dsp 1;
+#X obj 100 129 outlet;
+#X text -50 99 Audio On/Off du patch ->;
+#X text -22 45 Audio General On ->;
+#X text 107 82 17 3 2010;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 65 18 2 100 100;
+#X restore 5 67 pd ARGOnOff;
+#X text 10 51 V;
+#X text 10 44 |;
+#X text -2 33 On/Off Patch;
+#X obj 63 273 dac~ 1 2;
+#X obj 330 260 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 334 264 pd ???;
+#N canvas 324 59 331 313 ARGO 0;
+#X obj 101 101 cnv 20 104 34 empty ColorAmpli empty 20 12 0 14 -261299
+-1 1.04858e+06;
+#X obj 85 285 outlet~;
+#X obj 134 104 cnv 10 20 10 empty ColorAmpli Ampli 1 5 1 14 -261299
+-1 1.04858e+06;
+#X obj 85 72 inlet~;
+#X obj 85 260 *~;
+#X obj 103 118 hsl 101 12 -80 20 0 1 \$0-A ColorAmpli 0dB 0 7 1 9 -261299
+-1 -1 8000 0;
+#X msg -24 161 label \$1;
+#X obj -25 138 tosymbol;
+#X obj -25 103 sprintf %ddB;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text -16 120 -> -80dB..20dB;
+#X text 106 182 -> 0.0001..10 = -80dB..20dB;
+#X text 209 97 5 5 2011;
+#X obj 100 163 expr (pow(10 \, $f1 / 20));
+#X text 107 140 -> -80..20;
+#X obj 227 270 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 231 277 pd ??;
+#X obj 100 206 sel 0.0001;
+#X msg 100 234 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 5 0 14 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 0;
+#X connect 14 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 4 1;
+#X connect 19 0 4 1;
+#X connect 19 0 7 0;
+#X coords 0 -1 1 1 106 36 1 100 100;
+#X restore 86 204 pd ARGO;
+#X text -21 214 Niveau general ->;
+#X text -15 224 General level ->;
+#N canvas 362 47 295 285 ARGO 0;
+#X obj 101 101 cnv 20 148 46 empty ColorForm PitchShift2 50 9 1 14
+-188398 -1 1.04858e+06;
+#X obj 101 143 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 93 50 inlet~;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 93 262 outlet~;
+#X obj 18 14 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 373 22 423 575 Help 0;
+#X obj 10 28 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 13 30 Citation;
+#X text 312 2 = Transposition;
+#X text 10 5 PitchShift = Pitch shifting = Décalage en hauteur;
+#X text 13 342 [soundtouch~] for Pd written by Katja Vetter;
+#X text 14 387 based on Olli Parviainen's SoundTouch library;
+#X obj 14 404 pddp/pddplink http://www.surina.net/soundtouch/;
+#X text 25 47 [soundtouch~] is a Pure Data implementation of Olli Parviainen's
+SoundTouch library \, ported by Katja Vetter. The class is implemented
+as a real-time pitch shifter \, converting an audio stream to different
+pitch. [soundtouch~] version 0.9 \, Aug 2011 for SoundTouch version
+1.6 and Pure Data version 0.42;
+#X obj 30 358 pddp/pddplink http://www.katjaas.nl/pitchshift/pitchshift.html
+;
+#X obj 30 370 pddp/pddplink http://www.katjaas.nl/pitchshift/soundtouch%7E.html
+;
+#X obj 14 416 pddp/pddplink http://www.surina.net/article/time-and-pitch-scaling.html
+;
+#X text 304 309 Katja Vetter;
+#X text 25 138 "For me \, Pure Data's appeal is in it's unlimited options
+for processing input signals. Therefore \, I am not going to worry
+about soundfiles and index imprecision. I am more than happy with SoundTouch
+built into [soundtouch~] as a realtime pitch shifter. My main purpose
+for it is the transformation of speech and solo instruments in live
+performance. Combined with the parametric Fourier filter described
+on an earlier page \, and enhancements like filtering \, compression
+and distortion \, the pitch shifter should be able to do a huge variety
+of voice transformations. A single artist could impersonate a multitude
+of characters with help of such a 'voicetrafo' module. More about that
+on the page Instant Decomposer.";
+#X obj 10 441 cnv 15 400 120 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 26 462 Notice that clicks and cracks during pitch-factor changes
+are inherent to the way soundtouch~ binaries were built for this distribution
+\, and a compile-time option exists to trade these artifacts for a
+longer latency time (see section 'how to build'). Please do not send
+me bug reports about this \, but instead recompile the class according
+to your preference.;
+#X text 18 446 Clicks;
+#X restore 25 20 pd Help;
+#X obj 103 118 hsl 145 12 -24 12 0 1 \$0-A ColorTime 5semitone 0 7
+1 9 -208064 -1728 -1 11600 0;
+#X obj 239 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#N canvas 484 315 248 174 label 0;
+#X obj 46 76 outlet;
+#X obj 46 -70 inlet;
+#X msg 46 42 label \$1;
+#X obj 46 20 tosymbol;
+#X obj 46 -14 sprintf %ssemitone;
+#X obj 46 -43 expr (int(100 * $f1) / 100) \;;
+#X connect 1 0 5 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X restore 16 108 pd label;
+#X obj 149 47 cnv 15 100 24 empty empty empty 20 12 0 14 -261682 -66577
+0;
+#X text 149 44 Nombre ->;
+#X text 149 54 Number ->;
+#X obj 209 50 inlet;
+#X obj 103 130 hsl 145 12 10 100 0 1 \$0-A ColorTime 40ms 0 7 1 9 -208064
+-1728 -1 4900 0;
+#N canvas 795 278 161 155 label 0;
+#X obj 46 76 outlet;
+#X obj 46 -43 inlet;
+#X msg 46 42 label \$1;
+#X obj 46 20 tosymbol;
+#X obj 46 -14 sprintf %dms;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X restore 16 136 pd label;
+#X obj 93 237 soundtouch~ 40;
+#X text 194 83 16 9 2011;
+#X obj 174 207 exp;
+#X obj 174 186 * 0.05776;
+#X obj 236 247 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 240 251 pd ???;
+#X text 171 28 -24..+12 semitones;
+#X msg 100 207 set \$1;
+#X connect 2 0 16 0;
+#X connect 7 0 9 0;
+#X connect 7 0 19 0;
+#X connect 9 0 7 0;
+#X connect 13 0 7 0;
+#X connect 14 0 15 0;
+#X connect 14 0 23 0;
+#X connect 15 0 14 0;
+#X connect 16 0 4 0;
+#X connect 18 0 16 1;
+#X connect 19 0 18 0;
+#X connect 23 0 16 0;
+#X coords 0 -1 1 1 150 48 1 100 100;
+#X restore 86 141 pd ARGO;
+#X text 239 134 <- -24..+12 semitones;
+#X obj -150 -119 cnv 15 730 140 empty empty empty 20 12 0 14 -4033
+-66577 0;
+#X obj -21 -47 pddp/pddplink http://puredata.info/docs/faq/how-do-i-install-externals-and-help-files
+;
+#X text 216 -80 Put the corresponding file in the same folder as the
+patch containing the MiniModule or in a special folder:;
+#X text -145 -80 Placer le fichier correpondant dans le même dossier
+que le patch contenant le MiniModule ou dans un dosier spécial:;
+#X text -147 -116 ATTENTION PitchShift2 utilise un objet qui n'est
+pas inclus dans Pd-0.42.5-extended.;
+#X text 216 -116 WARNING PitchShift2 uses an object that is not included
+in Pd-0.42.5-extended.;
+#X text -105 -30 Sous MacOS exige soundtouch~.pd_darwin.;
+#X text -105 -17 Sous Linux exige soundtouch~.pd_linux.;
+#X text -105 -4 Sous Windows exige soundtouch~.dll.;
+#X text 267 -30 Under MacOS requires soundtouch~.pd_darwin.;
+#X text 267 -17 Under Linux requires soundtouch~.pd_linux.;
+#X text 267 -4 Under Windows requires Soundtouch~.dll.;
+#X connect 2 0 18 1;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 18 0;
+#X connect 8 0 7 0;
+#X connect 15 0 12 0;
+#X connect 15 0 12 1;
+#X connect 18 0 15 0;

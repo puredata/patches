@@ -1,0 +1,802 @@
+#N canvas 348 22 424 356 10;
+#N canvas 608 166 249 182 ARGOnOff 0;
+#X obj 100 100 tgl 18 1 \$0-SendOnOff \$0-ReceiveOnOff On/Off 20 9
+0 12 -4033 -1 -1 1 1;
+#X obj 99 39 loadbang;
+#X msg 99 62 \; pd dsp 1;
+#X obj 100 129 outlet;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 65 18 2 100 100;
+#X restore 218 12 pd ARGOnOff;
+#X obj 218 37 switch~;
+#X obj -41 9 cnv 15 15 15 empty empty ExMM46c-FilterHighPassCtrl.pd
+0 8 1 14 -262144 -1 0;
+#X text -11 262 1xFlt;
+#X text 29 262 2xFlt;
+#X text 69 262 3xFlt;
+#X text 112 262 4xFlt;
+#X text 135 241 <- Adjust;
+#N canvas 204 127 709 478 ARGO 0;
+#X obj 368 103 cnv 10 20 10 empty empty Play 1 5 1 14 -262144 -1 1.04858e+06
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 89 459 outlet~;
+#X obj 266 30 openpanel;
+#X msg 212 359 1;
+#X msg 141 333 0;
+#X msg 294 76 set \$1;
+#X msg 242 384 open \$1;
+#X obj 188 305 t b b;
+#X msg 220 441 set 0;
+#X obj 179 200 sel 1 0;
+#X floatatom 230 242 5 0 0 0 - - -;
+#X msg 230 219 set \$1;
+#X obj 204 268 sel 1;
+#X msg 162 373 set 1;
+#X obj 195 5 key;
+#X obj 196 28 select 32;
+#X obj 49 6 loadbang;
+#X obj 169 417 readsf~ 2;
+#X obj 274 330 list2symbol;
+#X obj 242 359 symbol;
+#X obj 267 50 t b s;
+#X text 369 339 avec espace;
+#X text 351 327 -> pour les noms de fichier;
+#X obj 151 101 tgl 12 1 \$0-A \$0-B Play(Space) 14 6 1 9 -262144 -1
+-1 1 1;
+#X obj 311 101 bng 12 250 50 0 \$0-A \$0-B Stop 14 6 1 9 -262144 -1
+-1;
+#X obj 249 101 tgl 12 1 \$0-A \$0-B Loop 15 6 1 9 -262144 -1 -1 1 1
+;
+#X msg 50 114 set \$1;
+#X obj 53 200 list2symbol;
+#X obj 49 40 t b b;
+#X obj 174 335 delay 5;
+#X obj 111 6 inlet~;
+#X obj 111 48 threshold~ 0.5 5 0.49 5;
+#X text 346 36 Lit un fichier Audio Mono (1 canal).;
+#X text 346 49 Le canal 2 d'un fichier Audio Stereo est mélangé au
+canal 1;
+#X text 346 63 Les canaux 3 \, 4... d'un fichier Audio de plus de 2
+canaux ne sont pas lus.;
+#X text 296 242 Channels 3 \, 4... of an Audio file of more than 2
+channels are not read.;
+#X text 296 228 Channel 2 of a Stereo Audio file is mixed with channel
+1;
+#X text 297 214 Reads an Mono Audio file (1 channel).;
+#X obj 488 82 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 294 22 563 525 Help 0;
+#X obj 8 103 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 11 102 Citation;
+#X obj 8 348 cnv 15 550 300 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 10 -23 - Ne lit pas un fichier au format mp3 \, SoundDesigner
+II (.SDII ou .SD2);
+#X text 27 48 error: soundfiler_read: x.aiff: unknown or bad header
+format;
+#X text 14 72 Solution: ouvrir puis sauver le fichier au format aiff
+avec Audacity;
+#X text 13 9 - Ne lit pas un fichier au format aiff "Entier petit boutien"
+comme les pistes d'un CD Audio copiées avec le finder du Mac. Les messages
+d'erreur s'affichent:;
+#X text 27 59 error: dsp: xxx.aiff: unknown or bad header format;
+#X text 9 -42 - Lit un fichier Audio au format aiff \, wave;
+#X text 30 118 READSF~ - read a soundfile;
+#X text 29 136 The wave \, aiff \, and nextstep formats are parsed
+automatically \, although only 2- 3- and 4- byte samples are accepted
+(4 bytes implies floating point and is not available in aiff format.)
+;
+#X text 20 606 Erreur dans la fenêtre Pd:;
+#X text 11 249 - Peut Ouvrir automatiquement 1 fichier qui se trouve
+dans le même dossier que lui \, quelquesoit l'emplacement du dossier.
+Pour cela ouvrir le module et taper le nom du fichier (sans chemin
+d'accés) dans le message. Sauver le patch. Fermer le patch. Ré-ouvrir
+le patch. Le dossier contenant le module ARGO et le fichier image est
+ainsi transportable.;
+#X text 11 208 - Si le Patch est sauvé avec 1 Player contenant un nom
+de fichier Audio \, ce fichier sera lu automatiquement à la prochaine
+ouverture s'il n'a pas changé d'emplacement.;
+#X text 54 544 Les canaux 1 2 3 4 sortent sur les sorties 5 6 7 8;
+#X text 54 555 Les canaux 5 6 7 8 sortent sur les sorties 1 2 3 4;
+#X text 36 566 Pas de bug sur un fichier à 2 ou 4 canaux;
+#X text 36 577 Pas de bug sur un fichier wav;
+#X text 35 533 Sur un fichier aiff à 8 canaux;
+#X text 24 517 Bug du Player à 8 sorties.;
+#X text 186 466 If the sample rate of pd is set to 44100 \, files having
+the sample rates of 44100 are correctly played \, other files will
+be transposed.;
+#X text 188 439 WARNING The sample rate of the output depends on the
+system sample rate of pd:;
+#X text 16 355 - ATTENTION Le taux d'échantillonnage de la lecture
+du fichier dépends du taux d'échantillonnage de Pd.;
+#X text 28 382 Si le taux d'échantillonnage de Pd est de 44100 (Menu
+Preferences -> Audio Settings...) \, les fichiers échantillonnés à
+44100 Hz sont lus correctement \, sinon ils sont transposés.;
+#X restore 495 88 pd Help;
+#X text 75 81 Trig Decl;
+#X obj 100 101 bng 12 250 50 0 \$0-A \$0-B empty 14 6 1 9 -262144 -1
+-1;
+#X obj 101 101 cnv 2 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 102 102 cnv 2 8 2 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 562 82 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.40.3-extended;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X restore 568 89 pd ?;
+#X obj 104 115 hradio 14 1 0 20 empty empty empty 0 6 0 8 -262144 -1
+-1 0;
+#X obj 266 8 bang;
+#X text 402 114 <- Click the name to change;
+#X symbolatom 100 114 49 0 0 0 - - -;
+#X obj 49 144 cnv 15 400 50 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X text 51 143 Nom du fichier / File name;
+#X text 405 100 22 10 2009;
+#X msg 54 161 Xhosa1.aiff;
+#X connect 3 0 21 0;
+#X connect 4 0 18 0;
+#X connect 5 0 18 0;
+#X connect 6 0 50 0;
+#X connect 7 0 18 0;
+#X connect 8 0 30 0;
+#X connect 8 1 20 0;
+#X connect 9 0 24 0;
+#X connect 10 0 8 0;
+#X connect 10 1 9 0;
+#X connect 10 1 5 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 42 0;
+#X connect 13 0 8 0;
+#X connect 14 0 24 0;
+#X connect 15 0 16 0;
+#X connect 16 0 24 0;
+#X connect 17 0 29 0;
+#X connect 18 0 2 0;
+#X connect 18 1 2 0;
+#X connect 18 2 11 0;
+#X connect 18 2 9 0;
+#X connect 19 0 20 1;
+#X connect 20 0 7 0;
+#X connect 21 0 50 0;
+#X connect 21 1 6 0;
+#X connect 24 0 10 0;
+#X connect 25 0 5 0;
+#X connect 25 0 9 0;
+#X connect 26 0 12 0;
+#X connect 27 0 54 0;
+#X connect 28 0 6 0;
+#X connect 29 0 50 0;
+#X connect 29 1 54 0;
+#X connect 30 0 4 0;
+#X connect 30 0 14 0;
+#X connect 31 0 32 0;
+#X connect 32 0 42 0;
+#X connect 42 0 8 0;
+#X connect 47 0 48 0;
+#X connect 48 0 3 0;
+#X connect 50 0 19 0;
+#X connect 50 0 27 0;
+#X connect 54 0 28 0;
+#X coords 0 -1 1 1 300 36 2 100 100;
+#X restore 1 89 pd ARGO;
+#N canvas 656 238 459 196 ARGO 0;
+#X obj 92 143 osc~;
+#X obj 101 101 cnv 20 244 34 empty ColorTime empty 20 12 0 14 -208064
+-1 1.04858e+06;
+#X obj 92 168 outlet~;
+#X obj 100 106 nbx 7 12 0 20000 0 1 \$0-A ColorTime Hz 60 7 1 9 -208064
+-1 -1 0.214844 256;
+#X obj 194 104 cnv 10 65 10 empty ColorTime Oscill 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 231 104 cnv 10 10 10 empty ColorTime Sinus 1 5 1 14 -208064
+-1 1.04858e+06;
+#X obj 87 26 inlet~;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1728 -66577
+0;
+#X obj 103 118 hsl 241 12 0 1 0 0 \$0-A ColorTime empty 0 7 1 9 -208064
+-1 -1 4500 0;
+#X obj 103 118 hsl 241 12 0 1 0 0 \$0-A ColorTime A-8 0 7 1 9 -208064
+-1728 -1 4500 0;
+#N canvas 613 329 335 308 FreqOscillv1 0;
+#X obj 257 110 ftom;
+#X obj 209 182 mtof;
+#X obj 128 50 +~;
+#X obj -1 86 snapshot~;
+#X obj -1 108 change;
+#X msg -1 200 set \$1;
+#X msg 209 204 set \$1;
+#X obj 114 199 clip~ 0 20000;
+#X obj 114 177 mtof~;
+#X obj 114 226 outlet~;
+#X obj 173 -8 inlet;
+#X obj 256 -8 inlet;
+#X obj 12 233 outlet;
+#X obj 209 228 outlet;
+#N canvas 60 186 488 293 pitch 0;
+#X obj 73 85 mod 12;
+#X obj 73 109 sel 0 1 2 3 4 5 6 7 8 9 10 11;
+#X msg 249 144 A;
+#X msg 276 144 A#;
+#X msg 303 144 B;
+#X msg 222 144 G#;
+#X msg 195 144 G;
+#X msg 168 144 F#;
+#X msg 6 144 C;
+#X msg 33 144 C#;
+#X msg 60 144 D;
+#X msg 87 144 D#;
+#X msg 114 144 E;
+#X msg 141 144 F;
+#X obj 207 4 inlet;
+#X obj 332 89 div 12;
+#X obj 332 118 - 2;
+#X obj 263 212 tosymbol;
+#X obj 207 43 t f f;
+#X obj 263 187 sprintf %s%d;
+#X text 337 164 -> Numero de l'octave;
+#X text 213 25 -> Numero MIDI de la note (69 = A3 = 440Hz);
+#X msg 263 234 label \$1;
+#X obj 263 257 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 8 0;
+#X connect 1 1 9 0;
+#X connect 1 2 10 0;
+#X connect 1 3 11 0;
+#X connect 1 4 12 0;
+#X connect 1 5 13 0;
+#X connect 1 6 7 0;
+#X connect 1 7 6 0;
+#X connect 1 8 5 0;
+#X connect 1 9 2 0;
+#X connect 1 10 3 0;
+#X connect 1 11 4 0;
+#X connect 2 0 19 0;
+#X connect 3 0 19 0;
+#X connect 4 0 19 0;
+#X connect 5 0 19 0;
+#X connect 6 0 19 0;
+#X connect 7 0 19 0;
+#X connect 8 0 19 0;
+#X connect 9 0 19 0;
+#X connect 10 0 19 0;
+#X connect 11 0 19 0;
+#X connect 12 0 19 0;
+#X connect 13 0 19 0;
+#X connect 14 0 18 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 1;
+#X connect 17 0 22 0;
+#X connect 18 0 0 0;
+#X connect 18 1 15 0;
+#X connect 19 0 17 0;
+#X connect 22 0 23 0;
+#X restore 52 200 pd pitch;
+#X text 9 251 Hslider;
+#X text 238 -25 number Freq;
+#X text 174 -27 Hslider;
+#X text 195 247 number Freq;
+#X obj 128 -8 inlet~;
+#X obj -1 -8 loadbang;
+#X obj 209 109 change;
+#X obj 257 228 outlet;
+#X obj 209 135 * 240;
+#X obj 209 158 - 108;
+#X obj 114 130 *~ 240;
+#X obj 114 152 -~ 108;
+#X obj 257 133 + 108;
+#X obj 257 155 / 240;
+#X obj 158 49 * 240;
+#X obj 158 72 - 108;
+#X obj -1 41 metro 200;
+#X obj 55 -8 r SendFluid;
+#X connect 0 0 27 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 0 25 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 12 0;
+#X connect 6 0 13 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 10 0 2 1;
+#X connect 10 0 21 0;
+#X connect 10 0 29 0;
+#X connect 11 0 0 0;
+#X connect 14 0 12 0;
+#X connect 19 0 2 0;
+#X connect 20 0 31 0;
+#X connect 21 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 1 0;
+#X connect 25 0 26 0;
+#X connect 26 0 8 0;
+#X connect 27 0 28 0;
+#X connect 28 0 22 0;
+#X connect 29 0 30 0;
+#X connect 30 0 14 0;
+#X connect 31 0 3 0;
+#X connect 32 0 31 1;
+#X restore 62 63 pd FreqOscillv1;
+#X text 282 80 21 11 2009;
+#X text 228 147 2 HSLIDER superposés;
+#X text 227 136 ATTENTION;
+#X text 133 19 Sensibilitée de l'entrée de contrôle de la fréquence:
+;
+#X text 133 31 1 = 240 1/2 ton = 20 octaves;
+#X obj 366 103 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 372 110 pd ?;
+#X connect 0 0 2 0;
+#X connect 3 0 11 2;
+#X connect 6 0 11 0;
+#X connect 9 0 11 1;
+#X connect 11 0 10 0;
+#X connect 11 1 0 0;
+#X connect 11 2 3 0;
+#X connect 11 3 9 0;
+#X coords 0 -1 1 1 246 36 1 100 100;
+#X restore 126 132 pd ARGO;
+#X text -32 25 Filtre passe-haut contrôlé en fréquence;
+#N canvas 497 69 330 372 ARGO 0;
+#X obj 101 101 cnv 20 104 34 empty ColorAmpli empty 20 12 0 14 -261299
+-1 1.04858e+06;
+#X obj 85 282 outlet~;
+#X obj 134 104 cnv 10 20 10 empty ColorAmpli Ampli 1 5 1 14 -261299
+-1 1.04858e+06;
+#X obj 89 -62 inlet~;
+#X obj 85 259 *~;
+#X obj 103 118 hsl 101 12 0 1.25 0 1 \$0-A ColorAmpli 0dB 0 7 1 9 -261299
+-1 -1 8000 0;
+#X msg 117 76 label \$1;
+#X obj 116 53 tosymbol;
+#X obj 116 -40 * 80;
+#X obj 116 -18 - 80;
+#X obj 116 18 sprintf %ddB;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text 125 35 -> -80dB..20dB;
+#X text 122 -1 -> -80 .. 20;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 195 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 210 281 outlet~;
+#X obj 214 -63 inlet~;
+#X obj 210 258 *~;
+#X obj 34 106 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 363 389 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 40 113 pd ?;
+#X text 113 204 -> 1..100000;
+#X text 156 234 -> 0.0001..10 = -80dB..20dB;
+#X obj 100 144 t b f;
+#X msg 100 167 10000;
+#X obj 100 190 pow;
+#X obj 100 222 / 10000;
+#X text 142 154 -> 0 .. 1.2;
+#X text 221 83 13 3 2010;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 5 0 24 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 18 0 19 0;
+#X connect 19 0 17 0;
+#X connect 24 0 25 0;
+#X connect 24 1 26 1;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 4 1;
+#X connect 27 0 19 1;
+#X coords 0 -1 1 1 106 36 1 100 100;
+#X restore 11 288 pd ARGO;
+#X text 123 309 <- General level;
+#X text 123 299 <- Niveau general;
+#X obj 34 330 dac~ 1 2;
+#N canvas 162 72 308 371 ARGO 0;
+#X obj 101 101 cnv 20 104 34 empty ColorAmpli empty 20 12 0 14 -261299
+-1 1.04858e+06;
+#X obj 85 278 outlet~;
+#X obj 134 104 cnv 10 20 10 empty ColorAmpli Ampli 1 5 1 14 -261299
+-1 1.04858e+06;
+#X obj 86 -69 inlet~;
+#X obj 85 253 *~;
+#X obj 103 118 hsl 101 12 0 1.25 0 1 \$0-A ColorAmpli -15dB 0 7 1 9
+-261299 -1 -1 6500 0;
+#X msg 134 75 label \$1;
+#X obj 133 52 tosymbol;
+#X obj 134 -47 * 80;
+#X obj 134 -25 - 80;
+#X obj 133 17 sprintf %ddB;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X text 142 34 -> -80dB..20dB;
+#X text 139 -2 -> -80 .. 20;
+#X text 109 203 -> 1..100000;
+#X text 109 237 -> 0.0001..10 = -80dB..20dB;
+#X obj 20 103 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 363 389 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 26 110 pd ?;
+#X obj 100 143 t b f;
+#X msg 100 166 10000;
+#X obj 100 189 pow;
+#X obj 100 221 / 10000;
+#X text 209 97 13 3 2010;
+#X text 142 153 -> 0 .. 1.2;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 5 0 19 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 19 0 20 0;
+#X connect 19 1 21 1;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 4 1;
+#X coords 0 -1 1 1 106 36 1 100 100;
+#X restore 126 176 pd ARGO;
+#X text -32 39 High-pass filter controlled in frequency;
+#X text 135 230 <- Régler;
+#X text 106 68 Audio player 2 channels 1 output;
+#X text 107 57 Lecteur Audio 2 canaux 1 sortie;
+#X obj 327 311 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 331 318 pd ??;
+#N canvas 320 44 505 483 ARGO 0;
+#X obj 101 101 cnv 20 130 34 empty ColorForm Flt-HP2 82 12 1 14 -188398
+-1 1.04858e+06;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 221 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1728 -66577
+0;
+#X obj 221 131 cnv 4 10 4 empty empty empty 0 0 0 9 -1 -66577 0;
+#X obj 81 50 inlet~;
+#X obj 184 459 outlet~;
+#X obj 241 459 outlet~;
+#X obj 209 50 inlet~;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 81 459 outlet~;
+#X obj 132 459 outlet~;
+#X obj 177 131 cnv 4 10 4 empty empty empty 0 0 0 9 -1 -66577 0;
+#X obj 137 131 cnv 4 10 4 empty empty empty 0 0 0 9 -1 -66577 0;
+#X text 85 136 1 Filter;
+#X text 207 72 Cutoff;
+#X text 197 81 frequency;
+#X text 116 147 2 Filters;
+#X text 158 136 3 Filters;
+#X text 200 147 4 Filters;
+#X obj 100 106 nbx 7 12 0 20000 0 1 \$0-A ColorTime Hz 60 7 1 9 -208064
+-1 -1 369.994 256;
+#X obj 103 118 hsl 127 12 0 1 0 0 \$0-A ColorTime empty 0 7 1 9 -262144
+-1 -1 6000 0;
+#X obj 103 118 hsl 127 12 0 1 0 0 \$0-A ColorTime Gb3 0 7 1 9 -208064
+-1728 -1 3803 0;
+#X obj 295 51 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 368 67 416 243 Help 0;
+#X obj 10 32 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 13 31 Citation;
+#X text 26 6 Flt-HP = HighPass Filter = Filtre passe-haut;
+#X text 26 52 from signal-rate [lop~] by Mathieu Bouchard 2010;
+#X text 19 138 Utilise rpole~ au lieu de hip~. La fréquence du filtre
+est ainsi controlée à la fréquence d'échantillonage et non pas seulement
+100 fois par seconde comme dans la version précédente du MM Flt-HP.
+;
+#X text 18 201 ATTENTION: Au dela de 7040Hz = A7 le filtre coupe toutes
+les fréquences (il filtre tout);
+#X obj 25 100 pddplink http://www.mail-archive.com/pd-list@iem.at/msg38011.html
+;
+#X text 57 81 [PD] Introduction to elementary filter components in
+Pd;
+#X text 27 70 voir Pd-list@iem.at mailing list Subject:;
+#X restore 302 57 pd Help;
+#X text -31 117 2 HSLIDER superposés;
+#X text -7 106 ATTENTION;
+#X obj 421 437 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ?? 0;
+#X obj -9 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -9 10 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 9 29 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 40 29 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text -8 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 39 105 pddplink http://puredata.info/downloads;
+#X obj 3 42 pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/;
+#X obj 3 57 pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X restore 425 444 pd ??;
+#X text 122 81 28 12 2010;
+#X text 47 24 Signal-rate controlled high pass filter;
+#X obj 401 84 samplerate~;
+#X obj 401 54 loadbang;
+#X obj 96 168 *~;
+#X obj 96 191 rpole~;
+#X obj 289 189 expr~ 1-$v1;
+#X obj 81 214 -~;
+#X obj 272 130 expr~ $v1*6.283186/$v2;
+#X obj 147 240 *~;
+#X obj 147 263 rpole~;
+#X obj 132 286 -~;
+#X obj 199 310 *~;
+#X obj 199 333 rpole~;
+#X obj 184 356 -~;
+#X obj 256 386 *~;
+#X obj 256 409 rpole~;
+#X obj 241 432 -~;
+#X obj 272 156 clip~ 0 1;
+#N canvas 297 225 339 362 Freq-v8-sig-petit 0;
+#X obj 226 11 ftom;
+#X obj 280 170 mtof;
+#X obj 142 95 +~;
+#X obj 9 142 snapshot~;
+#X obj 9 164 change;
+#X msg 9 189 set \$1;
+#X obj 280 -12 inlet;
+#X obj 225 -13 inlet;
+#X obj 34 226 outlet;
+#X obj 280 228 outlet;
+#X text 31 244 Hslider;
+#X obj 142 -8 inlet~;
+#X obj 8 -9 loadbang;
+#X obj 226 227 outlet;
+#X obj 9 40 metro 200;
+#X obj 64 -9 r SendFluid;
+#X text 40 255 Over;
+#X text 282 246 Number;
+#X text 222 -30 Number;
+#X text 225 244 Hslider;
+#X text 227 255 Under;
+#X text 281 -42 Hslider;
+#X text 286 -31 Under;
+#X msg 226 197 set \$1;
+#N canvas 220 243 583 317 pitchb-11-2010 0;
+#X obj 70 111 mod 12;
+#X obj 70 135 sel 0 1 2 3 4 5 6 7 8 9 10 11;
+#X msg 246 170 A;
+#X msg 300 170 B;
+#X msg 192 170 G;
+#X msg 3 170 C;
+#X msg 57 170 D;
+#X msg 111 170 E;
+#X msg 138 170 F;
+#X obj 204 1 inlet;
+#X obj 329 115 div 12;
+#X obj 204 79 t f f;
+#X text 334 190 -> Numero de l'octave;
+#X text 213 64 -> Numero MIDI de la note (69 = A3 = 440Hz);
+#X msg 260 260 label \$1;
+#X obj 260 283 outlet;
+#X msg 30 170 Db;
+#X msg 84 170 Eb;
+#X msg 165 170 Gb;
+#X msg 219 170 Ab;
+#X msg 273 170 Bb;
+#X text 369 78 (70 = A#3 = Bb3);
+#X obj 260 238 symbol;
+#X obj 260 213 sprintf %s%d;
+#X text 11 231 Impossible d'afficher # dans un label;
+#X text 11 243 donc j'affiche b;
+#X obj 204 51 int;
+#X text 255 23 -> pour corriger certaines erreurs de calcul;
+#X obj 329 144 - 12;
+#X text 255 35 et le pb du passage a zero de mod 12;
+#X obj 204 25 + 120.5;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 16 0;
+#X connect 1 2 6 0;
+#X connect 1 3 17 0;
+#X connect 1 4 7 0;
+#X connect 1 5 8 0;
+#X connect 1 6 18 0;
+#X connect 1 7 4 0;
+#X connect 1 8 19 0;
+#X connect 1 9 2 0;
+#X connect 1 10 20 0;
+#X connect 1 11 3 0;
+#X connect 2 0 23 0;
+#X connect 3 0 23 0;
+#X connect 4 0 23 0;
+#X connect 5 0 23 0;
+#X connect 6 0 23 0;
+#X connect 7 0 23 0;
+#X connect 8 0 23 0;
+#X connect 9 0 30 0;
+#X connect 10 0 28 0;
+#X connect 11 0 0 0;
+#X connect 11 1 10 0;
+#X connect 14 0 15 0;
+#X connect 16 0 23 0;
+#X connect 17 0 23 0;
+#X connect 18 0 23 0;
+#X connect 19 0 23 0;
+#X connect 20 0 23 0;
+#X connect 22 0 14 0;
+#X connect 23 0 22 0;
+#X connect 26 0 11 0;
+#X connect 28 0 23 1;
+#X connect 30 0 26 0;
+#X restore 30 95 pd pitchb-11-2010;
+#X obj 142 21 *~ 1.90476;
+#X obj 280 109 * 126;
+#X obj 280 132 + 6;
+#X obj 226 34 - 6;
+#X obj 226 56 / 126;
+#X obj 132 196 clip~ 0 20000;
+#X obj 132 174 mtof~;
+#X obj 132 149 +~ 6;
+#X obj 132 127 *~ 126;
+#X obj 133 223 outlet~;
+#X connect 0 0 24 0;
+#X connect 0 0 28 0;
+#X connect 1 0 9 0;
+#X connect 2 0 3 0;
+#X connect 2 0 33 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 26 0;
+#X connect 7 0 0 0;
+#X connect 11 0 25 0;
+#X connect 12 0 14 0;
+#X connect 14 0 3 0;
+#X connect 15 0 14 1;
+#X connect 23 0 13 0;
+#X connect 24 0 8 0;
+#X connect 25 0 2 0;
+#X connect 26 0 27 0;
+#X connect 27 0 1 0;
+#X connect 28 0 29 0;
+#X connect 29 0 2 1;
+#X connect 29 0 23 0;
+#X connect 30 0 34 0;
+#X connect 31 0 30 0;
+#X connect 32 0 31 0;
+#X connect 33 0 32 0;
+#X restore 244 102 pd Freq-v8-sig-petit;
+#X connect 4 0 32 0;
+#X connect 4 0 35 0;
+#X connect 7 0 47 0;
+#X connect 19 0 47 1;
+#X connect 20 0 47 2;
+#X connect 30 0 36 1;
+#X connect 31 0 30 0;
+#X connect 32 0 33 0;
+#X connect 33 0 35 1;
+#X connect 34 0 33 1;
+#X connect 34 0 38 1;
+#X connect 34 0 41 1;
+#X connect 34 0 44 1;
+#X connect 35 0 9 0;
+#X connect 35 0 37 0;
+#X connect 35 0 39 0;
+#X connect 36 0 46 0;
+#X connect 37 0 38 0;
+#X connect 38 0 39 1;
+#X connect 39 0 10 0;
+#X connect 39 0 40 0;
+#X connect 39 0 42 0;
+#X connect 40 0 41 0;
+#X connect 41 0 42 1;
+#X connect 42 0 5 0;
+#X connect 42 0 45 0;
+#X connect 42 0 43 0;
+#X connect 43 0 44 0;
+#X connect 44 0 45 1;
+#X connect 45 0 6 0;
+#X connect 46 0 34 0;
+#X connect 46 0 32 1;
+#X connect 46 0 37 1;
+#X connect 46 0 40 1;
+#X connect 46 0 43 1;
+#X connect 47 0 21 0;
+#X connect 47 1 36 0;
+#X connect 47 2 20 0;
+#X connect 47 3 19 0;
+#X coords 0 -1 1 1 132 36 1 100 100;
+#X restore 1 220 pd ARGO;
+#X connect 0 0 1 0;
+#X connect 8 0 22 0;
+#X connect 9 0 15 0;
+#X connect 11 0 14 0;
+#X connect 11 1 14 1;
+#X connect 15 0 22 1;
+#X connect 22 1 11 0;
+#X connect 22 2 11 1;

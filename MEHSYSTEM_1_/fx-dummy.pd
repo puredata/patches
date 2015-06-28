@@ -1,0 +1,14 @@
+#N canvas 76 97 926 669 12;
+#X obj -132 -149 r~ \$1-pre-fxall-l;
+#X obj -51 -119 r~ \$1-pre-fxall-r;
+#X obj -131 179 throw~ \$1-post-fxall-l;
+#X obj -91 155 throw~ \$1-post-fxall-r;
+#X obj -51 126 switch~;
+#X obj -132 98 fx_switch \$0;
+#X obj 2 2 fx_panel \$0 \$1 \$2 \$3 \$4;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 5 0 2 0;
+#X connect 5 1 3 0;
+#X connect 5 2 4 0;
+#X coords 0 -1 1 1 240 70 1 0 0;

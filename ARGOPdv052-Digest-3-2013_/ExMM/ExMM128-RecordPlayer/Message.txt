@@ -1,0 +1,8 @@
+ARGOPdv052-Digest
+
+Fichiers retirés:  Files removed:
+ExMM128b-RecordPlayer-Simple.pd
+ExMM128c-RecordPlayer-Simple-Loop.pd
+ExMM128d-RecordPlayer-Simple-x3.pd
+ExMM128e-RecordPlayer-Simple-x3.pd
+ExMM128f-RecordPlayerAuto.pd

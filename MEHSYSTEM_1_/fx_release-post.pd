@@ -1,0 +1,25 @@
+#N canvas 1 74 826 365 12;
+#X obj -286 123 spigot~ 0;
+#X obj -25 123 spigot~ 0;
+#X floatatom 159 102 5 0 0 0 - - -;
+#X obj -287 37 inlet~;
+#X obj -25 37 inlet~;
+#X obj -285 240 outlet~;
+#X obj -25 240 outlet~;
+#X obj 35 59 r \$1-fx-press;
+#X obj 34 187 throw~ \$2-fxall-release-r;
+#X obj -226 187 throw~ \$2-fxall-release-l;
+#X text 67 282 si se presiona \, el efecto es enviado por $*-post-fxall.
+Si se despresiona \, envia por fxall-release \, sin que el efecto tenga
+entrada. Sólo saldría el feedback \, por ejemplo.;
+#X obj 35 82 expr 1 - $f1;
+#X connect 0 0 5 0;
+#X connect 0 1 9 0;
+#X connect 1 0 6 0;
+#X connect 1 1 8 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 7 0 11 0;
+#X connect 11 0 1 1;
+#X connect 11 0 0 1;
+#X connect 11 0 2 0;

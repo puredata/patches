@@ -1,0 +1,77 @@
+
+ARGOPdv052-Digest = ARGOPdv052 
+avec les plus gros fichiers retirés: / with the larger files removed:
+ - MM/ARGOPdMM-Sample.pd
+ - ARGOPdManuv051.pdf
+et dans les exemples (ExMM): / and in the examples (ExMM):
+ - MVI_1114-320x240-30.mov
+ - Bruges-0673-640x480.mp4
+ - Bruges1-320x240-12sec.mov
+ - ExMM141-Parole-MacOS
+ - in ExMM63 folder the "impulse response" (IR) files
+   etc…
+
+__________________________________________________________
+
+ARGOPdv052
+
+Message.txt
+
+Date 3 2013
+
+Francais __________________________________________________________
+
+ARGOPd est constitue de modules de synthese et de traitement sonore et visuel
+fonctionnant en temps reel sous Pure Data (Pd) version Pd-0.42.5-extended
+ou version Pd-0.43.4-extended
+http://puredata.info/downloads/pd-extended
+
+Pour MacOSX, Linux, Windows.
+
+ARGOPd est fait pour des utilisateurs qui n'ont jamais programme Pure Data
+
+Logiciel libre et ouvert sous licence Creative Commons 
+
+La documentation ARGOPdManuv051.pdf doit etre mise a jour:
+remplacer:
+Pd-0.41.4-extended
+par:
+Pd-0.42.5-extended oo Pd-0.43.4-extended
+mais reste valable.
+
+http://gerard.paresys.free.fr/ARGOPd/
+ou
+http://paresys.pagesperso-orange.fr/ARGOPd/
+
+email gerard.paresys@ens.fr
+
+
+English __________________________________________________________
+
+ARGOPd is made of real-time sound and visual synthesis modules.
+A module is a Pure Data (Pd) patch.
+Requires Pd-0.42.5-extended
+or version Pd-0.43.4-extended.
+http://puredata.info/downloads/pd-extended
+
+For MacOSX, Linux, Windows.
+
+ARGOPd is for users who have never programmed with Pure Data
+
+Freeware and OpenSource under Creative Commons license
+
+The documentation ARGOPdManuv051.pdf must be updated:
+replace:
+Pd-0.41.4-extended
+by:
+Pd-0.42.5-extended or Pd-0.43.4-extended
+but remains valid.
+
+http://gerard.paresys.free.fr/ARGOPd/
+or
+http://paresys.pagesperso-orange.fr/ARGOPd/
+
+email gerard.paresys@ens.fr
+
+__________________________________________________________
+

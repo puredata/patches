@@ -1,0 +1,20 @@
+ARGOPdv052-Digest
+
+Fichiers retirés:  Files removed:
+ExMM63e-ReverbConvolution.pd
+ExMM63f-ReverbConvolution.pd
+IR Bathroom.wav
+Eau3-1sec-Envelop.wav
+IR Street 1.wav
+IR Church Schellingwoude.wav
+IR mono Spring type 1.wav
+BeethovenS1M1-Fade.wav
+Impulse responses.pdf
+IR Bath.wav
+Eau3-5sec-Envelop.wav
+IR Spring type 1&2.wav
+
+
+
+
+

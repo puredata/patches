@@ -1,0 +1,69 @@
+#N canvas 0 54 1024 546 10;
+#X obj 103 103 cnv 15 99 96 empty empty empty 20 12 0 14 -3707 -66577
+0;
+#X obj 354 38 inlet~;
+#X obj 393 195 *~;
+#X obj 345 242 outlet~;
+#X obj 419 79 osc~;
+#X obj 419 123 +~ 1;
+#X obj 420 150 *~ 0.5;
+#X obj 490 122 line~;
+#X obj 419 101 *~;
+#X msg 490 98 \$1 20;
+#X obj 490 76 / 127;
+#X obj 112 237 * 1;
+#X obj 164 335 * 1;
+#X obj 173 215 t b f;
+#X obj 105 122 vsl 30 64 0 127 0 0 empty empty empty 0 -9 0 10 -66577
+-3707 -1 0 1;
+#X obj 137 122 vsl 30 64 1 128 0 0 empty empty empty 0 -9 0 10 -66577
+-3707 -1 0 1;
+#X obj 169 122 vsl 30 64 1 128 0 0 empty empty empty 0 -9 0 10 -66577
+-3707 -1 0 1;
+#X obj 109 191 cnv 8 24 8 empty empty amp 2 4 1 9 -3707 -1 0;
+#X obj 142 191 cnv 8 22 8 empty empty rate 2 4 1 9 -3707 -1 0;
+#X obj 171 191 cnv 8 26 8 empty empty multi 2 4 1 9 -3707 -1 0;
+#X obj 105 105 cnv 12 94 12 empty empty modAM 2 7 1 9 -66577 -3707
+0;
+#X obj 188 106 tgl 10 0 empty empty on -12 5 1 9 -3707 -1 -3707 0 1
+;
+#X obj 107 30 loadbang;
+#X msg 107 52 1;
+#X obj 258 87 *~;
+#X obj 298 87 *~;
+#X obj 215 -28 sel 0 1;
+#X msg 196 -2 1 0;
+#X msg 226 -2 1 0;
+#X obj 171 23 unpack f f;
+#X obj 250 23 unpack f f;
+#X connect 1 0 24 0;
+#X connect 1 0 25 0;
+#X connect 2 0 3 0;
+#X connect 4 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 1;
+#X connect 7 0 8 1;
+#X connect 8 0 5 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 4 0;
+#X connect 13 0 15 0;
+#X connect 13 1 12 1;
+#X connect 14 0 10 0;
+#X connect 15 0 11 0;
+#X connect 16 0 13 0;
+#X connect 21 0 26 0;
+#X connect 22 0 23 0;
+#X connect 23 0 21 0;
+#X connect 24 0 3 0;
+#X connect 25 0 2 0;
+#X connect 26 0 27 0;
+#X connect 26 1 28 0;
+#X connect 27 0 29 0;
+#X connect 28 0 30 0;
+#X connect 29 0 24 1;
+#X connect 29 1 25 1;
+#X connect 30 0 25 1;
+#X connect 30 1 24 1;
+#X coords 0 -1 1 1 104 102 2 100 100;

@@ -1,0 +1,933 @@
+#N canvas 210 44 684 256 10;
+#N canvas 413 140 399 318 ARGO 0;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 174 104 cnv 10 20 10 empty ColorGEM PDP-Out-xv 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 139 55 key;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 590 196 410 312 Help 0;
+#X obj 4 -6 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 7 -7 Citation;
+#X text 14 10 pdp_xv ouputs video in a window using the xVideo extension.
+if your graphics card/driver supports it you can have multiple output
+windows. if a pdp message is received and a window is not open \, one
+is created automaticly.;
+#X restore 283 136 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X msg 221 262 fullscreen;
+#X msg 143 262 dim 400 300;
+#X obj 101 130 tgl 12 1 \$0-A \$0-B (F)ullScreen 15 7 1 9 -262144 -1
+-1 0 1;
+#X obj 171 238 sel 0;
+#X obj 140 76 select 32 70 102;
+#X msg 346 262 create;
+#X msg 292 261 destroy;
+#X obj 101 106 tgl 12 1 \$0-A \$0-B PDPWindow 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 191 154 sel 0;
+#X obj 171 215 int;
+#X obj 179 181 t b b;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 95 261 spigot;
+#X msg 207 210 0;
+#X obj 226 181 t b b b;
+#X msg 241 210 1;
+#X obj 95 292 pdp_xv;
+#X text 255 96 17 2 2009;
+#X obj 207 118 cnv 10 20 10 empty ColorGEM (Linux) 1 5 1 14 -128992
+-1 1.04858e+06;
+#X connect 2 0 11 0;
+#X connect 7 0 24 0;
+#X connect 8 0 24 0;
+#X connect 9 0 16 0;
+#X connect 10 0 8 0;
+#X connect 10 1 7 0;
+#X connect 11 1 9 0;
+#X connect 11 2 9 0;
+#X connect 12 0 24 0;
+#X connect 13 0 24 0;
+#X connect 14 0 15 0;
+#X connect 15 0 17 0;
+#X connect 15 1 22 0;
+#X connect 16 0 10 0;
+#X connect 17 0 13 0;
+#X connect 17 1 21 0;
+#X connect 19 0 20 0;
+#X connect 20 0 24 0;
+#X connect 21 0 20 1;
+#X connect 22 0 23 0;
+#X connect 22 1 16 0;
+#X connect 22 2 12 0;
+#X connect 23 0 20 1;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 7 92 pd ARGO;
+#N canvas 449 80 428 186 ARGO 0;
+#X obj 101 101 cnv 10 186 30 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 227 104 cnv 10 20 10 empty ColorGEM PDP-Info 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 7 144 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 10 149 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 100 46 inlet;
+#X symbolatom 101 115 30 0 0 0 - - -;
+#X obj 101 70 pdp_description;
+#X text 197 69 output packet description as a symbol;
+#X obj 160 101 bng 12 250 50 0 \$0-A \$0-B Reset 15 7 1 9 -262144 -1
+-1;
+#X text 235 83 23 10 2009;
+#X msg 40 71 symbol;
+#X obj 159 5 loadbang;
+#X obj 159 29 delay 1000;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X connect 9 0 11 0;
+#X connect 11 0 6 0;
+#X connect 12 0 13 0;
+#X connect 13 0 9 0;
+#X coords 0 -1 1 1 188 32 1 100 100;
+#X restore 240 152 pd ARGO;
+#X obj 402 -6 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 389 153 420 398 Help 0;
+#X obj 9 7 cnv 15 400 380 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 128 pdp was all coded mostly in yuv since the beginning
+for efficiency and speed reasons \, so we have to pass throough conversions
+to connect to other pieces of code. _______________________________________________
+Pd-list@iem.at mailing list;
+#X text 13 115 From: ydegoyon@gmail.com;
+#X text 24 208 If you want to use PDP on Mac OS X 10.4/Tiger or 10.3/Panther
+\, you will need to install X11 (X11 comes installed with 10.5/Leopard).
+It comes on the install CD/DVD that your computer came with.;
+#X text 24 22 PDP - Pure Data Packet a packet processing library for
+pure data;
+#X text 23 52 This external pd library is a framework for image/video
+processing (and other raw data packets) that is fast \, simple and
+flexible and as much as possible compatible with the pd messaging system.
+;
+#X text 12 6 Citations;
+#X text 11 272 pdp_scale-help.pd;
+#X text 27 286 use this if you want to combine different packet sizes.
+or have movies that don't have a legal size (not a multiple of 8x8)
+;
+#X restore 409 1 pd Help;
+#N canvas 230 22 749 493 ARGO 0;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-Canvas empty 20 12 0 14 -128992
+-1 1.04858e+06;
+#X obj 171 109 cnv 10 20 10 empty \$0-Canvas PDP-Record 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 596 134 412 319 Help 0;
+#X obj 5 3 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 8 2 Citation;
+#X text 19 73 written by Yves Degoyon ( ydegoyon@free.fr );
+#X text 18 45 it records in quicktime format;
+#X text 19 31 pdp_rec~ : records video and audio output to file;
+#X text 19 18 library PiDiP;
+#X text 17 58 using YUV420P color model ( hard-coded);
+#X text 18 96 pdp_rec~ will record 2 channels \, 8 bits audio at the
+samplerate of PD;
+#X restore 283 136 pd Help;
+#X obj 39 3 cnv 15 340 70 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 44 5 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X msg 57 251 stop;
+#X msg 128 320 start;
+#X msg 310 328 jpeg \$1;
+#X floatatom 373 329 5 0 0 0 - - -;
+#X text 422 327 JPEG quality factor ( if using jpeg compressor );
+#X msg 308 353 framerate \$1;
+#X floatatom 405 353 5 0 0 0 - - -;
+#X text 454 352 Frame rate : if not set \, it will be calculated;
+#X text 415 306 Set a compressor supported by libquicktime ( 0.9.1
+);
+#X msg 308 251 symbol jpeg;
+#X msg 309 305 compressor \$1;
+#X msg 281 276 symbol raw;
+#X msg 394 275 symbol divx;
+#X msg 476 275 symbol dv;
+#X msg 388 251 symbol yuv2;
+#X text 309 231 ==== VIDEOS SETTINGS ========;
+#X text 413 430 Set a compressor supported by libquicktime ( 0.9.1
+);
+#X text 312 380 ==== AUDIO SETTINGS ========;
+#X msg 311 430 acompressor \$1;
+#X msg 311 404 symbol twos;
+#X msg 402 404 symbol raw;
+#X obj 152 78 inlet~;
+#X obj 227 78 inlet~;
+#X obj 170 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 241 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 138 289 delay 1000;
+#X msg 207 289 open \$1;
+#X obj 178 220 list2symbol;
+#X obj 178 198 savepanel;
+#X text 394 14 compressor jpeg ne fonctionne pas sous MacOSX PPC;
+#X text 394 28 compressor yuv2 ne fonctionne pas sous MacOSX PPC;
+#X text 396 41 L'Audio est toujours 8 bits: comment changer?;
+#X msg 314 184 pdp;
+#X msg 313 208 dsp;
+#X obj 86 471 pdp_rec~;
+#X text 344 183 <-- voir source;
+#X text 349 209 <-- voir source;
+#X obj 42 384 s \$0-Canvas;
+#X msg 29 329 0;
+#X msg 60 329 1;
+#N canvas 317 143 290 366 CouleurPDPRecord 0;
+#X obj 122 -19 +;
+#X obj 122 37 +;
+#X obj 61 -75 * -65536;
+#X obj 117 -75 * -256;
+#X obj 163 -77 * -1;
+#X obj 122 68 - 1;
+#X obj 115 -202 inlet;
+#X text 77 -97 R;
+#X text 123 -99 G;
+#X text 172 -98 B;
+#X obj 122 123 outlet;
+#X text 170 -169 Rouge;
+#X msg 134 -121 255;
+#X msg 167 -121 0;
+#X obj 115 -178 sel 0 1;
+#X msg 122 96 color \$1 -1;
+#X obj 79 -121 t f f f;
+#X obj 134 -148 t b b b;
+#X msg 202 -121 0;
+#X msg 79 -145 124;
+#X text 56 -170 Gris PDP;
+#X connect 0 0 1 1;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 15 0;
+#X connect 6 0 14 0;
+#X connect 12 0 2 0;
+#X connect 13 0 3 0;
+#X connect 14 0 19 0;
+#X connect 14 1 17 0;
+#X connect 15 0 10 0;
+#X connect 16 0 2 0;
+#X connect 16 1 3 0;
+#X connect 16 2 4 0;
+#X connect 17 0 12 0;
+#X connect 17 1 13 0;
+#X connect 17 2 18 0;
+#X connect 18 0 4 0;
+#X connect 19 0 16 0;
+#X restore 42 360 pd CouleurPDPRecord;
+#X obj 30 227 t b b;
+#X obj 101 122 tgl 15 0 \$0-A \$0-B Record 19 9 1 12 -262144 -258113
+-1 0 1;
+#X obj 164 122 nbx 4 15 0 9999 0 0 \$0-SendFrame \$0-ReceiveFrame Frame
+50 9 1 12 -208064 -1 -1 0 256;
+#X obj 183 470 print MM---;
+#X text 255 96 5 3 2009;
+#X obj 112 151 sel 0 1;
+#X msg 112 199 set 0;
+#X obj 177 241 t b s b b;
+#X msg 219 268 set 1;
+#X obj 132 174 t b b;
+#X text 44 20 Pb -> le nombre de frames/sec enregistré dans le 1er
+fichier enregistré est faux. Il est correct dans le 2e fichier enregistré.
+;
+#X connect 7 0 42 0;
+#X connect 8 0 42 0;
+#X connect 9 0 42 0;
+#X connect 10 0 42 0;
+#X connect 11 0 10 0;
+#X connect 13 0 42 0;
+#X connect 14 0 13 0;
+#X connect 17 0 18 0;
+#X connect 18 0 42 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 0;
+#X connect 21 0 18 0;
+#X connect 22 0 18 0;
+#X connect 26 0 42 0;
+#X connect 27 0 26 0;
+#X connect 28 0 26 0;
+#X connect 29 0 42 0;
+#X connect 30 0 42 1;
+#X connect 33 0 9 0;
+#X connect 33 0 47 0;
+#X connect 34 0 42 0;
+#X connect 35 0 56 0;
+#X connect 36 0 35 0;
+#X connect 40 0 42 0;
+#X connect 41 0 42 0;
+#X connect 42 0 51 0;
+#X connect 46 0 48 0;
+#X connect 47 0 48 0;
+#X connect 48 0 45 0;
+#X connect 49 0 46 0;
+#X connect 49 1 8 0;
+#X connect 50 0 54 0;
+#X connect 54 0 49 0;
+#X connect 54 1 58 0;
+#X connect 55 0 50 0;
+#X connect 56 0 33 0;
+#X connect 56 1 34 0;
+#X connect 56 2 19 0;
+#X connect 56 3 57 0;
+#X connect 57 0 50 0;
+#X connect 58 0 55 0;
+#X connect 58 1 36 0;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 324 43 pd ARGO;
+#N canvas 292 146 556 449 ARGO 0;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 589 157 418 337 Help 0;
+#X obj 6 7 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 6 Citation;
+#X text 13 105 Voir:;
+#X text 26 120 http://zwizwa.be/darcs/pdp-12/doc/misc/rawout.txt;
+#X text 15 25 pdp_rawout;
+#X text 14 44 Send a video stream through [pdp_convert bitmap/i420/*]
+then stream it to disk using [pdp_rawout /tmp/video.i420] while you
+are performing. You can convert it to divx avi using ffmpegfffff;
+#X text 24 134 Some observations * pdp is a real time performance tool
+* ffmpeg and mencoder are very nice pieces of software that solve the
+video encoding problem * encoding video is cpu intensive * large harddisks
+are cheap For these reason \, I decide to not implement container/codec
+recording in pdp. Using [pdp_rawout] and [pdp_rawout~] it is possible
+to dump video and audio streams directly to harddisk using the minimal
+amount of cpu time. There they can be picked up later by tools like
+mencoder and ffmpeg.;
+#X restore 283 136 pd Help;
+#X obj 40 39 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 45 41 Ne fonctionne pas sous Windows;
+#X obj 91 78 inlet;
+#X obj 168 271 delay 1000;
+#X msg 238 271 open \$1;
+#X obj 212 224 list2symbol;
+#X obj 212 202 savepanel;
+#X obj 160 402 print MM---;
+#X obj 211 247 t b s b;
+#X obj 56 425 print done;
+#X msg 87 298 close;
+#X msg 116 375 open;
+#X obj 116 351 spigot;
+#X obj 150 325 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X msg 168 295 1;
+#X msg 134 297 0;
+#X obj 44 224 pdp_convert bitmap/i420/*;
+#X text 303 241 pdp_convert image/YCrCb/*;
+#X text 303 229 pdp_convert image/*/*;
+#X text 303 215 pdp_convert convert between packet types;
+#X text 303 253 pdp_convert image/grey/*;
+#X text 303 264 pdp_convert bitmap/yv12/*;
+#X text 303 299 pdp_convert texture/*/*;
+#X text 303 276 pdp_convert texture/*/*;
+#X text 303 288 pdp_convert bitmap/*/*;
+#X obj 56 400 pdp_rawout;
+#X obj 158 152 sel 0 1;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-CanvasPDPRecordRaw empty 20
+12 0 14 -128992 -1 1.04858e+06;
+#X msg 223 325 0;
+#X msg 254 325 1;
+#X obj 141 109 cnv 10 20 10 empty \$0-CanvasPDPRecordRaw PDP-Record-raw
+1 5 1 14 -128992 -1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 101 122 tgl 15 0 \$0-A \$0-B Record 19 9 1 12 -262144 -258113
+-1 0 1;
+#N canvas 317 143 290 366 CouleurPDPRecordRaw 0;
+#X obj 122 -19 +;
+#X obj 122 37 +;
+#X obj 61 -75 * -65536;
+#X obj 117 -75 * -256;
+#X obj 163 -77 * -1;
+#X obj 122 68 - 1;
+#X obj 115 -202 inlet;
+#X text 77 -97 R;
+#X text 123 -99 G;
+#X text 172 -98 B;
+#X obj 122 123 outlet;
+#X text 170 -169 Rouge;
+#X msg 134 -121 255;
+#X msg 167 -121 0;
+#X obj 115 -178 sel 0 1;
+#X msg 122 96 color \$1 -1;
+#X obj 79 -121 t f f f;
+#X obj 134 -148 t b b b;
+#X msg 202 -121 0;
+#X msg 79 -145 124;
+#X text 56 -170 Gris PDP;
+#X connect 0 0 1 1;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 15 0;
+#X connect 6 0 14 0;
+#X connect 12 0 2 0;
+#X connect 13 0 3 0;
+#X connect 14 0 19 0;
+#X connect 14 1 17 0;
+#X connect 15 0 10 0;
+#X connect 16 0 2 0;
+#X connect 16 1 3 0;
+#X connect 16 2 4 0;
+#X connect 17 0 12 0;
+#X connect 17 1 13 0;
+#X connect 17 2 18 0;
+#X connect 18 0 4 0;
+#X connect 19 0 16 0;
+#X restore 236 356 pd CouleurPDPRecordRaw;
+#X obj 236 380 s \$0-CanvasPDPRecordRaw;
+#X obj 101 269 t b b b;
+#X text 201 83 1 5 2009;
+#X connect 4 0 18 0;
+#X connect 5 0 16 0;
+#X connect 5 0 31 0;
+#X connect 6 0 9 0;
+#X connect 6 0 27 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 0;
+#X connect 10 0 5 0;
+#X connect 10 1 6 0;
+#X connect 12 0 9 0;
+#X connect 12 0 27 0;
+#X connect 13 0 27 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 1;
+#X connect 16 0 15 0;
+#X connect 17 0 15 0;
+#X connect 18 0 27 0;
+#X connect 27 0 11 0;
+#X connect 27 0 14 0;
+#X connect 28 0 37 0;
+#X connect 28 1 8 0;
+#X connect 30 0 35 0;
+#X connect 31 0 35 0;
+#X connect 34 0 28 0;
+#X connect 35 0 36 0;
+#X connect 37 0 30 0;
+#X connect 37 1 12 0;
+#X connect 37 2 17 0;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 324 91 pd ARGO;
+#N canvas 215 138 461 476 ARGO 0;
+#X obj 101 101 cnv 10 160 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 166 108 cnv 10 20 10 empty ColorGEM PDP-2xOut-glx 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 139 55 key;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 673 201 412 249 Help 0;
+#X obj 6 7 cnv 15 400 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 9 8 Citation;
+#X text 14 27 pdp_glx ouputs video in a window using the openGL extension
+on an X11 window system. if a pdp message is received and a window
+is not open \, one is created automaticly.;
+#X text 5 175 Fonctionne sous MacOSX + PD 0.41.4-extended;
+#X text 14 138 written by Yves Degoyon ( ydegoyon@free.fr );
+#X text 15 83 pdp_canvas : displaying several video sources;
+#X text 14 96 constructor : pdp_canvas <width> <height> <nb inputs>
+;
+#X text 16 109 note : the maximum number of inputs is 10;
+#X text 14 122 ( easily hackable in the code );
+#X restore 283 136 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X obj 158 390 pdp_glx;
+#X msg 236 349 fullscreen;
+#X msg 14 348 interpol \$1;
+#X msg 156 349 dim 400 300;
+#X obj 101 130 tgl 12 1 \$0-A \$0-B (F)ullScreen 15 7 1 9 -262144 -1
+-1 0 8;
+#X obj 166 277 sel 0;
+#X obj 101 118 tgl 12 1 \$0-A \$0-B Interpol 15 7 1 9 -262144 -1 -1
+0 1;
+#X msg 356 352 create;
+#X msg 310 351 destroy;
+#X obj 101 106 tgl 12 1 \$0-A \$0-B PDPWindow 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 167 239 int;
+#X obj 175 205 t b b;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 92 278 spigot;
+#X msg 203 234 0;
+#X obj 222 205 t b b b;
+#X msg 237 234 1;
+#X obj 187 155 int;
+#X obj 13 54 r \$0-SendOnOff;
+#X obj 187 178 sel 0 1;
+#X obj 13 100 sel 0 1;
+#X obj 339 87 loadbang;
+#X msg 117 446 select \$1 \$2;
+#X msg 205 446 drag \$1 \$2;
+#X msg 277 446 unselect;
+#X msg 92 348 cursor 1;
+#X obj 157 415 route press drag release;
+#X obj 91 324 pdp_canvas 400 300 2;
+#X obj 251 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X text 279 64 7 3 2009;
+#X obj 140 76 select 70 102;
+#X obj 240 78 inlet;
+#X msg 352 118 offset 2 200 0;
+#X obj 239 278 spigot;
+#X connect 2 0 38 0;
+#X connect 7 0 34 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 17 0;
+#X connect 12 0 10 0;
+#X connect 12 1 8 0;
+#X connect 13 0 9 0;
+#X connect 14 0 7 0;
+#X connect 15 0 7 0;
+#X connect 16 0 25 0;
+#X connect 17 0 12 0;
+#X connect 18 0 15 0;
+#X connect 18 1 22 0;
+#X connect 20 0 21 0;
+#X connect 21 0 35 1;
+#X connect 22 0 21 1;
+#X connect 22 0 41 1;
+#X connect 23 0 24 0;
+#X connect 23 1 17 0;
+#X connect 23 2 14 0;
+#X connect 24 0 21 1;
+#X connect 24 0 41 1;
+#X connect 25 0 27 0;
+#X connect 26 0 28 0;
+#X connect 27 0 18 0;
+#X connect 27 1 23 0;
+#X connect 28 0 18 0;
+#X connect 28 1 25 0;
+#X connect 29 0 40 0;
+#X connect 30 0 35 0;
+#X connect 31 0 35 0;
+#X connect 32 0 35 0;
+#X connect 33 0 7 0;
+#X connect 34 0 30 0;
+#X connect 34 1 31 0;
+#X connect 34 2 32 0;
+#X connect 35 0 33 0;
+#X connect 35 0 7 0;
+#X connect 38 0 11 0;
+#X connect 38 1 11 0;
+#X connect 39 0 41 0;
+#X connect 40 0 35 0;
+#X connect 41 0 35 2;
+#X coords 0 -1 1 1 162 43 1 100 100;
+#X restore 7 141 pd ARGO;
+#N canvas 572 177 399 343 ARGO 0;
+#X obj 101 101 cnv 10 150 41 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 170 104 cnv 10 20 10 empty ColorGEM PDP-Out-glx 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 139 55 key;
+#X obj 276 129 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 583 196 410 312 Help 0;
+#X obj 6 7 cnv 15 400 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 27 6 Citation;
+#X text 15 23 pdp_glx ouputs video in a window using the openGL extension
+on an X11 window system. if a pdp message is received and a window
+is not open \, one is created automaticly.;
+#X text 5 175 Fonctionne sous MacOSX + PD 0.41.4-extended;
+#X text 5 188 Fonctionne sous Linux Ubuntu 8.04 + PD 0.41.4-extended
+;
+#X restore 283 136 pd Help;
+#X obj 20 20 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 24 26 Ne fonctionne pas sous Windows;
+#X obj 91 316 pdp_glx;
+#X msg 217 286 fullscreen;
+#X msg 14 285 interpol \$1;
+#X msg 139 286 dim 400 300;
+#X obj 101 130 tgl 12 1 \$0-A \$0-B (F)ullScreen 15 7 1 9 -262144 -1
+-1 0 1;
+#X obj 167 262 sel 0;
+#X obj 140 76 select 32 70 102;
+#X obj 101 118 tgl 12 1 \$0-A \$0-B Interpol 15 7 1 9 -262144 -1 -1
+0 1;
+#X msg 342 286 create;
+#X msg 288 285 destroy;
+#X obj 101 106 tgl 12 1 \$0-A \$0-B PDPWindow 15 7 1 9 -262144 -1 -1
+0 1;
+#X obj 167 239 int;
+#X obj 175 205 t b b;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 91 285 spigot;
+#X msg 203 234 0;
+#X obj 222 205 t b b b;
+#X msg 237 234 1;
+#X obj 187 155 int;
+#X obj 13 54 r \$0-SendOnOff;
+#X obj 187 178 sel 0 1;
+#X obj 13 100 sel 0 1;
+#X msg 267 179 set \$1;
+#X msg 59 136 0;
+#X msg 17 136 set 0;
+#X text 255 96 8 3 2009;
+#X connect 2 0 13 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 18 0;
+#X connect 12 0 10 0;
+#X connect 12 1 8 0;
+#X connect 13 1 11 0;
+#X connect 13 2 11 0;
+#X connect 14 0 9 0;
+#X connect 15 0 7 0;
+#X connect 16 0 7 0;
+#X connect 17 0 26 0;
+#X connect 18 0 12 0;
+#X connect 19 0 16 0;
+#X connect 19 1 23 0;
+#X connect 21 0 22 0;
+#X connect 22 0 7 0;
+#X connect 23 0 22 1;
+#X connect 24 0 25 0;
+#X connect 24 1 18 0;
+#X connect 24 2 15 0;
+#X connect 25 0 22 1;
+#X connect 26 0 28 0;
+#X connect 26 0 30 0;
+#X connect 27 0 29 0;
+#X connect 28 0 19 0;
+#X connect 28 1 24 0;
+#X connect 29 0 32 0;
+#X connect 29 0 31 0;
+#X connect 29 1 26 0;
+#X connect 30 0 17 0;
+#X connect 31 0 28 0;
+#X connect 32 0 17 0;
+#X coords 0 -1 1 1 152 43 1 100 100;
+#X restore 7 42 pd ARGO;
+#N canvas 323 82 356 447 ARGO 0;
+#X obj 101 101 cnv 10 183 105 \$0-A \$0-B empty 20 12 0 14 -128992
+-1 1.04858e+06;
+#X obj 290 159 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 583 196 410 312 Help 0;
+#X obj 6 7 cnv 15 400 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 8 Citation;
+#X text 15 22 pdp_cog: compute intensity \, center of gravity and standard
+deviation. (interpret an image as a gaussian blob).;
+#X text 15 49 creation argument is threshold;
+#X text 14 76 pdp_cog_abs_thresh: the same \, but takes the absolute
+value and performs a thresholding operation;
+#X restore 297 166 pd Help;
+#X obj 3 359 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 7 365 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 98 -47 inlet;
+#X obj 98 -22 pdp_cog_abs_thresh 0.15;
+#X obj 253 104 vsl 10 100 0 1 0 0 \$0-A \$0-B empty 0 -9 1 10 -258113
+-1 -1 0 0;
+#X text 258 205 average;
+#X text 251 216 intensity;
+#X obj 104 148 hsl 100 10 1 0 0 0 \$0-A \$0-B empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 98 4 >;
+#X obj 243 104 vsl 10 100 0 0.1 0 1 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 4400 0;
+#X obj 148 54 float;
+#X obj 85 54 float;
+#X obj 98 27 sel 1;
+#X obj 149 103 vsl 10 100 1 0 0 0 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 227 103 vsl 10 100 0 1 0 1 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 0 0;
+#X obj 161 105 cnv 10 20 10 empty ColorGEM PDP-CenterGravity 1 5 1
+14 -128992 -1 1.04858e+06;
+#X obj 101 202 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 274 202 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 190 202 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 91 339 outlet~;
+#X obj 170 339 outlet~;
+#X obj 253 338 outlet~;
+#X obj 162 171 nbx 4 12 0 9999 0 1 \$0-A \$0-B Gliss 40 7 1 9 -228856
+-1 -1 25 256;
+#X obj 90 317 line~;
+#X obj 118 295 int;
+#X obj 170 317 line~;
+#X obj 198 295 int;
+#X obj 253 316 line~;
+#X obj 280 294 int;
+#X obj 252 248 t f b;
+#X text 102 208 X;
+#X text 189 207 Y;
+#X obj 90 296 -;
+#X msg 79 274 1;
+#X obj 79 228 * 2;
+#X obj 170 296 -;
+#X msg 159 272 1;
+#X obj 159 227 * 2;
+#X obj 85 77 change;
+#X obj 148 77 change;
+#X obj 253 38 change;
+#X obj 79 251 t b f b;
+#X obj 159 249 t b f b;
+#X obj 253 75 * 10;
+#X text 286 97 12 10 2009;
+#X connect 6 0 7 0;
+#X connect 7 0 12 0;
+#X connect 7 0 44 0;
+#X connect 7 1 15 1;
+#X connect 7 2 14 1;
+#X connect 8 0 33 0;
+#X connect 11 0 38 0;
+#X connect 12 0 16 0;
+#X connect 13 0 12 1;
+#X connect 14 0 43 0;
+#X connect 15 0 42 0;
+#X connect 16 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 41 0;
+#X connect 18 0 7 1;
+#X connect 26 0 28 0;
+#X connect 26 0 30 0;
+#X connect 26 0 32 0;
+#X connect 27 0 23 0;
+#X connect 28 0 27 1;
+#X connect 29 0 24 0;
+#X connect 30 0 29 1;
+#X connect 31 0 25 0;
+#X connect 32 0 31 1;
+#X connect 33 0 31 0;
+#X connect 33 1 32 0;
+#X connect 36 0 27 0;
+#X connect 37 0 36 0;
+#X connect 38 0 45 0;
+#X connect 39 0 29 0;
+#X connect 40 0 39 0;
+#X connect 41 0 46 0;
+#X connect 42 0 11 0;
+#X connect 43 0 17 0;
+#X connect 44 0 47 0;
+#X connect 45 0 37 0;
+#X connect 45 1 36 1;
+#X connect 45 2 28 0;
+#X connect 46 0 40 0;
+#X connect 46 1 39 1;
+#X connect 46 2 30 0;
+#X connect 47 0 8 0;
+#X coords 0 -1 1 1 185 107 1 100 100;
+#X restore 482 -21 pd ARGO;
+#N canvas 315 50 363 367 ARGO 0;
+#X obj 101 114 cnv 10 150 41 \$0-A \$0-B empty 20 12 0 14 -228856 -1
+1.04858e+06;
+#X obj 101 101 cnv 10 150 12 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 151 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 143 104 cnv 5 20 5 empty ColorGEM PDP-GEM 1 5 1 14 -128992 -1
+1.04858e+06;
+#X obj 186 126 nbx 3 12 1 100 0 1 \$0-A \$0-B Render 35 7 1 9 -262144
+-1 -1 50 256;
+#X obj 144 215 gemhead;
+#X msg 186 185 set \$1;
+#X obj 92 329 outlet;
+#X obj 20 41 loadbang;
+#X obj 20 65 delay 1000;
+#X obj 101 114 vradio 12 1 1 3 \$0-A ColorGEM RGBA 14 7 1 9 -262144
+-1 -1 0;
+#X obj 115 141 cnv 5 20 5 empty empty YUV 0 4 1 9 -228856 -1 0;
+#X msg 19 205 colorspace RGBA;
+#X msg 36 247 colorspace YUV;
+#X obj 19 164 change;
+#X obj 14 273 t b a;
+#X obj 263 136 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 564 35 414 536 Help 0;
+#X obj 8 352 cnv 15 400 230 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 19 15 YUV = Luma \, ChromaB \, ChromaR;
+#X text 7 3 - RGB = Red \, Green \, Blue;
+#X obj 7 38 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 37 Citation;
+#X text 18 155 the colorspace indicates what format to transform pdp's
+native YV12 to...YUV is default (and fastest);
+#X text 19 93 pdp2gem : pdp to gem bridge;
+#X text 19 111 written by Yves Degoyon (ydegoyon@free.fr);
+#X text 33 125 and James Tittle (tigital@mac.com);
+#X restore 270 142 pd Help;
+#X obj 151 241 cnv 15 200 60 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 154 241 Ne fonctionne pas sous Windows;
+#X obj 92 305 pdp2gem;
+#X obj 115 129 cnv 10 20 10 empty empty RGB 0 4 1 9 -228856 -1 0;
+#X obj 19 184 select 0 1 2;
+#X msg 29 226 colorspace RGB;
+#X text 97 344 GEM;
+#X text 97 157 GEM;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X text 96 83 PDP;
+#X obj 92 42 inlet;
+#X text 154 257 Sous MacOSX \, ne fonctionne pas;
+#X text 155 267 si */grey/* à l'entrée PDP;
+#X obj 171 25 r \$0-SendOnOff;
+#X obj 174 126 tgl 12 1 \$0-A \$0-B On/Off -30 7 1 9 -262144 -1 -1
+1 1;
+#X obj 172 51 sel 0;
+#X msg 173 76 0;
+#X text 255 97 22 10 2009;
+#X connect 4 0 6 0;
+#X connect 5 0 20 0;
+#X connect 6 0 5 0;
+#X connect 8 0 9 0;
+#X connect 9 0 14 0;
+#X connect 10 0 14 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 22 0;
+#X connect 15 1 20 0;
+#X connect 20 0 7 0;
+#X connect 22 0 12 0;
+#X connect 22 1 23 0;
+#X connect 22 2 13 0;
+#X connect 23 0 15 0;
+#X connect 28 0 20 0;
+#X connect 31 0 33 0;
+#X connect 32 0 5 0;
+#X connect 33 0 34 0;
+#X connect 34 0 32 0;
+#X coords 0 -1 1 1 152 56 1 100 100;
+#X restore 166 43 pd ARGO;
+#N canvas 323 82 356 447 ARGO 0;
+#X obj 101 101 cnv 10 183 105 \$0-A \$0-B empty 20 12 0 14 -128992
+-1 1.04858e+06;
+#X obj 290 159 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 583 196 410 312 Help 0;
+#X obj 6 7 cnv 15 400 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 10 8 Citation;
+#X text 15 22 pdp_cog: compute intensity \, center of gravity and standard
+deviation. (interpret an image as a gaussian blob).;
+#X text 15 49 creation argument is threshold;
+#X text 14 76 pdp_cog_abs_thresh: the same \, but takes the absolute
+value and performs a thresholding operation;
+#X restore 297 166 pd Help;
+#X obj 3 359 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 7 365 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 98 -47 inlet;
+#X obj 98 -22 pdp_cog_abs_thresh 0.15;
+#X obj 253 104 vsl 10 100 0 1 0 0 \$0-A \$0-B empty 0 -9 1 10 -258113
+-1 -1 0 0;
+#X text 258 205 average;
+#X text 251 216 intensity;
+#X obj 104 148 hsl 100 10 1 0 0 0 \$0-A \$0-B empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 98 4 >;
+#X obj 243 104 vsl 10 100 0 0.1 0 1 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 500 0;
+#X obj 148 54 float;
+#X obj 85 54 float;
+#X obj 98 27 sel 1;
+#X obj 149 103 vsl 10 100 1 0 0 0 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 227 103 vsl 10 100 0 1 0 1 \$0-A \$0-B empty 0 -9 0 10 -262144
+-1 -1 0 0;
+#X obj 161 105 cnv 10 20 10 empty ColorGEM PDP-CenterGravity 1 5 1
+14 -128992 -1 1.04858e+06;
+#X obj 252 248 t f b;
+#X text 102 208 X;
+#X text 189 207 Y;
+#X obj 90 296 -;
+#X msg 79 274 1;
+#X obj 79 228 * 2;
+#X obj 170 296 -;
+#X msg 159 272 1;
+#X obj 159 227 * 2;
+#X obj 85 77 change;
+#X obj 148 77 change;
+#X obj 253 38 change;
+#X obj 79 251 t b f b;
+#X obj 159 249 t b f b;
+#X obj 253 75 * 10;
+#X obj 101 202 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X text 286 97 28 10 2009;
+#X obj 91 339 outlet;
+#X obj 170 339 outlet;
+#X obj 253 338 outlet;
+#X obj 189 202 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 274 202 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X connect 6 0 7 0;
+#X connect 7 0 12 0;
+#X connect 7 0 31 0;
+#X connect 7 1 15 1;
+#X connect 7 2 14 1;
+#X connect 8 0 20 0;
+#X connect 11 0 25 0;
+#X connect 12 0 16 0;
+#X connect 13 0 12 1;
+#X connect 14 0 30 0;
+#X connect 15 0 29 0;
+#X connect 16 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 28 0;
+#X connect 18 0 7 1;
+#X connect 20 0 39 0;
+#X connect 23 0 37 0;
+#X connect 24 0 23 0;
+#X connect 25 0 32 0;
+#X connect 26 0 38 0;
+#X connect 27 0 26 0;
+#X connect 28 0 33 0;
+#X connect 29 0 11 0;
+#X connect 30 0 17 0;
+#X connect 31 0 34 0;
+#X connect 32 0 24 0;
+#X connect 32 1 23 1;
+#X connect 33 0 27 0;
+#X connect 33 1 26 1;
+#X connect 34 0 8 0;
+#X coords 0 -1 1 1 185 107 1 100 100;
+#X restore 482 92 pd ARGO;
+#X obj 91 -10 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 100 -10 Ne fonctionne pas sous Windows;
+#X text 101 2 Do not work under Windows;

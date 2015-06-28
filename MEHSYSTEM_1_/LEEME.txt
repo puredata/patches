@@ -1,0 +1,39 @@
+Después de usar varias veces el MEH-SYSTEM en escena... subo la versión 1.0 de "DJ-MEH", ¡con licencia GPL! Esta es la versión exacta que uso en mi espectáculo "El Circo 3D de Mario Mey & Pinokio". Tiene algunos comandos personales, pero no afectan al correcto funcionamiento del MEH-SYSTEM (más abajo explico cuáles son).
+
+Pueden ver el número entero donde uso el MEH-SYSTEM. Está en castellano.
+
+https://www.youtube.com/watch?v=ckKg_rS5ezQ
+
+Es un poco complicado explicar todas las funciones y especificaciones, pero lo intentaré...
+
+8 bancos estéreo de grabación, máximo 32 segundos c/u.
+4 modos de grabación: SAMPLE, RE-SAMPLE, LOOPING y OVERDUB.
+2 consolas de FX con diferentes aplicaciones (entrada de micrófono o bancos de sonido), controlados con pads XY, botón “Hold”, “FX Depth”, etc.
+100 (aprox) efectos y filtros, cada consola de FX. Basados en los FX de la KP3.
+
+Está controlado por una interfase de la aplicación TouchOSC, para Android (interfase incluída en el ZIP) (Disculpá, Hexler, no pagué por tu app).
+
+Entrada de Mic: tiene EQ3 (para usar diferentes mics) y LIMITADOR.
+
+Modos de grabación:
+SAMPLE: usa un BPM prefefinido para grabar en 1, 2, 4, 8 y 16 beats, usando el Mic como entrada.
+RESAMPLE: igual que el SAMPLE, pero usa "todo" (Mic, FX y Bancos) como entrada.
+"LOOPING": usa el estilo de grabación del Boss LoopStation. Para usar este modo, ningún Banco tiene que estar reproduciéndose. Clickéandolo, empieza a grabar. Clickeándolo de nuevo, deja de grabar y empieza a reproducir. Tomando la cantidad de beats definidos, el MEH-SYSTEM define el nuevo BPM.
+OVERDUB: mientras, al menos, un Banco está reproduciendose, empieza a sobre-grabar en el mismo Banco. También, puede ser activado como botón de Stop usando el modo "LOOPING" (usa ipoke2~, compilado para Linux64).
+
+Modos de Consolas de FX:
+1. Mic & Banks -> FX1 -> FX2 -> Output
+2. Mic -> FX1 -> Output, Banks -> FX2 -> Output
+3. Banks -> FX1 -> Output, Mic -> FX2 -> Output
+4. Mic -> Output, Banks -> FX1 -> FX2 -> Output
+5. Banks -> Output, Mic -> FX1 -> FX2 -> Output
+
+Los primeros 2 Bancos: tienen LIMITADOR (todos pueden tenerlo, pero está así para optimizar, sólo necesito estos dos en mi show).
+
+Salida: tiene LIMITER y EQ7 (actualmente, no uso el EQ).
+
+Yo uso el MEH-SYSTEM en Ubuntu 12.04, usando Jack con 128 frames de buffer, con unos 10ms de latencia. Para mí, es suficiente. Creo que puede usarse en cualquier sistema o plataforma... pero no lo probé en ninguno, salvo en el mío.
+
+MEH-SYSTEM usa patchs originales o modificados de: DIY2 FXs (de Matt Davey, le amo), eq7.mmb~ (de Maelstorm), CMETRONOME (Creo que es de Chris Edward, posteado por screwtop), RJDJ-vocoder, VLFO (no se de quién era), y no me acuerdo más...
+
+Mucha gente me ayudó en el desarrollo del MEH-SYSTEM. Mediante el Foro, la Lista de Correo, por IRC... así que no me acuerdo todos sus nombres. A todos ellos: GRACIAS.

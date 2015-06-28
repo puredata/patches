@@ -1,0 +1,535 @@
+#N canvas 415 43 375 246 10;
+#X obj 6 208 cnv 15 200 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 15 208 Ne fonctionne pas sous Windows;
+#N canvas 242 78 482 406 ARGO 0;
+#X obj 101 101 cnv 10 186 72 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 217 104 cnv 10 20 10 empty ColorGEM PDP-Scale 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 205 131 tgl 12 1 \$0-A \$0-B Quality 15 7 1 9 -262144 -1 -1
+1 1;
+#X obj 303 121 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 532 109 425 393 Help 0;
+#X obj 12 59 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 15 58 Citation;
+#X text 32 77 pdp_scale rescales the packet format.;
+#X text 32 105 use this if you want to combine different packet sizes.
+or have movies that don't have a legal size (not a multiple of 8x8)
+;
+#X text 30 148 (try to avoid rescaling by using movies with equal (legal)
+dimensions \, it is not a cheap operation and can easily be done in
+advance);
+#X restore 310 128 pd Help;
+#X obj 135 -5 cnv 15 340 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 138 0 Ne fonctionne pas sous Windows;
+#X msg 184 214 quality \$1;
+#X obj 112 101 vradio 12 1 1 6 \$0-A ColorGEM 1000x752 14 7 1 9 -262144
+-1 -1 3;
+#X obj 127 116 cnv 10 20 10 empty empty 800x600 0 4 1 9 -128992 -1
+0;
+#X obj 127 128 cnv 10 20 10 empty empty 640x480 0 4 1 9 -128992 -1
+0;
+#X obj 127 140 cnv 5 20 5 empty empty 320x240 0 4 1 9 -128992 -1 0
+;
+#X obj 101 169 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 90 375 outlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 93 76 inlet;
+#X obj 127 153 cnv 5 20 5 empty empty 160x120 0 4 1 9 -128992 -1 0
+;
+#X obj 127 164 cnv 5 20 5 empty empty 64x48 0 4 1 9 -128992 -1 0;
+#X floatatom 35 194 5 0 0 0 - - -;
+#X obj 75 195 sel 0 1 2 3 4 5;
+#X msg 105 296 dim 320 240;
+#X obj 91 345 pdp_scale 320 240;
+#X text 262 205 0 = nearest neighbour;
+#X text 262 220 1 = bilinear;
+#X msg 45 268 dim 800 600;
+#X msg 86 247 dim 640 480;
+#X msg 127 270 dim 160 120;
+#X text 234 247 set new packet dimensions;
+#X msg 165 247 dim 64 48;
+#X text 138 14 WARNING: request to create image packet with illegal
+dimensions 1600 x 1200;
+#X text 171 40 Dimensions interdites: 1600x1200 1280 960;
+#X msg 13 294 dim 1000 752;
+#X text 305 97 27 9 2010;
+#X obj 419 349 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.42.5-extended;
+#X restore 425 356 pd ?;
+#X connect 2 0 7 0;
+#X connect 7 0 21 0;
+#X connect 8 0 18 0;
+#X connect 8 0 19 0;
+#X connect 15 0 21 0;
+#X connect 19 0 31 0;
+#X connect 19 1 24 0;
+#X connect 19 2 25 0;
+#X connect 19 3 20 0;
+#X connect 19 4 26 0;
+#X connect 19 5 28 0;
+#X connect 20 0 21 0;
+#X connect 21 0 13 0;
+#X connect 24 0 21 0;
+#X connect 25 0 21 0;
+#X connect 26 0 21 0;
+#X connect 28 0 21 0;
+#X connect 31 0 21 0;
+#X coords 0 -1 1 1 188 74 1 100 100;
+#X restore 15 13 pd ARGO;
+#X obj 54 168 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 389 153 420 398 Help 0;
+#X obj 9 7 cnv 15 400 380 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 12 128 pdp was all coded mostly in yuv since the beginning
+for efficiency and speed reasons \, so we have to pass throough conversions
+to connect to other pieces of code. _______________________________________________
+Pd-list@iem.at mailing list;
+#X text 13 115 From: ydegoyon@gmail.com;
+#X text 24 208 If you want to use PDP on Mac OS X 10.4/Tiger or 10.3/Panther
+\, you will need to install X11 (X11 comes installed with 10.5/Leopard).
+It comes on the install CD/DVD that your computer came with.;
+#X text 24 22 PDP - Pure Data Packet a packet processing library for
+pure data;
+#X text 23 52 This external pd library is a framework for image/video
+processing (and other raw data packets) that is fast \, simple and
+flexible and as much as possible compatible with the pd messaging system.
+;
+#X text 12 6 Citations;
+#X text 11 272 pdp_scale-help.pd;
+#X text 27 286 use this if you want to combine different packet sizes.
+or have movies that don't have a legal size (not a multiple of 8x8)
+;
+#X restore 61 175 pd Help;
+#N canvas 615 180 352 272 ARGO 0;
+#X obj 101 101 cnv 10 150 22 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 149 108 cnv 10 20 10 empty ColorGEM PDP-Movement 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 6 43 cnv 15 340 30 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 10 49 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 101 119 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 90 241 outlet;
+#X obj 90 177 pdp_reg;
+#X obj 90 145 pdp_trigger bang pdp;
+#X text 6 12 compute the difference between current;
+#X text 5 23 and previous frame;
+#X obj 90 215 pdp_mix2 1 -1;
+#X text 202 84 12 10 2009;
+#X obj 100 106 tgl 12 1 \$0-A \$0-B On 15 7 1 9 -262144 -1 -1 0 1;
+#X obj 165 191 * -1;
+#X connect 5 0 9 0;
+#X connect 8 0 12 1;
+#X connect 9 0 8 0;
+#X connect 9 1 8 1;
+#X connect 9 1 12 0;
+#X connect 12 0 7 0;
+#X connect 14 0 12 2;
+#X connect 14 0 15 0;
+#X connect 15 0 12 3;
+#X coords 0 -1 1 1 152 24 1 100 100;
+#X restore 15 92 pd ARGO;
+#N canvas 404 184 519 274 ARGO 0;
+#X obj 101 101 cnv 10 150 22 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 191 108 cnv 10 20 10 empty ColorGEM PDP-Mix 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 54 12 cnv 15 360 60 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 59 15 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 101 119 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 241 outlet;
+#X text 255 104 12 10 2009;
+#X obj 241 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 231 77 inlet;
+#X obj 92 177 pdp_reg;
+#X obj 232 140 pdp_trigger bang pdp;
+#X obj 92 215 pdp_mix;
+#X text 58 30 ATTENTION: Les images aux 2 entrées doivent avoir la
+meme taille.;
+#X obj 113 106 nbx 4 12 0 100 0 1 \$0-A ColorGEM empty 40 7 1 9 -262144
+-1 -1 50 256;
+#X obj 164 140 / 100;
+#X text 142 215 crossfade between 2 packets;
+#X connect 5 0 11 0;
+#X connect 10 0 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 12 1 13 1;
+#X connect 13 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 13 2;
+#X coords 0 -1 1 1 152 24 1 100 100;
+#X restore 210 34 pd ARGO;
+#N canvas 497 183 428 275 ARGO 0;
+#X obj 101 101 cnv 10 150 22 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 184 108 cnv 10 20 10 empty ColorGEM PDP-Gain 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 54 12 cnv 15 360 60 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 59 15 Ne fonctionne pas sous Windows;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 101 119 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 241 outlet;
+#X obj 113 106 nbx 4 12 0 1000 0 1 \$0-A ColorGEM empty 40 7 1 9 -262144
+-1 -1 100 256;
+#X obj 137 166 / 100;
+#X obj 92 215 pdp_gain;
+#X text 144 196 right inlet sets overal gain;
+#X text 150 228 creation argument sets initial gain;
+#X text 218 242 (default = 1);
+#X text 150 214 pdp_gain clips when overdriven;
+#X text 19 101 100 = normal;
+#X text 255 104 27 9 2010;
+#X obj 370 229 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.42.5-extended;
+#X restore 376 236 pd ?;
+#X connect 5 0 10 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 1;
+#X connect 10 0 7 0;
+#X coords 0 -1 1 1 152 24 1 100 100;
+#X restore 210 5 pd ARGO;
+#X obj 14 122 pdp_convert image/grey/*;
+#X obj 14 143 pdp_convert image/YCrCb/*;
+#N canvas 385 42 390 421 ARGO 0;
+#X obj 101 101 cnv 10 132 52 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 149 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 147 104 cnv 10 20 10 empty ColorGEM PDP-Rotate 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 86 397 outlet;
+#X obj 100 112 nbx 4 12 -100 100 0 0 \$0-A ColorGEM CenterX 45 7 1
+9 -262144 -1 -1 0 256;
+#X obj 223 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 23 90 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 429 308 408 319 Help 0;
+#X obj -17 4 cnv 15 400 100 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text -14 3 Citation;
+#X text 15 20 pdp_zrot: zoom and rotation;
+#X text 15 35 right inlet sets rotation angle;
+#X restore 30 96 pd Help;
+#X text 96 154 PDP;
+#X msg 16 341 centerx \$1;
+#X msg 100 341 centery \$1;
+#X text 107 304 (0 \, 0) = top left;
+#X text 107 320 (1 \, 1) = bottom right;
+#X obj 86 368 pdp_rotate;
+#X text 153 366 right inlet sets rotation angle;
+#X text 107 288 set rotation center;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 90 62 inlet;
+#X text 213 82 Angle;
+#X obj 100 124 nbx 4 12 -100 100 0 0 \$0-A ColorGEM CenterY 45 7 1
+9 -262144 -1 -1 0 256;
+#X obj 17 247 + 100;
+#X obj 17 269 / 200;
+#X obj 100 248 + 100;
+#X obj 100 270 / 200;
+#X obj 103 136 hsl 129 12 0 1 0 1 \$0-A \$0-B empty 0 7 1 9 -262144
+-1 -1 6600 0;
+#X obj 208 65 inlet~;
+#X msg 306 253 set \$1;
+#X obj 220 171 +~;
+#X obj 242 322 * 400;
+#X obj 241 342 - 200;
+#X obj 306 209 snapshot~;
+#X obj 306 231 change;
+#X text 94 84 PDP;
+#X text 134 83 14 3 2010;
+#X text 241 139 2 HSLIDER superposés;
+#X text 241 128 ATTENTION;
+#X obj 103 136 hsl 129 12 0 1 0 0 \$0-A \$0-B Angle 0 7 1 9 -228856
+-1 -1 6600 0;
+#X obj 252 66 loadbang;
+#X obj 253 106 metro 200;
+#X obj 310 67 r SendFluid;
+#X obj 89 174 pdp_trigger;
+#X obj 242 277 snapshot~;
+#X obj 242 299 change;
+#X obj 91 21 cnv 15 190 35 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 94 22 Ne fonctionne pas sous Windows;
+#X text 96 35 Do not work under Windows;
+#X obj 24 125 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 30 132 pd ?;
+#X connect 4 0 20 0;
+#X connect 9 0 13 0;
+#X connect 10 0 13 0;
+#X connect 13 0 3 0;
+#X connect 17 0 40 0;
+#X connect 19 0 22 0;
+#X connect 20 0 21 0;
+#X connect 21 0 9 0;
+#X connect 22 0 23 0;
+#X connect 23 0 10 0;
+#X connect 24 0 27 1;
+#X connect 25 0 27 0;
+#X connect 26 0 36 0;
+#X connect 27 0 30 0;
+#X connect 27 0 41 0;
+#X connect 28 0 29 0;
+#X connect 29 0 13 1;
+#X connect 30 0 31 0;
+#X connect 31 0 26 0;
+#X connect 37 0 38 0;
+#X connect 38 0 30 0;
+#X connect 39 0 38 1;
+#X connect 40 0 13 0;
+#X connect 40 1 41 0;
+#X connect 41 0 42 0;
+#X connect 42 0 28 0;
+#X coords 0 -1 1 1 134 54 1 100 100;
+#X restore 228 160 pd ARGO;
+#N canvas 571 88 391 380 ARGO 0;
+#X obj 101 101 cnv 10 132 52 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 101 149 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 147 104 cnv 10 20 10 empty ColorGEM PDP-Zoom 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 86 357 outlet;
+#X obj 100 112 nbx 4 12 -100 100 0 1 \$0-A ColorGEM CenterX 45 7 1
+9 -262144 -1 -1 0 256;
+#X obj 223 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 298 23 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 279 110 408 319 Help 0;
+#X obj -17 4 cnv 15 400 310 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text -14 3 Citation;
+#X restore 305 29 pd Help;
+#X text 96 154 PDP;
+#X msg 16 301 centerx \$1;
+#X msg 100 301 centery \$1;
+#X text 107 264 (0 \, 0) = top left;
+#X text 107 280 (1 \, 1) = bottom right;
+#X text 107 248 set rotation center;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 90 62 inlet;
+#X text 213 82 Angle;
+#X obj 100 124 nbx 4 12 -100 100 0 1 \$0-A ColorGEM CenterY 45 7 1
+9 -262144 -1 -1 0 256;
+#X obj 17 207 + 100;
+#X obj 17 229 / 200;
+#X obj 100 208 + 100;
+#X obj 100 230 / 200;
+#X obj 208 65 inlet~;
+#X obj 207 161 +~;
+#X obj 242 229 snapshot~;
+#X obj 242 251 change;
+#X text 94 84 PDP;
+#X obj 86 328 pdp_zoom;
+#X obj 241 275 * 4;
+#X text 146 328 right inlet sets zoom amount;
+#X obj 240 296 - 1;
+#X obj 193 117 bng 12 250 50 0 \$0-A \$0-B Zero 15 7 1 9 -262144 -1
+-1;
+#X msg 135 63 0;
+#X msg 171 64 0.5;
+#X text 148 85 14 3 2010;
+#X obj 103 136 hsl 129 12 0 1 0 1 \$0-A \$0-B empty 0 7 1 9 -262144
+-1 -1 6400 0;
+#X msg 304 212 set \$1;
+#X obj 304 168 snapshot~;
+#X obj 304 190 change;
+#X text 241 140 2 HSLIDER superposés;
+#X text 241 129 ATTENTION;
+#X obj 103 136 hsl 129 12 0 1 0 0 \$0-A \$0-B Zoom 0 7 1 9 -228856
+-1 -1 6400 0;
+#X obj 253 65 loadbang;
+#X obj 254 105 metro 200;
+#X obj 311 66 r SendFluid;
+#X obj 88 184 pdp_trigger;
+#X obj 30 97 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.41.4-extended;
+#X restore 36 104 pd ?;
+#X obj 20 20 cnv 15 190 35 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text 23 21 Ne fonctionne pas sous Windows;
+#X text 25 34 Do not work under Windows;
+#X connect 4 0 18 0;
+#X connect 9 0 27 0;
+#X connect 10 0 27 0;
+#X connect 15 0 45 0;
+#X connect 17 0 20 0;
+#X connect 18 0 19 0;
+#X connect 19 0 9 0;
+#X connect 20 0 21 0;
+#X connect 21 0 10 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 23 0 37 0;
+#X connect 24 0 25 0;
+#X connect 25 0 28 0;
+#X connect 27 0 3 0;
+#X connect 28 0 30 0;
+#X connect 30 0 27 1;
+#X connect 31 0 32 0;
+#X connect 31 0 33 0;
+#X connect 32 0 4 0;
+#X connect 32 0 17 0;
+#X connect 33 0 35 0;
+#X connect 35 0 23 1;
+#X connect 36 0 41 0;
+#X connect 37 0 38 0;
+#X connect 38 0 36 0;
+#X connect 42 0 43 0;
+#X connect 43 0 37 0;
+#X connect 44 0 43 1;
+#X connect 45 0 27 0;
+#X connect 45 1 24 0;
+#X coords 0 -1 1 1 134 54 1 100 100;
+#X restore 228 101 pd ARGO;
+#N canvas 611 192 419 268 ARGO 0;
+#X obj 101 101 cnv 10 150 22 \$0-A \$0-B empty 20 12 0 14 -128992 -1
+1.04858e+06;
+#X obj 166 108 cnv 10 20 10 empty ColorGEM PDP-Multiply 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 54 12 cnv 15 360 60 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 91 78 inlet;
+#X obj 101 119 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 92 241 outlet;
+#X obj 241 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 231 77 inlet;
+#X obj 92 177 pdp_reg;
+#X obj 232 140 pdp_trigger bang pdp;
+#X text 58 40 ATTENTION: Les images aux 2 entrées doivent avoir la
+meme taille.;
+#X obj 92 215 pdp_mul;
+#X text 142 215 multiplies 2 packets;
+#X text 59 12 Ne fonctionne pas sous Windows;
+#X text 61 25 Do not work under Windows;
+#X obj 11 177 pdp_constant;
+#X obj 11 132 t b b;
+#X msg 39 153 1;
+#X obj 100 106 bng 12 250 50 0 \$0-A \$0-B Reset 15 7 1 9 -262144 -1
+-1;
+#X obj 343 214 cnv 15 41 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 381 103 ? 0;
+#X obj 5 49 cnv 15 370 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X text 6 65 Voir/Look at: http://puredata.info/downloads;
+#X obj 4 12 cnv 18 370 30 empty empty ARGOPdMiniModules 1 10 1 14 -4033
+-1 1.04858e+06;
+#X obj 7 31 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 38 31 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj 175 20 cnv 10 10 10 empty empty http://pagesperso-orange.fr/Paresys/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X obj 175 31 cnv 10 10 10 empty empty http://gerard.paresys.free.fr/ARGOPd/
+0 5 1 9 -4033 -1 1.04858e+06;
+#X text 6 51 Construit sous / Build under Pd 0.42.5-extended;
+#X restore 349 221 pd ?;
+#X text 153 83 23 9 2010;
+#X connect 4 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 12 0;
+#X connect 10 0 9 0;
+#X connect 10 1 12 1;
+#X connect 12 0 6 0;
+#X connect 16 0 12 1;
+#X connect 16 0 12 0;
+#X connect 17 0 16 0;
+#X connect 17 1 18 0;
+#X connect 18 0 16 1;
+#X connect 19 0 17 0;
+#X coords 0 -1 1 1 152 24 1 100 100;
+#X restore 210 63 pd ARGO;
+#X text 16 220 Do not work under Windows;

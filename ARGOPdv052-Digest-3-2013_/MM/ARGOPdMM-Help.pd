@@ -1,0 +1,269 @@
+#N canvas 228 66 742 599 10;
+#X obj 289 -194 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 289 -177 cnv 4 10 4 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 101 151 outlet~;
+#X obj 116 115 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -262144
+-1 1.04858e+06;
+#X obj 105 58 inlet~;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 160 150 outlet~;
+#X obj 195 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -3522 -66577
+0;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 36 -211 pd ARGO;
+#X obj 289 -160 cnv 4 10 4 empty empty empty 20 12 0 14 -1728 -66577
+0;
+#X obj 289 -143 cnv 4 10 4 empty empty empty 20 12 0 14 -3522 -66577
+0;
+#X obj 278 -40 cnv 15 200 60 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X text 357 -18 Ctrl E;
+#X text 352 -2 Apple E (MacOS);
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 101 151 outlet~;
+#X obj 116 115 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -262144
+-1 1.04858e+06;
+#X obj 105 58 inlet~;
+#X obj 154 59 inlet~;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 160 150 outlet~;
+#X obj 195 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 38 -116 pd ARGO;
+#X obj 289 -126 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 10 104 34 empty ColorForm empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 118 108 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -228856
+-1 1.04858e+06;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 139 121 cnv 10 20 10 empty empty GEM 1 5 1 14 -228856 -1 1.04858e+06
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 105 58 inlet;
+#X obj 101 151 outlet;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore -6 -26 pd ARGO;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 10 104 34 empty ColorForm empty 20 12 0 14 -228856
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 118 108 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -228856
+-1 1.04858e+06;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 139 121 cnv 10 20 10 empty empty GEM 1 5 1 14 -228856 -1 1.04858e+06
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 105 58 inlet;
+#X obj 101 151 outlet;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore -6 31 pd ARGO;
+#X obj 278 24 cnv 15 200 70 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X text 296 64 Mouse Right Click;
+#X text 296 76 Ctrl + Click (MacOS);
+#X text 418 63 -> Open;
+#X text -70 10 gemlist ->;
+#X text -4 -149 Audio Signal ->;
+#X text -1 -64 Audio Signal ->;
+#X obj 289 -67 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 289 -109 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 10 104 34 empty ColorForm empty 20 12 0 14 -128992
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 118 108 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 139 121 cnv 10 20 10 empty empty PDP 1 5 1 14 -128992 -1 1.04858e+06
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 105 58 inlet;
+#X obj 101 151 outlet;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 119 -26 pd ARGO;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 10 104 34 empty ColorForm empty 20 12 0 14 -128992
+-1 1.04858e+06;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 118 108 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -128992
+-1 1.04858e+06;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 139 121 cnv 10 20 10 empty empty PDP 1 5 1 14 -128992 -1 1.04858e+06
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 105 58 inlet;
+#X obj 101 151 outlet;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 119 31 pd ARGO;
+#X text 79 11 PDP ->;
+#X obj 288 -96 bng 12 250 50 0 \$0-A \$0-B empty 14 6 1 9 -262144 -1
+-1;
+#X obj 289 -96 cnv 2 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 290 -95 cnv 2 8 2 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 101 151 outlet~;
+#X obj 116 115 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -262144
+-1 1.04858e+06;
+#X obj 105 58 inlet~;
+#X obj 154 59 inlet~;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 195 101 cnv 4 10 4 empty empty empty 20 12 0 14 -3522 -66577
+0;
+#X obj 160 150 outlet;
+#X obj 195 131 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 160 -212 pd ARGO;
+#N canvas 350 62 354 291 ARGO 0;
+#X obj 101 151 outlet~;
+#X obj 116 115 cnv 10 20 10 empty empty MiniModule 1 5 1 14 -262144
+-1 1.04858e+06;
+#X obj 101 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 160 150 outlet~;
+#X obj 195 131 cnv 4 10 4 empty empty empty 20 12 0 14 -1 -66577 0
+;
+#X obj 96 59 inlet;
+#X obj 101 101 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X coords 0 -1 1 1 106 36 2 100 100;
+#X restore 162 -117 pd ARGO;
+#X text 106 -164 Control Message ->;
+#X obj 477 -169 cnv 15 160 70 empty empty empty 20 12 0 14 -258113
+-66577 0;
+#X text 287 -219 Entrée-Sortie / Input-Output;
+#X text 306 -201 Audio;
+#X text 306 -184 Amplitude Control Audio;
+#X text 306 -167 Frequency Control Audio;
+#X text 306 -149 Timbral Control Audio;
+#X text 306 -133 GEM;
+#X text 306 -116 PDP;
+#X text 306 -99 Trigger Audio;
+#X text 300 -36 Mode "Edit" <-> Mode "Run";
+#X text 314 39 Help on a MiniModule:;
+#X text 309 27 Aide sur un MiniModule:;
+#X text -72 -218 Entrée / Input ->;
+#X text -69 -123 Entrée / Input ->;
+#X text -77 -189 Sortie / Output ->;
+#X text -75 -93 Sortie / Output ->;
+#X text 296 52 Clic droit souris;
+#X obj 463 -79 bng 12 250 50 0 \$0-A \$0-B empty 14 6 1 9 -262144 -1
+-1;
+#X obj 464 -72 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 444 -79 bng 12 250 50 0 \$0-A \$0-B empty 14 6 1 9 -262144 -1
+-1;
+#X obj 445 -78 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj 444 -63 tgl 12 1 \$0-A \$0-B empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 445 -62 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X text 306 -82 Control Message: Bang:;
+#X text 306 -66 0/1 On/Off Start/Stop:;
+#X obj 463 -63 tgl 12 1 \$0-A \$0-B empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 464 -56 cnv 4 10 4 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X obj -87 -416 cnv 18 730 40 empty empty empty 0 0 1 14 -188398 -1
+1.04858e+06;
+#X text -84 -419 ARGOPd est constitué de modules de synthèse et de
+traitement sonore et visuel fonctionnant en temps réel sous Pure Data
+(Pd).;
+#X text 290 -412 ARGOPd is made of real-time sound and visual synthesis
+modules functioning in real time under Pure Data (Pd).;
+#X obj -86 -246 cnv 18 730 20 empty empty empty 0 0 1 14 -188398 -1
+1.04858e+06;
+#X obj -86 -324 cnv 18 730 72 empty empty empty 0 0 1 14 -188398 -1
+1.04858e+06;
+#X obj -86 -370 cnv 18 730 40 empty empty empty 0 0 1 14 -188398 -1
+1.04858e+06;
+#X text 290 -324 ExMM folder contains more than 100 examples of Pd
+patches using MiniModules.;
+#X text -83 -325 Le dossier ExMM contient plus de 100 exemples de patches
+Pd utilisant des MiniModules.;
+#X text 310 -444 Compatible MacOSX \, Linux \, Windows (except PDP...)
+;
+#X text -83 -372 Ce patch "All-ARGOPdMM.pd" permet d'ouvrir les autres
+patches (placés dans le même dossier) regroupant tous les MiniModules
+ARGOPd.;
+#X text -83 -297 Le mieux \, pour se familiariser avec ARGOPd est d'ouvrir
+ces ExMM.;
+#X text 290 -296 The best way to become familiar with ARGOPd \, is
+to open these ExMM.;
+#X text 290 -369 This "All-ARGOPdMM.pd" patch opens the other patches
+(located in the same folder) \, grouping all ARGOPd MiniModules.;
+#X text -83 -269 Par exemple: Ouvrir ExMM1a-Sinus.pd puis ExMM1b-Sinus.pd...
+;
+#X text 290 -268 For example: Open ExMM1a-Sinus.pd then ExMM1b-Sinus.pd...
+;
+#X text -83 -245 Un MiniModule (MM) est un "Graph-on-parent subpatch".
+;
+#X text 290 -244 A MiniModule (MM) is a "Graph-on-parent subpatch".
+;
+#X obj 304 -491 cnv 15 300 38 empty empty empty 20 12 0 14 -224896
+-66577 0;
+#X obj -55 -495 cnv 18 300 70 empty empty ARGOPdMiniModules 1 10 1
+14 -4033 -1 1.04858e+06;
+#X obj -37 -476 cnv 10 10 10 empty empty Gerard 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X obj -6 -476 cnv 10 10 10 empty empty Paresys 0 5 1 9 -4033 -1 1.04858e+06
+;
+#X text 311 -489 Construit sous / Build under Pd 0.42.5-extended;
+#X text 89 -481 gerard.paresys@ens.fr;
+#X text 479 -161 ATTENTION: MiniModules;
+#X text 479 -150 factices dans ce patch.;
+#X text 480 -122 on this page.;
+#X text 480 -133 WARNING: Fake MiniModules;
+#X obj -43 -463 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj -43 -448 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/
+;
+#X obj 358 -473 pddp/pddplink http://puredata.info/downloads;
+#X connect 2 0 8 1;
+#X connect 8 1 10 1;
+#X connect 8 1 21 1;
+#X connect 10 0 11 0;
+#X connect 21 0 22 0;
+#X connect 27 1 28 0;

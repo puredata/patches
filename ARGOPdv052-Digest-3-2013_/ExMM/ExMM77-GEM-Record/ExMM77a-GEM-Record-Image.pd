@@ -1,0 +1,344 @@
+#N canvas 357 22 773 392 10;
+#X obj -426 -93 cnv 15 15 15 empty empty ExMM77a-GEM-Record-Image.pd
+0 8 1 14 -262144 -1 0;
+#X obj -415 -42 cnv 15 750 330 empty empty empty 20 12 0 14 -204786
+-66577 0;
+#X text -372 129 Si on choisit le nom "Truc" \, les fichiers se nommerront:
+Truc00000.tif Truc00001.tif Truc00002.tif etc...;
+#X text -372 155 (ou Truc00000.jpg Truc00001.jpg Truc00002.jpg etc...)
+;
+#X text -404 183 ou;
+#X text -24 114 ImageJ -> Menu File -> Import -> Image Sequence...
+-> selectionner la 1ere image Truc00000.jpg -> OK;
+#X text -23 50 Astuce 1: Utiliser QuickTime Player Pro -> Menu Fichier
+-> Ouvrir une suite d'images... pour transformer une suite d'images
+en film (.mov ou .avi etc...);
+#X text -23 101 Astuce 2 avec ImageJ:;
+#N canvas 301 22 567 593 ARGO 0;
+#X obj 101 101 cnv 10 228 54 empty \$0-Canvas empty 20 14 0 14 -228856
+-1 1.04858e+06;
+#X obj -39 24 cnv 15 60 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 529 71 454 583 Help 0;
+#X obj 2 356 cnv 15 430 360 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 3 151 cnv 15 430 200 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X text -5 -374 GEM-Record-Image;
+#X text 9 357 Citation;
+#X text 18 394 [pix_write] takes a picture of the frame buffer and
+saves it to a file. When a "bang" message is sent to [pix_write] \,
+that is the moment that something is captured from the current frame
+buffer. If you set "auto" to 1 (enabled) \, an image is written each
+rendering frame.;
+#X text 20 465 Currently only single-images are supported (no animations
+\, videos \, AVIs \, ...);
+#X text 19 672 You can set the size of the snapshot window as well
+as the position. These can be set via creation arguments too: [pix_write
+[<posX> <posY> [<sizeX> <sizeY>]]];
+#X text 20 505 With the "file" message you can specify a base-filename
+and the type of image-files you want to create.;
+#X text 20 548 The actual name of the file will be something like "<basefilename><current#>.<ext>"
+(like "GEM00001.tif");
+#X text 24 583 Supported file-types are TIFF (type=0) and JPEG (type>0
+\; quality=type \; you might want a high-quality (type>80) to like
+your images);
+#X text 24 634 TIFF-writing is very slow ! JPEG is fast (but ugly with
+low quality);
+#X text 20 375 Make a snapshot of the frame-buffer and write it to
+a file;
+#X text 8 268 Probleme Windows;
+#X text 39 281 - Les couleurs des images sont fausses en JPEG sous
+Pd-0.41.4-extended + carte Matrox (OK en TIFF);
+#X text 10 314 Probleme MacOSX & Linux;
+#X text 51 327 - On ne peut pas choisir la qualité du format JPEG;
+#X text 17 -71 Si on choisit le nom "Truc" \, les fichiers se nommerront:
+Truc00000.tif Truc00001.tif Truc00002.tif etc...;
+#X text 17 -46 (ou Truc00000.jpg Truc00001.jpg Truc00002.jpg etc...)
+;
+#X text 6 -133 ou;
+#X text 16 -83 Choisir l'emplacement et le nom des fichiers;
+#X text 1 -356 Enregistre la fenetre GEM \, sur le disque dur \, en
+une suite de fichiers image au format TIFF ou JPEG;
+#X text 16 -276 2 Dans le MM GEM-Record-Image:;
+#X text 28 -249 - Régler Render (seuls les MM GEM de Render inférieur
+à celui de GEM-Record-Image sont enregistrés);
+#X text 29 -223 - Choisir le format des images: TIFF ou JPEG et la
+qualité (Q) en JPEG. Attention: la choix de la qualité ne fonctionne
+que sous Windows .;
+#X text 16 -120 3 bis Enregistrer une suite d'images en cliquant le
+gros bouton. ATTENTION Il y a autant d'images enregistrées que de frames.
+(Voir MM GEM "Frames/sec");
+#X text 16 -303 1 Dans le MM GEM: choisir la taille des images et le
+nombre de Frames/sec (ne pas choisir FullScreen);
+#X text 16 -184 3 Enregistrer une image en cliquant le bouton "1 image".
+Par défaut \, elle se nommera "gem00000.jpg" et sera dans la racine
+du disque de démarrage sous MacOS \, dans Home Folder sous Linux \,
+dans le dossier du patch sous Windows.;
+#X text 2 -329 Ce MiniModule (MM) n'est pas relié explicitement (avec
+un "cable") à un autre MM.;
+#X text 19 54 ImageJ -> Menu File -> Import -> Image Sequence... ->
+selectionner la 1ere image Truc00000.jpg -> OK;
+#X text 20 -10 Astuce 1: Utiliser QuickTime Player Pro -> Menu Fichier
+-> Ouvrir une suite d'images... pour transformer une suite d'images
+en film (.mov ou .avi etc...);
+#X text 20 41 Astuce 2 avec ImageJ:;
+#X text 23 111 Pour transformer une suite d'images en film .avi ou
+.mov;
+#X text 22 83 ImageJ -> Menu File -> Save as -> AVI... ou QuickTime
+Movie... -> Choisir Compression \, Quality \, Frame Rate -> OK;
+#X obj 165 40 pddplink http://imagej.nih.gov/ij/;
+#X restore -33 30 pd Help;
+#X obj 78 380 gemhead;
+#X msg 78 356 set \$1;
+#X obj 144 569 pix_write;
+#X obj 168 374 sel 0 1;
+#X obj 187 477 delay 1000;
+#X obj 288 501 float;
+#X obj 337 502 + 1;
+#X obj 288 432 metro 1000;
+#X msg 337 479 -1;
+#X msg 206 528 auto 1;
+#X msg 256 528 auto 0;
+#X msg 348 316 stop;
+#X obj -6 470 route list;
+#N canvas 42 170 290 366 CouleurRecord 0;
+#X obj 122 -19 +;
+#X obj 122 37 +;
+#X obj 61 -75 * -65536;
+#X obj 117 -75 * -256;
+#X obj 163 -77 * -1;
+#X obj 122 68 - 1;
+#X obj 41 -174 inlet;
+#X text 77 -97 R;
+#X text 123 -99 G;
+#X text 172 -98 B;
+#X obj 122 123 outlet;
+#X text 137 -190 Rouge;
+#X msg 134 -121 255;
+#X msg 167 -121 0;
+#X obj 134 -148 t b b b;
+#X msg 198 -121 0;
+#X obj 40 -148 t b b b;
+#X msg 40 -121 220;
+#X msg 73 -121 220;
+#X msg 104 -121 220;
+#X msg 122 96 color \$1 \$1 -1;
+#X obj 135 -173 inlet;
+#X text 46 -192 Gris;
+#X connect 0 0 1 1;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 5 0 20 0;
+#X connect 6 0 16 0;
+#X connect 12 0 2 0;
+#X connect 13 0 3 0;
+#X connect 14 0 12 0;
+#X connect 14 1 13 0;
+#X connect 14 2 15 0;
+#X connect 15 0 4 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 16 2 19 0;
+#X connect 17 0 2 0;
+#X connect 18 0 3 0;
+#X connect 19 0 4 0;
+#X connect 20 0 10 0;
+#X connect 21 0 14 0;
+#X restore 202 69 pd CouleurRecord;
+#X obj 202 100 hsl 126 20 0 127 0 0 \$0-A \$0-B GEM-Record-Image -1
+11 1 14 -228856 -228856 -1 0 1;
+#X obj 110 142 bng 12 1000 50 0 \$0-SendImage \$0-ReceiveImage empty
+17 6 1 9 -262144 -258113 -1;
+#X obj 123 144 cnv 10 20 10 empty empty 1 0 4 1 10 -228856 -1 0;
+#X obj 130 144 cnv 10 20 10 empty empty image 0 4 1 10 -228856 -1 0
+;
+#X obj 100 100 nbx 3 12 1 100 0 1 \$0-A \$0-B Render 33 7 1 9 -262144
+-1 -1 99 256;
+#X obj 168 352 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 187 502 t b b b;
+#X msg 188 322 set 1;
+#X msg 141 322 set 0;
+#X obj 301 268 t b b b b b;
+#X obj 187 405 t b b b;
+#X obj 41 329 * 80;
+#X obj 126 248 operating_system;
+#X obj 126 271 select linux windows macos;
+#X msg 146 299 1;
+#X obj 106 222 t b b f;
+#X obj 446 558 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 450 562 pd ???;
+#X msg -9 158 set \$1;
+#X obj 102 24 loadbang;
+#X obj -37 227 list2symbol;
+#X obj -49 86 bang;
+#X text 334 134 <- Click the name to change;
+#X obj 98 164 cnv 15 400 50 empty empty empty 20 12 0 14 -260097 -66577
+0;
+#X text 100 163 Nom du fichier / File name;
+#X obj -48 128 t b b s;
+#X obj 104 125 hradio 14 1 0 15 empty empty empty 0 6 0 8 -260097 -260097
+-260097 0;
+#X symbolatom 100 124 37 0 0 0 - - #0-A;
+#X obj -49 108 savepanel;
+#X obj 259 140 nbx 4 16 0 9999 0 0 \$0-A ColorTime sec 50 9 1 12 -208064
+-1 -1 0 256;
+#X obj 177 140 bng 16 250 50 0 \$0-A *0-B empty 17 7 0 10 -262144 -258113
+-1;
+#X msg -20 418 file;
+#X obj -6 445 pack s s f;
+#X obj -37 353 t b b s b;
+#X text 317 83 20 11 2011;
+#X obj 24 388 t b f;
+#X obj 100 112 hradio 12 1 1 2 \$0-A \$0-B JPEG 26 7 1 10 -262144 -1
+-1 1;
+#N canvas 571 231 236 245 label 0;
+#X obj 69 42 inlet;
+#X obj 83 170 outlet;
+#X obj 70 68 sel 0 1;
+#X msg 50 126 label TIFF;
+#X msg 125 125 label JPEG;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X restore 33 87 pd label;
+#X obj 187 443 t b b b b;
+#X obj 194 145 cnv 10 20 10 empty empty 1 0 4 1 10 -228856 -1 0;
+#X obj 201 145 cnv 10 20 10 empty empty image/frame 0 4 1 10 -228856
+-1 0;
+#X obj 202 42 delay 1000;
+#X obj 155 112 nbx 3 12 1 100 0 1 \$0-A \$0-B Q 34 7 1 10 -262144 -1
+-1 50 256;
+#X msg 102 182 /Users/gp/A;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 6 1 27 0;
+#X connect 7 0 23 0;
+#X connect 8 0 9 0;
+#X connect 9 0 8 1;
+#X connect 9 0 46 0;
+#X connect 10 0 8 0;
+#X connect 11 0 9 0;
+#X connect 12 0 5 0;
+#X connect 13 0 5 0;
+#X connect 14 0 10 0;
+#X connect 15 0 5 0;
+#X connect 16 0 17 0;
+#X connect 18 0 5 0;
+#X connect 18 0 16 1;
+#X connect 18 0 58 0;
+#X connect 21 0 4 0;
+#X connect 22 0 6 0;
+#X connect 23 0 10 0;
+#X connect 23 1 12 0;
+#X connect 23 2 11 0;
+#X connect 24 0 22 0;
+#X connect 25 0 22 0;
+#X connect 26 0 22 0;
+#X connect 26 1 13 0;
+#X connect 26 3 14 0;
+#X connect 26 4 16 0;
+#X connect 27 0 55 0;
+#X connect 27 1 25 0;
+#X connect 27 2 11 0;
+#X connect 28 0 52 0;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 30 2 31 0;
+#X connect 31 0 28 1;
+#X connect 32 0 28 0;
+#X connect 32 1 29 0;
+#X connect 32 2 28 1;
+#X connect 35 0 60 0;
+#X connect 36 0 60 0;
+#X connect 37 0 44 0;
+#X connect 37 0 50 0;
+#X connect 38 0 45 0;
+#X connect 42 1 60 0;
+#X connect 42 2 35 0;
+#X connect 43 0 38 0;
+#X connect 45 0 42 0;
+#X connect 47 0 26 0;
+#X connect 48 0 49 0;
+#X connect 49 0 15 0;
+#X connect 50 1 48 0;
+#X connect 50 2 49 1;
+#X connect 52 0 48 0;
+#X connect 52 1 49 2;
+#X connect 53 0 54 0;
+#X connect 53 0 28 0;
+#X connect 54 0 53 0;
+#X connect 55 0 7 0;
+#X connect 55 1 16 1;
+#X connect 55 2 11 0;
+#X connect 55 3 24 0;
+#X connect 58 0 16 0;
+#X connect 59 0 32 0;
+#X connect 60 0 37 0;
+#X coords 0 -1 1 1 230 56 1 100 100;
+#X restore 53 -24 pd ARGO;
+#X text -397 36 2 Dans le MM GEM-Record-Image:;
+#X text -385 51 - Régler Render (seuls les MM GEM de Render inférieur
+à celui de GEM-Record-Image sont enregistrés);
+#X text -384 77 - Choisir le format des images: TIFF ou JPEG et la
+qualité (Q) en JPEG. Attention: la choix de la qualité ne fonctionne
+que sous Windows .;
+#X text -397 9 1 Dans le MM GEM: choisir la taille des images et le
+nombre de Frames/sec (ne pas choisir FullScreen);
+#X text -412 -75 Ouvrir ce patch en plus d'un autre patch ExMM-GEM
+pour enregistrer la fenêtre GEM..;
+#X text -411 -17 Ce MiniModule (MM) n'est pas relié explicitement (avec
+un "cable") à un autre MM.;
+#X text -20 171 Pour transformer une suite d'images en film .avi ou
+.mov;
+#X text -21 143 ImageJ -> Menu File -> Save as -> AVI... ou QuickTime
+Movie... -> Choisir Compression \, Quality \, Frame Rate -> OK;
+#X obj 122 100 pddplink http://imagej.nih.gov/ij/;
+#X text -384 115 - Choisir le dossier et le nom générique des images
+;
+#X text -394 171 3 Enregistrer une image en cliquant le bouton "1 image".
+;
+#X text -394 196 3 bis Enregistrer une suite d'images en cliquant le
+gros bouton 1 image/frame. ATTENTION Il y a autant d'images enregistrées
+que de frames. (Voir MM GEM "Frames/sec");
+#X text -412 -44 Enregistre la fenêtre GEM \, sur le disque dur \,
+en une suite de fichiers image au format TIFF ou JPEG;
+#X obj 285 260 cnv 15 48 25 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#N canvas 350 196 308 136 ??? 0;
+#X obj -6 87 cnv 15 300 38 empty empty empty 20 12 0 14 -224896 -66577
+0;
+#X obj -6 10 cnv 18 300 70 empty empty ARGOPdMiniModules 3 10 1 14
+-4033 -1 1.04858e+06;
+#X obj 13 31 cnv 10 10 10 empty empty Gerard 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X obj 55 30 cnv 10 10 10 empty empty Paresys 0 5 1 11 -4033 -1 1.04858e+06
+;
+#X text -1 89 Construit sous / Build under Pd 0.42.5-extended;
+#X obj 6 43 pddp/pddplink http://pagesperso-orange.fr/Paresys/ARGOPd/
+;
+#X obj 6 58 pddp/pddplink http://gerard.paresys.free.fr/ARGOPd/;
+#X obj 46 105 pddp/pddplink http://puredata.info/downloads;
+#X restore 289 264 pd ???;
+#X text -403 248 ATTENTION Une image de même nom écrase la précédente
+sans message d'alerte.;

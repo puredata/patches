@@ -1,0 +1,14 @@
+#N canvas 1 70 450 300 10;
+#X obj 41 162 inlet~;
+#X obj 41 252 outlet~;
+#X text 106 147 ¡EQ7-Dummy!;
+#X obj 41 202 *~ 0;
+#X obj 157 187 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 124 160 MONO;
+#X obj 286 156 inlet;
+#X obj 271 220 outlet;
+#X connect 0 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 1;
+#X coords 0 -1 1 1 100 112 1 100 100;
